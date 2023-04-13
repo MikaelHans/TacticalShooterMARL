@@ -74,54 +74,12 @@ public class FieldOfView : RewardingObject
                         float distanceToTarget = Vector3.Distance(transform.position, target.position);
                         if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
                         {
-                            enemyPositions[colliderCharacter.index] = colliderCharacter.transform.position;
-                            enemyInSight[colliderCharacter.index] = 1;
-                            character.AddReward(0.1f);
+                            var rotation = Quaternion.LookRotation(target.position - transform.position);
+                            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * character.movement.rotationSpeed);  
                         }
-                        else
-                        {
-                            //character.SetReward(-1f);
-                            //enemyPositions[colliderCharacter.index] = Vector3.positiveInfinity;
-                        }
-                    }
-                    else
-                    {
-                        //character.SetReward(-1f);
-                        //enemyPositions[colliderCharacter.index] = Vector3.positiveInfinity;
                     }
                 }                            
             }
-        }
-        character.updateEnemyPositions(enemyPositions, enemyInSight);
-
-
-        //if (rangeChecks.Length != 0)
-        //{
-        //    Transform target = rangeChecks[0].transform;
-        //    Vector3 directionToTarget = (target.position - transform.position).normalized;
-
-        //    if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
-        //    {
-        //        float distanceToTarget = Vector3.Distance(transform.position, target.position);
-
-        //        if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
-        //        {
-        //            canSeePlayer = true;
-        //        }                    
-        //        else
-        //        {
-        //            canSeePlayer = false;
-        //        }                    
-        //    }
-        //    else
-        //    {
-        //        canSeePlayer = false;
-        //    }
-                
-        //}
-        //else if (canSeePlayer)
-        //{
-        //    canSeePlayer = false;
-        //}            
+        }         
     }
 }

@@ -7,6 +7,7 @@ using TMPro;
 using Unity.MLAgents.Actuators;
 using System.Linq;
 using Unity.MLAgents.Sensors;
+using UnityEngine.AI;
 
 [Serializable]
 public struct Observation
@@ -24,7 +25,7 @@ public class Character : Agent
     public int ammoLeft, heLeft, stunLeft, team, index, inBombSite, bombInRange = 0, isAlive = 1;
     public Movement movement;
     public EquipmentManager equipmentManager;
-    public Character[] allies;
+    public List<Character> allies, enemies;
     public Vector3[] enemyPositions;
     public int[] enemyInSight;
     List<Vector3> allyPositions;
@@ -36,15 +37,40 @@ public class Character : Agent
     public GameController gameManager;
 
 
-    private void Awake()
+    protected virtual void Awake()
     {
         gameManager = GetComponentInParent<GameController>();
+        int enemyCount = 0;
+        Character[] allAgents = gameManager.GetComponentsInChildren<Character>();
+        Debug.Log(allAgents.Length);
+        //Debug.Log(enemyPositions.Length);
+        foreach (Character agent in allAgents)
+        {
+            if (agent.team != team && agent != this)
+            {
+                enemies.Add(agent);
+            }
+        }
+        //Debug.Log(enemyCount);
+        enemyPositions = new Vector3[enemyCount];
+        enemyInSight = new int[enemyCount];
+
+        allyPositions = new List<Vector3>();
+
+        foreach (Character agent in allAgents)
+        {
+            if (agent.team == team && agent != this)
+            {
+                allyPositions.Add(new Vector3());
+                allies.Add(agent);
+            }
+        }
     }
 
-    //public override void Initialize()
-    //{
-    //    gameManager = GetComponentInParent<GameManager>();  
-    //}
+    protected virtual void Start()
+    {
+        
+    }
 
     public override void OnEpisodeBegin()
     {
@@ -52,93 +78,48 @@ public class Character : Agent
         equipmentManager.equipments[0].ammo = equipmentManager.equipments[0].max_ammo;
     }
 
-    public override void CollectObservations(Unity.MLAgents.Sensors.VectorSensor sensor)
+    public override void CollectObservations(VectorSensor sensor)
     {
         Character[] agents = gameManager.GetComponentsInChildren<Character>();
         sensor.AddObservation(transform.localPosition);
         sensor.AddObservation(transform.localRotation.eulerAngles);
-
-        foreach (Character agent in agents)
+        if (equipmentManager.check())
         {
-            if (agent.team != team)
-            {
-                //Debug.Log(agent);
-                //sensor.AddObservation(agent.transform.localPosition);
-                sensor.AddObservation(Vector3.Distance(transform.localPosition, agent.transform.localPosition));
-                //obs.Add(agent.transform.localPosition);
-            }
+            sensor.AddObservation(1);
         }
+        else
+        {
+            sensor.AddObservation(0);
+        }
+
+        if (equipmentManager.isReloading())
+        {
+            sensor.AddObservation(1);
+        }
+        else
+        {
+            sensor.AddObservation(0);
+        }
+        ////foreach (Character agent in agents)
+        ////{
+        ////    if (agent.team != team)
+        ////    {
+        ////        sensor.AddObservation(agent.transform.localPosition - transform.localPosition);
+        ////    }
+        ////}
 
     }
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        //Debug.Log(actions.DiscreteActions[0]);
-        //print(actions.DiscreteActions[2]);        
-        
-        
-        //vision.processRewardPerTimestep();
         doAction(actions.DiscreteActions[0], actions.DiscreteActions[1], actions.DiscreteActions[2]);
-        equipmentManager.processRewardPerTimestep();
+        //AddReward(0.01f);
+        //equipmentManager.processRewardPerTimestep();
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
-        base.Heuristic(actionsOut);
-        ActionSegment<int> discreteActions = actionsOut.DiscreteActions;
-        //discreteActions[] = 
 
-    }
-
-    private void Start()
-    {                   
-        int enemyCount = 0;
-        Character[] enemies = gameManager.GetComponentsInChildren<Character>();
-        //Debug.Log(enemyPositions.Length);
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            if (enemies[i].team != team)
-            {
-                enemyCount++;
-            }
-        }
-        //Debug.Log(enemyCount);
-        enemyPositions = new Vector3[enemyCount];
-        enemyInSight = new int[enemyCount];
-
-        allies = new Character[5];
-        allyPositions = new List<Vector3>();
-        Character[] allAgents = FindObjectsOfType<Character>();
-        
-
-        foreach (Character agent in allAgents)
-        {
-            if (agent.team == team)
-            {
-                allyPositions.Add(new Vector3());
-                allies[agent.index] = agent;
-            }
-        }
-    }
-
-    private void Update()
-    {
-        for (int i = 0; i < enemyPositions.Length; i++)
-        {
-            if (enemyInSight[i] == 1)
-            {
-                Debug.DrawLine(transform.position, enemyPositions[i], Color.green);
-            }
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        //Debug.Log(actions.Count);
-        //if (actions.Count > 0)
-        //{
-        //    doAction(actions.Dequeue());
-        //}
     }
 
     public EquipmentManager GetEquipmentManager()
@@ -146,22 +127,38 @@ public class Character : Agent
         return equipmentManager;    
     }
 
-    public void takeDamage(float damage, Character attacker)
+    public float takeDamage(float damage, Character attacker)
     {
         //attacker.AddReward(0.8f);
         //AddReward(-1f);
-        Debug.Log(transform.name);
+
+        Debug.Log(transform.name + " Dead");
         hp -= damage;
+        float attacker_reward = 0;
         if(hp <= 0)
         {
-            //Destroy(gameObject);
-            attacker.AddReward(1f);
-            AddReward(-1f);
+            float teamsize = gameManager.ctTeamSize;
+            if (attacker.team == team)
+            {
+                attacker_reward = -1;
+                attacker.AddReward(-1f);
+                //AddReward(-1f);
+            }
+            else
+            {
+
+                attacker.AddReward(1f/teamsize);
+                attacker_reward = 1;
+                //SetReward(-1f);
+            }
             isAlive = 0;
-            //gameObject.SetActive(false);
-            
+            //attacker_reward = 999;
+            //Debug.Log(attacker_reward);
+            gameObject.SetActive(false);
+            return attacker_reward;
             //EndEpisode();
         }
+        return attacker_reward;
     }
 
     public void stun(float stunTime)
@@ -189,10 +186,12 @@ public class Character : Agent
         switch (rotateAction)
         {
             case 0:
+                break;
+            case 1:
                 movement.rotateLeft();
                 //AddReward(0.05f);
                 break;
-            case 1:
+            case 2:
                 movement.rotateRight();
                 break;
         }
@@ -202,26 +201,6 @@ public class Character : Agent
                 equipmentManager.fire();
                 break;
         }
-    }
-
-    public Observation getObservation()
-    {
-        Observation observation = new Observation();
-        observation.Position = transform.position;
-        observation.Rotation = transform.eulerAngles;
-        observation.hp = hp;
-        observation.ammoLeft = equipmentManager.equipments[0].ammo;
-        observation.heLeft = equipmentManager.equipments[1].ammo;
-        observation.stunLeft = equipmentManager.equipments[2].ammo;
-
-        for (int i = 0; i < allyPositions.Count; i++)
-        {
-            allyPositions[i] = allies[i].transform.position;
-        }
-        observation.allyPositions = allyPositions.ToArray();
-        observation.enemyPositions = enemyPositions;
-
-        return observation;
     }
 
     public void updateEnemyPositions(Vector3[] positions, int[]_enemyInSight)

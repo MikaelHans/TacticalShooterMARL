@@ -7,24 +7,36 @@ public class Equipment : MonoBehaviour
 {
     public int ammo, max_ammo, magazine_size;
     public float rateOfFire;
+    [SerializeField]
     protected Character character;
     public Transform instantiateSource;
-    public float coolDown;
+    public float coolDown, rewardBuffer;
     public bool isCoolingDown;
 
-    protected virtual void Start()
-    {        
-        character = GetComponentInParent<Character>();
+    public void setCharacter(Character _character)
+    {
+        character = _character;
     }
 
-    protected virtual void Update()
+    public virtual bool isReloading()
     {
-
+        if (isCoolingDown)
+        {
+            return true;
+        }
+        return false;
     }
 
-    public virtual void processReward()
+    public virtual bool checkAim()
     {
+        return true;
+    }
 
+    public virtual float processReward()
+    {
+        float tmp = rewardBuffer;
+        rewardBuffer = 0;
+        return tmp;
     }
 
     protected virtual void FixedUpdate()
@@ -43,7 +55,11 @@ public class Equipment : MonoBehaviour
     public virtual bool use()
     {        
         if (ammo <= 0 || isCoolingDown)
-        {           
+        {          
+            if(ammo <= 0)
+            {
+                //character.AddReward(-0.5f);
+            }
             return false;
         }
         coolDown = rateOfFire;

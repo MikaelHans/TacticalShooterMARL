@@ -7,22 +7,24 @@ public class EquipmentManager : RewardingObject
     public Equipment[] equipments;
     public int currentlyEquipped;
     public Transform shootSource;
+    protected Character character;
+
+
 
     private void Start()
     {
+        character = GetComponent<Character>();
         //equipments = GetComponentsInChildren<Equipment>();
-        //for (int i = 0; i < equipments.Length; i++)
-        //{
-        //    if (i != currentlyEquipped)
-        //    {
-        //        equipments[i].gameObject.SetActive(false);
-        //    }
-        //}
+        Debug.Log(equipments);
+        for (int i = 0; i < equipments.Length; i++)
+        {
+            equipments[i].setCharacter(character);
+        }
     }
 
     public override void processRewardPerTimestep()
     {
-        equipments[currentlyEquipped].processReward();
+        character.SetReward(equipments[currentlyEquipped].processReward());
     }
 
     public void swap(int current, int prev)
@@ -55,6 +57,16 @@ public class EquipmentManager : RewardingObject
     public void fire()
     {
         equipments[currentlyEquipped].use();
+    }
+
+    public bool check()
+    {
+        return equipments[currentlyEquipped].checkAim();
+    }
+
+    public bool isReloading()
+    {
+        return equipments[currentlyEquipped].isReloading();
     }
 
     public void defuse(Bomb bomb)

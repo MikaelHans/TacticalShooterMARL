@@ -11,43 +11,43 @@ public class Weapon_1p : Equipment
     public int damage;
 
 
-    public override void processReward()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(instantiateSource.transform.position, instantiateSource.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
-        {
-            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
-            //Debug.Log(hit.collider.transform.GetComponentInParent<Character_1p>());
-            //Character_1p hitcharacter = hit.collider.transform.GetComponentInParent<Character_1p>();
-            TargetPractice hitcharacter = hit.collider.transform.GetComponent<TargetPractice>();
+    //public override void processReward()
+    //{
+    //    RaycastHit hit;
+    //    if (Physics.Raycast(instantiateSource.transform.position, instantiateSource.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+    //    {
+    //        //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
+    //        //Debug.Log(hit.collider.transform.GetComponentInParent<Character_1p>());
+    //        //Character_1p hitcharacter = hit.collider.transform.GetComponentInParent<Character_1p>();
+    //        TargetPractice hitcharacter = hit.collider.transform.GetComponent<TargetPractice>();
 
-            if (hitcharacter != null)
-            {
-                character.AddReward(0.5f);
-                character.points += 0.5f;
-                if (character.team == 0)
-                {
-                    Debug.DrawLine(transform.position, hitcharacter.transform.position, Color.blue, 0.5f);
-                }
-                else
-                {
-                    Debug.DrawLine(transform.position, hitcharacter.transform.position, Color.red, 0.5f);
-                }
-            }
-            else
-            {
-                character.points -= 0.01f;
-                character.SetReward(-0.01f);
-            }
+    //        if (hitcharacter != null)
+    //        {
+    //            character.AddReward(0.5f);
+    //            character.points += 0.5f;
+    //            if (character.team == 0)
+    //            {
+    //                Debug.DrawLine(transform.position, hitcharacter.transform.position, Color.blue, 0.5f);
+    //            }
+    //            else
+    //            {
+    //                Debug.DrawLine(transform.position, hitcharacter.transform.position, Color.red, 0.5f);
+    //            }
+    //        }
+    //        else
+    //        {
+    //            character.points -= 0.01f;
+    //            character.SetReward(-0.01f);
+    //        }
 
-        }
-    }
+    //    }
+    //}
 
-    protected override void Start()
-    {
-        base.Start();
-        instantiateSource = GetComponentInParent<Character_1p>().shootSource;
-    }
+    //protected override void Start()
+    //{
+    //    base.Start();
+    //    instantiateSource = GetComponentInParent<Character_1p>().shootSource;
+    //}
 
     protected override void FixedUpdate()
     {

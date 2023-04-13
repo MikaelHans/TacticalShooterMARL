@@ -1,0 +1,180 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Unity.MLAgents;
+
+public class GameController : MonoBehaviour
+{
+    public Character[] counterTerrorists, terrorist;
+    public int ctTeamSize, tTeamSize, maxStep;
+    public SpawnSystem ctSpawn, tSpawn;
+    public bool bombPlanted = false;
+    public float timer, roundLength;
+
+    private SimpleMultiAgentGroup counterTerroristTeam, terrorristTeam;
+
+    private void Awake()
+    {
+        timer = roundLength;
+    }
+
+    private void Start()
+    {
+        counterTerroristTeam = new SimpleMultiAgentGroup();
+        terrorristTeam = new SimpleMultiAgentGroup();
+        //Debug.Log("CT_TEAM_ID: " + counterTerroristTeam.GetId());
+        //Debug.Log("T_TEAM_ID: " + terrorristTeam.GetId());
+        counterTerrorists = new Character[ctTeamSize];
+        terrorist = new Character[tTeamSize];
+
+        counterTerrorists = ctSpawn.spawnTeam(ctTeamSize).ToArray();
+        terrorist = tSpawn.spawnTeam(tTeamSize).ToArray();
+
+        foreach (Character c in counterTerrorists)
+        {
+            counterTerroristTeam.RegisterAgent(c);
+        }
+
+        foreach (Character c in terrorist)
+        {
+            terrorristTeam.RegisterAgent(c);
+        }
+        //Debug.Log(counterTerroristTeam.GetRegisteredAgents().Count);
+        //Debug.Log(terrorristTeam.GetRegisteredAgents().Count);
+        //Debug.Log("SUCCESS INIT");
+        //terrorist[0].GetEquipmentManager().equipBomb();
+    }
+
+
+    private void FixedUpdate()
+    {
+        timer++;
+        counterTerroristTeam.AddGroupReward(0.05f);
+        terrorristTeam.AddGroupReward(0.05f);
+        if (timer >= maxStep)
+        {
+            Debug.Log("Time Limit Exceeded");
+            terrorristTeam.SetGroupReward(1f - numberOfAgentsAlive(counterTerrorists) / ctTeamSize);
+            counterTerroristTeam.SetGroupReward(1f - numberOfAgentsAlive(terrorist) / tTeamSize);
+
+            counterTerroristTeam.GroupEpisodeInterrupted();
+            terrorristTeam.GroupEpisodeInterrupted();
+
+            ctSpawn.spawnTeam(ctTeamSize);
+            tSpawn.spawnTeam(tTeamSize);
+            timer = 0;
+        }
+        if (checkIfTeamAllDead(counterTerrorists))
+        {
+            Debug.Log("T WIN");
+            roundEnd(0);
+            //resetRound();
+        }
+        else if (checkIfTeamAllDead(terrorist))
+        {
+            Debug.Log("CT WIN");
+            roundEnd(1);
+            //resetRound();
+        }
+        #region legacy codes, might be useful
+        //else
+        //{
+        //    counterTerroristTeam.AddGroupReward(-0.4f);
+        //    terrorristTeam.AddGroupReward(-0.4f);
+        //}
+        ////check if bomb planted
+        //if(bombPlanted)
+        //{
+        //    if (checkIfTeamAllDead(counterTerrorists))
+        //    {
+        //        Debug.Log("Terrorists Win");
+        //        roundEnd(1);
+        //        resetRound();
+        //    }
+        //}
+        //else
+        //{
+        //    //check if team still has at least a member alive
+        //    if (checkIfTeamAllDead(counterTerrorists))
+        //    {
+        //        roundEnd(1);
+        //        resetRound();
+        //    }
+        //    else if (checkIfTeamAllDead(terrorist))
+        //    {
+        //        roundEnd(0);
+        //        resetRound();
+        //    }
+        //}
+        #endregion
+    }
+
+    //IEnumerator countdown()
+    //{
+    //    while (true)
+    //    {
+    //        yield return new WaitForSeconds(1);
+    //    }
+    //}
+
+    public void roundEnd(int team)
+    {
+        Debug.Log("ROUNDEND");
+        if (team == 1)//ctwin
+        {
+            counterTerroristTeam.AddGroupReward(1f);
+            terrorristTeam.AddGroupReward(-1f);
+            //counterTerroristTeam.SetGroupReward(1f - timer / roundLength);
+            //terrorristTeam.SetGroupReward(-1f + timer / roundLength);
+        }
+        else if (team == 0)//twin
+        {
+            terrorristTeam.AddGroupReward(1f);
+            counterTerroristTeam.AddGroupReward(-1f);
+            //counterTerroristTeam.SetGroupReward(-1f + timer / roundLength);
+        }
+        resetRound();
+    }
+
+    public void resetRound()
+    {
+        Debug.Log("Round Done");
+
+        //terrorristTeam.AddGroupReward(-5f);
+        //counterTerroristTeam.AddGroupReward(-5f);
+
+        //add reward for killing enemy
+        //terrorristTeam.AddGroupReward(1f - numberOfAgentsAlive(counterTerrorists) / ctTeamSize);
+        //counterTerroristTeam.AddGroupReward(1f - numberOfAgentsAlive(terrorist) / tTeamSize);
+
+
+        counterTerroristTeam.EndGroupEpisode();
+        terrorristTeam.EndGroupEpisode();
+
+        ctSpawn.spawnTeam(ctTeamSize);
+        tSpawn.spawnTeam(tTeamSize);
+
+        timer = 0;
+    }
+
+    public bool checkIfTeamAllDead(Character[] team)
+    {
+        for (int i = 0; i < team.Length; i++)
+        {
+            if (team[i].isAlive == 1)
+                return false;
+        }
+        return true;
+    }
+
+    public int numberOfAgentsAlive(Character[] team)
+    {
+        int res = 0;
+        for (int i = 0; i < team.Length; i++)
+        {
+            if (team[i].isAlive == 1)
+                res++;
+        }
+        return res;
+    }
+}

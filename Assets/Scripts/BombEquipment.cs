@@ -5,9 +5,8 @@ using UnityEngine;
 public class BombEquipment : Equipment
 {
     public GameObject bombPrefab;
-    protected override void Start()
+    protected void Start()
     {      
-        base.Start();
         instantiateSource = GetComponentInParent<Character>().bombSource;        
     }
 

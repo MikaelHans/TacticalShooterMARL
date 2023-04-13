@@ -99,8 +99,8 @@ public class Client : MonoBehaviour
             NetworkStream stream = socketConnection.GetStream();
             if (stream.CanWrite)
             {
-                Observation obs = character.getObservation();               
-                string clientMessage = JsonUtility.ToJson(obs);
+                //Observation obs = character.getObservation();               
+                string clientMessage = "punten";
                 // Convert string message to byte array.                 
                 byte[] clientMessageAsByteArray = Encoding.ASCII.GetBytes(clientMessage);
                 // Write byte array to socketConnection stream.                 

@@ -9,9 +9,8 @@ public class Throwables : Equipment
     public float throwForce;
 
 
-    protected override void Start()
+    protected void Start()
     {
-        base.Start();
         instantiateSource = GetComponentInParent<Character>().throwSource;
     }
     

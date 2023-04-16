@@ -80,9 +80,10 @@ public class Character : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        Character[] agents = gameManager.GetComponentsInChildren<Character>();
+        //Character[] agents = gameManager.GetComponentsInChildren<Character>();
         sensor.AddObservation(transform.localPosition);
-        sensor.AddObservation(transform.localRotation.eulerAngles);
+        Vector3 normalizedRotation = MinMaxNormalization(transform.localRotation.eulerAngles, new Vector3(-1, -1, -1), new Vector3(1, 1, 1));
+        sensor.AddObservation(normalizedRotation);
         if (equipmentManager.check())
         {
             sensor.AddObservation(1);
@@ -107,7 +108,31 @@ public class Character : Agent
         ////        sensor.AddObservation(agent.transform.localPosition - transform.localPosition);
         ////    }
         ////}
+    }
 
+    public static double MinMaxNormalization(double value, double minValue, double maxValue)
+    {
+        // Check for division by zero
+        if (minValue == maxValue)
+        {
+            throw new ArgumentException("minValue and maxValue cannot be the same.");
+        }
+
+        // Perform Min-Max normalization
+        double normalizedValue = (value - minValue) / (maxValue - minValue);
+        return normalizedValue;
+    }
+
+    public static Vector3 MinMaxNormalization(Vector3 vector, Vector3 minValue, Vector3 maxValue)
+    {
+        // Normalize the x, y, and z components separately
+        float normalizedX = Mathf.Clamp01((vector.x - minValue.x) / (maxValue.x - minValue.x));
+        float normalizedY = Mathf.Clamp01((vector.y - minValue.y) / (maxValue.y - minValue.y));
+        float normalizedZ = Mathf.Clamp01((vector.z - minValue.z) / (maxValue.z - minValue.z));
+
+        // Create a new normalized Vector3
+        Vector3 normalizedVector = new Vector3(normalizedX, normalizedY, normalizedZ);
+        return normalizedVector;
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -171,15 +196,17 @@ public class Character : Agent
         switch(moveAction)
         {
             case 0:
-                movement.forward();
                 break;
             case 1:
-                movement.backward();
+                movement.forward();
                 break;
             case 2:
-                movement.right();
+                movement.backward();
                 break;
             case 3:
+                movement.right();
+                break;
+            case 4:
                 movement.left();
                 break;
         }
@@ -193,6 +220,13 @@ public class Character : Agent
                 break;
             case 2:
                 movement.rotateRight();
+                break;
+            case 3:
+                movement.rotateDown();
+                //AddReward(0.05f);
+                break;
+            case 4:
+                movement.rotateUP();
                 break;
         }
         switch (fireAction)

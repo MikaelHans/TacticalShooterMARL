@@ -4,12 +4,27 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public int moveSpeed, rotationSpeed;
+    public float moveSpeed, rotationSpeed, minPitch, maxPitch;
+    public Transform head;
     CharacterController characterController;
     // Start is called before the first frame update
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+    }
+
+    public void clampRotationPitch()
+    {
+        Vector3 rotation = transform.rotation.eulerAngles;
+
+        // Clamp the pitch angle
+        float clampedPitch = Mathf.Clamp(rotation.x, minPitch, maxPitch);
+
+        // Apply the clamped pitch angle back to the rotation
+        rotation.x = clampedPitch;
+
+        // Apply the updated rotation to the game object
+        transform.rotation = Quaternion.Euler(rotation);
     }
 
     public void forward()
@@ -35,23 +50,23 @@ public class Movement : MonoBehaviour
 
     public void rotateUP()
     {
-        transform.eulerAngles = transform.eulerAngles + new Vector3(1,0,0);
+        transform.eulerAngles = transform.eulerAngles + new Vector3(rotationSpeed, 0,0);
+        clampRotationPitch();
     }
 
     public void rotateDown()
     {
-        transform.eulerAngles = transform.eulerAngles + new Vector3(-1, 0, 0);
+        transform.eulerAngles = transform.eulerAngles + new Vector3(-rotationSpeed, 0, 0);
+        clampRotationPitch();
     }
 
     public void rotateLeft()
     {
-        transform.eulerAngles = transform.eulerAngles + new Vector3(0, 1, 0);
+        transform.eulerAngles = transform.eulerAngles + new Vector3(0, rotationSpeed, 0);    
     }
 
     public void rotateRight()
     {
-        transform.eulerAngles = transform.eulerAngles + new Vector3(0, -1, 0);
-    }
-
-    
+        transform.eulerAngles = transform.eulerAngles + new Vector3(0, -rotationSpeed, 0);
+    }    
 }

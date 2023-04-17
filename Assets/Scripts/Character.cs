@@ -137,14 +137,14 @@ public class Character : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        doAction(actions.DiscreteActions[0], actions.DiscreteActions[1], actions.DiscreteActions[2]);
+        doAction(actions.DiscreteActions[0], actions.DiscreteActions[1], actions.DiscreteActions[2], actions.ContinuousActions[0], actions.ContinuousActions[1]);
         //AddReward(0.01f);
         //equipmentManager.processRewardPerTimestep();
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
-
+        movement.processMovement(actionsOut);
     }
 
     public EquipmentManager GetEquipmentManager()
@@ -191,7 +191,7 @@ public class Character : Agent
         StartCoroutine(getStunned(stunTime));
     }
 
-    public void doAction(int moveAction, int rotateAction, int fireAction)
+    public void doAction(int moveAction, int fireAction, int moveType, float rotationX, float rotationY)
     {
         switch(moveAction)
         {
@@ -210,31 +210,44 @@ public class Character : Agent
                 movement.left();
                 break;
         }
-        switch (rotateAction)
-        {
-            case 0:
-                break;
-            case 1:
-                movement.rotateLeft();
-                //AddReward(0.05f);
-                break;
-            case 2:
-                movement.rotateRight();
-                break;
-            case 3:
-                movement.rotateDown();
-                //AddReward(0.05f);
-                break;
-            case 4:
-                movement.rotateUP();
-                break;
-        }
+        //switch (rotateAction)
+        //{
+        //    case 0:
+        //        break;
+        //    case 1:
+        //        movement.rotateLeft();
+        //        //AddReward(0.05f);
+        //        break;
+        //    case 2:
+        //        movement.rotateRight();
+        //        break;
+        //    case 3:
+        //        movement.rotateDown();
+        //        //AddReward(0.05f);
+        //        break;
+        //    case 4:
+        //        movement.rotateUP();
+        //        break;
+        //}
         switch (fireAction)
         {
             case 0:
                 equipmentManager.fire();
                 break;
         }
+        switch (moveType)
+        {
+            case 0:
+                movement.SetMoveSpeedToRun();
+                break;
+            case 1:
+                movement.SetMoveSpeedToWalk();
+                break;
+        }
+        Debug.Log(rotationX);
+        Debug.Log(rotationY);
+        movement.continuousRotationX(rotationX);
+        movement.continuousRotationY(rotationY);
     }
 
     public void updateEnemyPositions(Vector3[] positions, int[]_enemyInSight)

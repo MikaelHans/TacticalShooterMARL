@@ -6,14 +6,15 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public float runSpeed, walkSpeed, rotationSpeed, minPitch, maxPitch, mouseSensitivity;
-    float moveSpeed;
+    float moveSpeed, xRotation = 0;
     public Transform head;
     CharacterController characterController;
     // Start is called before the first frame update
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        SetMoveSpeedToRun();
+        SetMoveSpeedToRun();     
+        Cursor.lockState= CursorLockMode.Locked;
     }
 
     public void processMovement(ActionBuffers actionsOut)
@@ -102,8 +103,11 @@ public class Movement : MonoBehaviour
 
     public void continuousRotationX(float rotation)
     {
-        float xRotation = -rotation;
+        Debug.Log("before " + xRotation.ToString());
+        xRotation -= rotation;
+        Debug.Log("after " +  xRotation.ToString());
         xRotation = Mathf.Clamp(xRotation, minPitch, maxPitch);
+        Debug.Log("after clamp" + xRotation.ToString());
         head.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         //head.eulerAngles += new Vector3(rotation, 0, 0);
         //clampRotationPitch();
@@ -111,7 +115,7 @@ public class Movement : MonoBehaviour
 
     public void continuousRotationY(float rotation)
     {
-        transform.Rotate(Vector3.left * rotation);
+        transform.Rotate(Vector3.up * rotation);
         //clampRotationPitch();
     }
 

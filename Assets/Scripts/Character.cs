@@ -42,7 +42,7 @@ public class Character : Agent
         gameManager = GetComponentInParent<GameController>();
         int enemyCount = 0;
         Character[] allAgents = gameManager.GetComponentsInChildren<Character>();
-        Debug.Log(allAgents.Length);
+        //Debug.Log(allAgents.Length);
         //Debug.Log(enemyPositions.Length);
         foreach (Character agent in allAgents)
         {
@@ -244,10 +244,10 @@ public class Character : Agent
                 movement.SetMoveSpeedToWalk();
                 break;
         }
-        Debug.Log(rotationX);
-        Debug.Log(rotationY);
-        movement.continuousRotationX(rotationX);
-        movement.continuousRotationY(rotationY);
+        //Debug.Log(rotationX);
+        //Debug.Log(rotationY);
+        movement.continuousRotationX(rotationY);
+        movement.continuousRotationY(rotationX);
     }
 
     public void updateEnemyPositions(Vector3[] positions, int[]_enemyInSight)

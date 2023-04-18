@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
       propertyPath: m_BehaviorType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
       propertyPath: m_BrainParameters.VectorActionSize.Array.size
@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7123246475512474025, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
       propertyPath: minPitch
-      value: 80
+      value: -80
       objectReference: {fileID: 0}
     - target: {fileID: 7123246475512474025, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
       propertyPath: m_Enabled
@@ -188,7 +188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7123246475512474025, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
       propertyPath: mouseSensitivity
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7123246475512474031, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
       propertyPath: m_RootOrder
@@ -1226,8 +1226,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 591553630587660984, guid: bb5b1adf72fa9b0458a0da46e1da09e2, type: 3}
+      propertyPath: minPitch
+      value: -80
+      objectReference: {fileID: 0}
+    - target: {fileID: 591553630587660984, guid: bb5b1adf72fa9b0458a0da46e1da09e2, type: 3}
       propertyPath: mouseSensitivity
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2761434582580219628, guid: bb5b1adf72fa9b0458a0da46e1da09e2, type: 3}
       propertyPath: m_BehaviorType
@@ -1239,7 +1243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3066058054279048220, guid: bb5b1adf72fa9b0458a0da46e1da09e2, type: 3}
       propertyPath: m_BehaviorType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3066058054279048220, guid: bb5b1adf72fa9b0458a0da46e1da09e2, type: 3}
       propertyPath: m_BrainParameters.VectorActionSize.Array.size
@@ -1274,8 +1278,12 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5093966871189750772, guid: bb5b1adf72fa9b0458a0da46e1da09e2, type: 3}
+      propertyPath: minPitch
+      value: -80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093966871189750772, guid: bb5b1adf72fa9b0458a0da46e1da09e2, type: 3}
       propertyPath: mouseSensitivity
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6691819686590998748, guid: bb5b1adf72fa9b0458a0da46e1da09e2, type: 3}
       propertyPath: m_Model

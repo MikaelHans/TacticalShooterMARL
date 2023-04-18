@@ -626,8 +626,9 @@ MonoBehaviour:
   runSpeed: 5
   walkSpeed: 1.5
   rotationSpeed: 1
-  minPitch: 80
+  minPitch: -80
   maxPitch: 80
+  mouseSensitivity: 15
   head: {fileID: 7123246475065497835}
 --- !u!114 &4513467320570760454
 MonoBehaviour:

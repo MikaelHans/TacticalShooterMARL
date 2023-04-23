@@ -6,15 +6,21 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public float runSpeed, walkSpeed, rotationSpeed, minPitch, maxPitch, mouseSensitivity;
+    [SerializeField]
+    bool isRunning;
+    [SerializeField]
     float moveSpeed, xRotation = 0;
     public Transform head;
     CharacterController characterController;
+    AudioEmiter audioEmiter;
     // Start is called before the first frame update
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         SetMoveSpeedToRun();     
         Cursor.lockState= CursorLockMode.Locked;
+        audioEmiter = GetComponent<AudioEmiter>();
+        isRunning = true;
     }
 
     public void processMovement(ActionBuffers actionsOut)
@@ -42,8 +48,25 @@ public class Movement : MonoBehaviour
         {
             discreteActions[0] = 0;
         }
-        discreteActions[1] = 0;
-        discreteActions[2] = 0;
+        //fire weapon
+        if(Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("test");
+            discreteActions[1] = 0;
+        }
+        else
+        {
+            discreteActions[1] = 1;
+        }
+        //move and walk
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            discreteActions[2] = 1;
+        }
+        else
+        {
+            discreteActions[2] = 0;
+        }               
         continuousActions[0] = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         continuousActions[1] = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
         //continuousRotationX(Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime);
@@ -53,11 +76,13 @@ public class Movement : MonoBehaviour
     public void SetMoveSpeedToRun()
     {
         moveSpeed = runSpeed;
+        isRunning = true;
     }
 
     public void SetMoveSpeedToWalk()
     {
         moveSpeed = walkSpeed;
+        isRunning = false;
     }
 
     public void clampRotationPitch()
@@ -77,22 +102,30 @@ public class Movement : MonoBehaviour
     public void forward()
     {
         characterController.Move(transform.forward * Time.deltaTime * moveSpeed);
+        if(isRunning)
+            audioEmiter.EmitSound();
+        
     }
 
     public void backward()
     {
-
         characterController.Move(-(transform.forward) * Time.deltaTime * moveSpeed);
+        if (isRunning)
+            audioEmiter.EmitSound();
     }
 
     public void right()
     {
         characterController.Move(transform.right * Time.deltaTime * moveSpeed);
+        if (isRunning)
+            audioEmiter.EmitSound();
     }
 
     public void left()
     {
         characterController.Move((-transform.right) * Time.deltaTime * moveSpeed);
+        if (isRunning)
+            audioEmiter.EmitSound();
     }
 
     public void rotateUP()
@@ -103,11 +136,8 @@ public class Movement : MonoBehaviour
 
     public void continuousRotationX(float rotation)
     {
-        Debug.Log("before " + xRotation.ToString());
         xRotation -= rotation;
-        Debug.Log("after " +  xRotation.ToString());
         xRotation = Mathf.Clamp(xRotation, minPitch, maxPitch);
-        Debug.Log("after clamp" + xRotation.ToString());
         head.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         //head.eulerAngles += new Vector3(rotation, 0, 0);
         //clampRotationPitch();

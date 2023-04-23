@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Weapon : Equipment
 {
-    // Start is called before the first frame update
-    // Start is called before the first frame update
     public LayerMask layerMask;
     public int damage;
-
+    public AudioEmiter audioEmiter;
 
     //public override float processReward()
     //{
@@ -46,13 +45,12 @@ public class Weapon : Equipment
     protected  void Start()
     {
         instantiateSource = GetComponentInParent<Character>().shootSource;
+        audioEmiter = GetComponent<AudioEmiter>();
     }
 
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-
-        
     }
 
     public override bool checkAim()
@@ -60,8 +58,6 @@ public class Weapon : Equipment
         RaycastHit hit;
         if (Physics.Raycast(instantiateSource.transform.position, instantiateSource.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
         {
-            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
-            //Debug.Log(hit.collider.transform.GetComponentInParent<Character>());
             Character hitcharacter = hit.collider.transform.GetComponentInParent<Character>();
             //TargetPractice hitcharacter = hit.collider.transform.GetComponent<TargetPractice>();
 
@@ -107,6 +103,7 @@ public class Weapon : Equipment
             Transform hitTransform = hit.collider.transform;
             Debug.DrawLine(transform.position, hit.transform.position, Color.red, 0.5f);
         }
+        audioEmiter.EmitSound();
         character.AddReward(-1f / (float)max_ammo);
     }
 

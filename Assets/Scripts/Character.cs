@@ -35,10 +35,12 @@ public class Character : Agent
     public Queue<int> actions= new Queue<int>();
     public Vector3 hardcodedInitPos;
     public GameController gameManager;
-
+    public AudioSensor audioSensor;
+    
 
     protected virtual void Awake()
     {
+        audioSensor = GetComponent<AudioSensor>();
         gameManager = GetComponentInParent<GameController>();
         int enemyCount = 0;
         Character[] allAgents = gameManager.GetComponentsInChildren<Character>();
@@ -69,7 +71,7 @@ public class Character : Agent
 
     protected virtual void Start()
     {
-        
+
     }
 
     public override void OnEpisodeBegin()
@@ -82,7 +84,7 @@ public class Character : Agent
     {
         //Character[] agents = gameManager.GetComponentsInChildren<Character>();
         sensor.AddObservation(transform.localPosition);
-        Vector3 normalizedRotation = MinMaxNormalization(transform.localRotation.eulerAngles, new Vector3(-1, -1, -1), new Vector3(1, 1, 1));
+        Vector3 normalizedRotation = Utilities.MinMaxNormalization(transform.localRotation.eulerAngles, new Vector3(-1, -1, -1), new Vector3(1, 1, 1));
         sensor.AddObservation(normalizedRotation);
         if (equipmentManager.check())
         {
@@ -101,6 +103,23 @@ public class Character : Agent
         {
             sensor.AddObservation(0);
         }
+
+        for (int i = 0; i < audioSensor.sensorGridCount; i++)
+        {
+            sensor.AddObservation(audioSensor.sensorData[i]);
+        }
+
+        //for (int i = 0; i < allies.Count; i++)
+        //{
+        //    sensor.AddObservation(allies[i].transform.position);
+        //}
+
+        //for (int i = 0; i < allies.Count; i++)
+        //{
+        //    sensor.AddObservation(allies[i].isAlive);
+        //}
+
+        audioSensor.resetSensorData();
         ////foreach (Character agent in agents)
         ////{
         ////    if (agent.team != team)
@@ -110,34 +129,10 @@ public class Character : Agent
         ////}
     }
 
-    public static double MinMaxNormalization(double value, double minValue, double maxValue)
-    {
-        // Check for division by zero
-        if (minValue == maxValue)
-        {
-            throw new ArgumentException("minValue and maxValue cannot be the same.");
-        }
-
-        // Perform Min-Max normalization
-        double normalizedValue = (value - minValue) / (maxValue - minValue);
-        return normalizedValue;
-    }
-
-    public static Vector3 MinMaxNormalization(Vector3 vector, Vector3 minValue, Vector3 maxValue)
-    {
-        // Normalize the x, y, and z components separately
-        float normalizedX = Mathf.Clamp01((vector.x - minValue.x) / (maxValue.x - minValue.x));
-        float normalizedY = Mathf.Clamp01((vector.y - minValue.y) / (maxValue.y - minValue.y));
-        float normalizedZ = Mathf.Clamp01((vector.z - minValue.z) / (maxValue.z - minValue.z));
-
-        // Create a new normalized Vector3
-        Vector3 normalizedVector = new Vector3(normalizedX, normalizedY, normalizedZ);
-        return normalizedVector;
-    }
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        doAction(actions.DiscreteActions[0], actions.DiscreteActions[1], actions.DiscreteActions[2], actions.ContinuousActions[0], actions.ContinuousActions[1]);
+        doAction(actions.DiscreteActions[0], actions.DiscreteActions[1], actions.DiscreteActions[2], actions.DiscreteActions[3]);
         //AddReward(0.01f);
         //equipmentManager.processRewardPerTimestep();
     }
@@ -191,7 +186,7 @@ public class Character : Agent
         StartCoroutine(getStunned(stunTime));
     }
 
-    public void doAction(int moveAction, int fireAction, int moveType, float rotationX, float rotationY)
+    public void doAction(int moveAction, int rotateAction, int fireAction, int moveType)
     {
         switch(moveAction)
         {
@@ -210,25 +205,25 @@ public class Character : Agent
                 movement.left();
                 break;
         }
-        //switch (rotateAction)
-        //{
-        //    case 0:
-        //        break;
-        //    case 1:
-        //        movement.rotateLeft();
-        //        //AddReward(0.05f);
-        //        break;
-        //    case 2:
-        //        movement.rotateRight();
-        //        break;
-        //    case 3:
-        //        movement.rotateDown();
-        //        //AddReward(0.05f);
-        //        break;
-        //    case 4:
-        //        movement.rotateUP();
-        //        break;
-        //}
+        switch (rotateAction)
+        {
+            case 0:
+                break;
+            case 1:
+                movement.rotateLeft();
+                //AddReward(0.05f);
+                break;
+            case 2:
+                movement.rotateRight();
+                break;
+            //case 3:
+            //    movement.rotateDown();
+            //    //AddReward(0.05f);
+            //    break;
+            //case 4:
+            //    movement.rotateUP();
+            //    break;
+        }
         switch (fireAction)
         {
             case 0:
@@ -246,8 +241,8 @@ public class Character : Agent
         }
         //Debug.Log(rotationX);
         //Debug.Log(rotationY);
-        movement.continuousRotationX(rotationY);
-        movement.continuousRotationY(rotationX);
+        //movement.continuousRotationX(rotationY);
+        //movement.continuousRotationY(rotationX);
     }
 
     public void updateEnemyPositions(Vector3[] positions, int[]_enemyInSight)

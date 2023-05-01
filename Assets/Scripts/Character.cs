@@ -8,6 +8,7 @@ using Unity.MLAgents.Actuators;
 using System.Linq;
 using Unity.MLAgents.Sensors;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 [Serializable]
 public struct Observation
@@ -21,8 +22,8 @@ public struct Observation
 
 public class Character : Agent
 {
-    public float hp, points;
-    public int ammoLeft, heLeft, stunLeft, team, index, inBombSite, bombInRange = 0, isAlive = 1;
+    public float hp, points, fov;
+    public int ammoLeft, heLeft, stunLeft, team, index, inBombSite, bombInRange = 0, isAlive = 1, counter = 0;
     public Movement movement;
     public EquipmentManager equipmentManager;
     public List<Character> allies, enemies;
@@ -35,12 +36,12 @@ public class Character : Agent
     public Queue<int> actions= new Queue<int>();
     public Vector3 hardcodedInitPos;
     public GameController gameManager;
-    public AudioSensor audioSensor;
+    //public AudioSensor audioSensor;
     
 
     protected virtual void Awake()
     {
-        audioSensor = GetComponent<AudioSensor>();
+        //audioSensor = GetComponent<AudioSensor>();
         gameManager = GetComponentInParent<GameController>();
         int enemyCount = 0;
         Character[] allAgents = gameManager.GetComponentsInChildren<Character>();
@@ -83,31 +84,51 @@ public class Character : Agent
     public override void CollectObservations(VectorSensor sensor)
     {
         //Character[] agents = gameManager.GetComponentsInChildren<Character>();
+        //counter++;
         sensor.AddObservation(transform.localPosition);
         Vector3 normalizedRotation = Utilities.MinMaxNormalization(transform.localRotation.eulerAngles, new Vector3(-1, -1, -1), new Vector3(1, 1, 1));
         sensor.AddObservation(normalizedRotation);
         if (equipmentManager.check())
         {
-            sensor.AddObservation(1);
+            Character targetAgent = equipmentManager.getCurrentlyEquiped().getAim().GetComponent<Character>();
+            if(targetAgent.fovCheck(gameObject))
+            {
+                sensor.AddObservation(0);
+            }
+            else
+            {
+                sensor.AddObservation(1);
+            }            
         }
         else
         {
-            sensor.AddObservation(0);
+            sensor.AddObservation(-1);
         }
 
         if (equipmentManager.isReloading())
         {
-            sensor.AddObservation(1);
+            sensor.AddObservation(-1);
         }
         else
         {
-            sensor.AddObservation(0);
+            sensor.AddObservation(1);
         }
 
-        for (int i = 0; i < audioSensor.sensorGridCount; i++)
+        foreach (Character enemy in enemies)
         {
-            sensor.AddObservation(audioSensor.sensorData[i]);
+            if(enemy.fovCheck(gameObject))
+            {
+                sensor.AddObservation(-1);
+            }
+            else
+            {
+                sensor.AddObservation(1);
+            }
         }
+        //for (int i = 0; i < audioSensor.sensorGridCount; i++)
+        //{
+        //    sensor.AddObservation(audioSensor.sensorData[i]);
+        //}
 
         //for (int i = 0; i < allies.Count; i++)
         //{
@@ -119,7 +140,7 @@ public class Character : Agent
         //    sensor.AddObservation(allies[i].isAlive);
         //}
 
-        audioSensor.resetSensorData();
+        //audioSensor.resetSensorData();
         ////foreach (Character agent in agents)
         ////{
         ////    if (agent.team != team)
@@ -160,20 +181,21 @@ public class Character : Agent
             float teamsize = gameManager.ctTeamSize;
             if (attacker.team == team)
             {
-                attacker_reward = -1;
-                attacker.AddReward(-1f);
+                attacker.AddReward(-1f/teamsize);
                 //AddReward(-1f);
             }
             else
             {
-
-                attacker.AddReward(1f/teamsize);
-                attacker_reward = 1;
-                //SetReward(-1f);
+                if(fovCheck(attacker.gameObject))
+                {
+                    attacker.AddReward(1f / teamsize);
+                }
+                else
+                {
+                    attacker.AddReward(0.6f / teamsize);
+                }
             }
             isAlive = 0;
-            //attacker_reward = 999;
-            //Debug.Log(attacker_reward);
             gameObject.SetActive(false);
             return attacker_reward;
             //EndEpisode();
@@ -267,5 +289,20 @@ public class Character : Agent
         yield return new WaitForSeconds(stunTime);
 
         vision.stunned = false;
+    }
+
+    public bool fovCheck(GameObject character)
+    {
+        Vector3 direction = character.transform.position - transform.position;
+        direction.Normalize();
+
+        float angle = Vector3.Angle(transform.forward, direction);
+        if (angle <= fov / 2f)
+        {
+            //Debug.Log("Angle: " + angle.ToString() + " FOV: " + (fov / 2f).ToString());
+            //Debug.Log("Player is within FOV!");
+            return true;
+        }
+        return false;
     }
 }

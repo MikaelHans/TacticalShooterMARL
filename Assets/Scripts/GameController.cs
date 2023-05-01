@@ -6,7 +6,7 @@ using Unity.MLAgents;
 public class GameController : MonoBehaviour
 {
     public Character[] counterTerrorists, terrorist;
-    public int ctTeamSize, tTeamSize, maxStep;
+    public int ctTeamSize, tTeamSize, maxStep, episodeCount;
     public SpawnSystem ctSpawn, tSpawn;
     public bool bombPlanted = false;
     public float timer, roundLength;
@@ -48,21 +48,13 @@ public class GameController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        timer++;
+        timer += Time.fixedDeltaTime;
         counterTerroristTeam.AddGroupReward(0.05f);
         terrorristTeam.AddGroupReward(0.05f);
-        if (timer >= maxStep)
+        if (timer >= roundLength)
         {
             Debug.Log("Time Limit Exceeded");
-            terrorristTeam.SetGroupReward(1f - numberOfAgentsAlive(counterTerrorists) / ctTeamSize);
-            counterTerroristTeam.SetGroupReward(1f - numberOfAgentsAlive(terrorist) / tTeamSize);
-
-            counterTerroristTeam.GroupEpisodeInterrupted();
-            terrorristTeam.GroupEpisodeInterrupted();
-
-            ctSpawn.spawnTeam(ctTeamSize);
-            tSpawn.spawnTeam(tTeamSize);
-            timer = 0;
+            roundEnd(-1);
         }
         if (checkIfTeamAllDead(counterTerrorists))
         {
@@ -133,6 +125,16 @@ public class GameController : MonoBehaviour
             counterTerroristTeam.AddGroupReward(-1f);
             //counterTerroristTeam.SetGroupReward(-1f + timer / roundLength);
         }
+        else if (team == -1)//time limit exceeded
+        {
+            terrorristTeam.SetGroupReward(1f - numberOfAgentsAlive(counterTerrorists) / ctTeamSize);
+            counterTerroristTeam.SetGroupReward(1f - numberOfAgentsAlive(terrorist) / tTeamSize);
+
+            counterTerroristTeam.GroupEpisodeInterrupted();
+            terrorristTeam.GroupEpisodeInterrupted();
+            
+        }
+        episodeCount++;
         resetRound();
     }
 

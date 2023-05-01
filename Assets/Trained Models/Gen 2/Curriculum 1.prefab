@@ -395,7 +395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3493549395182351436
 Transform:
   m_ObjectHideFlags: 0
@@ -427,7 +427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3493549395613751466
 Transform:
   m_ObjectHideFlags: 0
@@ -926,7 +926,7 @@ MonoBehaviour:
   agent: {fileID: 5565644885860883808}
   spawn_offset: 8
   rotation_offset: 0
-  randomizeSpawn: 0
+  randomizeSpawn: 1
 --- !u!1 &7466008624268690819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1565,12 +1565,13 @@ MonoBehaviour:
   terrorist: []
   ctTeamSize: 2
   tTeamSize: 2
-  maxStep: 1500
+  maxStep: 7500
+  episodeCount: 0
   ctSpawn: {fileID: 7466008626330432018}
   tSpawn: {fileID: 7466008625617392846}
   bombPlanted: 0
   timer: 0
-  roundLength: 30
+  roundLength: 90
 --- !u!1 &7466008625379735062
 GameObject:
   m_ObjectHideFlags: 0

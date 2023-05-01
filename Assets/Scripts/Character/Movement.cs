@@ -102,30 +102,30 @@ public class Movement : MonoBehaviour
     public void forward()
     {
         characterController.Move(transform.forward * Time.deltaTime * moveSpeed);
-        if(isRunning)
-            audioEmiter.EmitSound();
+        //if(isRunning)
+        //    audioEmiter.EmitSound();
         
     }
 
     public void backward()
     {
         characterController.Move(-(transform.forward) * Time.deltaTime * moveSpeed);
-        if (isRunning)
-            audioEmiter.EmitSound();
+        //if (isRunning)
+        //    audioEmiter.EmitSound();
     }
 
     public void right()
     {
         characterController.Move(transform.right * Time.deltaTime * moveSpeed);
-        if (isRunning)
-            audioEmiter.EmitSound();
+        //if (isRunning)
+        //    audioEmiter.EmitSound();
     }
 
     public void left()
     {
         characterController.Move((-transform.right) * Time.deltaTime * moveSpeed);
-        if (isRunning)
-            audioEmiter.EmitSound();
+        //if (isRunning)
+        //    audioEmiter.EmitSound();
     }
 
     public void rotateUP()

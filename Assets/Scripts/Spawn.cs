@@ -41,7 +41,8 @@ public class Spawn : MonoBehaviour
             //agent.GetEquipmentManager().equipments[3] = null;
             agent.GetComponentInChildren<AudioListener>().enabled = false;
         }
-        
+        //Debug.Log("Timestep: " + agent.counter.ToString());
+        //agent.counter = 0;
         return agent;
     }
 }

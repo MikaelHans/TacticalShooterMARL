@@ -22,6 +22,11 @@ public class EquipmentManager : RewardingObject
         }
     }
 
+    public Equipment getCurrentlyEquiped()
+    {
+        return equipments[currentlyEquipped];
+    }
+
     public override void processRewardPerTimestep()
     {
         character.SetReward(equipments[currentlyEquipped].processReward());

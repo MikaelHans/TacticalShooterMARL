@@ -19,11 +19,6 @@ public class AudioEmiter : MonoBehaviour
         }        
     }
 
-    private void Update()
-    {
-        EmitSound();
-    }
-
     public void EmitSound()
     {
         foreach (Character enemy in enemies)
@@ -45,7 +40,7 @@ public class AudioEmiter : MonoBehaviour
                 //Debug.Log(angle);
                 //sound magnitude
                 //float soundMagnitude = soundVolume / distance;
-                enemy.audioSensor.receiveSound(angle, 1);
+                //enemy.audioSensor.receiveSound(angle, 1);
             }            
         }
     }

@@ -8,7 +8,6 @@ public class Weapon : Equipment
 {
     public LayerMask layerMask;
     public int damage;
-    public AudioEmiter audioEmiter;
 
     //public override float processReward()
     //{
@@ -45,7 +44,7 @@ public class Weapon : Equipment
     protected  void Start()
     {
         instantiateSource = GetComponentInParent<Character>().shootSource;
-        audioEmiter = GetComponent<AudioEmiter>();
+        //audioEmiter = GetComponent<AudioEmiter>();
     }
 
     protected override void FixedUpdate()
@@ -72,6 +71,25 @@ public class Weapon : Equipment
         return false;
     }
 
+
+    public override GameObject getAim()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(instantiateSource.transform.position, instantiateSource.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+        {
+            Character hitcharacter = hit.collider.transform.GetComponentInParent<Character>();
+            //TargetPractice hitcharacter = hit.collider.transform.GetComponent<TargetPractice>();
+
+            if (hitcharacter != null && hitcharacter.team != character.team)
+            {
+                //Debug.Log(hitcharacter.name);
+                //if target die
+                return hitcharacter.gameObject;
+            }
+            return null;
+        }
+        return null;
+    }
     public override bool use()
     {
         if(base.use())
@@ -103,7 +121,7 @@ public class Weapon : Equipment
             Transform hitTransform = hit.collider.transform;
             Debug.DrawLine(transform.position, hit.transform.position, Color.red, 0.5f);
         }
-        audioEmiter.EmitSound();
+        //audioEmiter.EmitSound();
         character.AddReward(-1f / (float)max_ammo);
     }
 

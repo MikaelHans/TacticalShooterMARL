@@ -32,6 +32,11 @@ public class Equipment : MonoBehaviour
         return true;
     }
 
+    public virtual GameObject getAim()
+    {
+        return null;
+    }
+
     public virtual float processReward()
     {
         float tmp = rewardBuffer;

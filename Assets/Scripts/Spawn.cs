@@ -28,7 +28,11 @@ public class Spawn : MonoBehaviour
             agent.resetAgent();
             agent.team = _team;
             //agent.GetEquipmentManager().equipments[3] = null;
-            agent.GetComponentInChildren<AudioListener>().enabled = false;
+            if(agent.GetComponentInChildren<AudioListener>())
+            {
+                agent.GetComponentInChildren<AudioListener>().enabled = false;
+            }
+            
         }
         else
         {

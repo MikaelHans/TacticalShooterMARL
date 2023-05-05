@@ -52,23 +52,36 @@ public class Movement : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             Debug.Log("test");
-            discreteActions[1] = 0;
+            discreteActions[2] = 0;
         }
         else
         {
-            discreteActions[1] = 1;
+            discreteActions[2] = 1;
         }
         //move and walk
         if(Input.GetKey(KeyCode.LeftShift))
         {
-            discreteActions[2] = 1;
+            discreteActions[3] = 1;
         }
         else
         {
-            discreteActions[2] = 0;
-        }               
-        continuousActions[0] = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        continuousActions[1] = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+            discreteActions[3] = 0;
+        }
+
+        if (Input.GetAxis("Mouse X") * mouseSensitivity < 0)
+        {
+            discreteActions[1] = 2;
+        }
+        else if (Input.GetAxis("Mouse X") * mouseSensitivity > 0)
+        {
+            discreteActions[1] = 1;
+        }
+        else
+        {
+            discreteActions[1] = 0;
+        }
+        //continuousActions[1] = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        //continuousActions[1] = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
         //continuousRotationX(Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime);
         //continuousRotationY(Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime);
     }

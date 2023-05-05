@@ -1,0 +1,48 @@
+{
+    "simpleshooter": {
+        "checkpoints": [
+            {
+                "steps": 499938,
+                "file_path": "results\\Gen2_A3\\simpleshooter\\simpleshooter-499938.onnx",
+                "reward": -0.050000001986821495,
+                "creation_time": 1683022836.840078,
+                "auxillary_file_paths": [
+                    "results\\Gen2_A3\\simpleshooter\\simpleshooter-499938.pt"
+                ]
+            },
+            {
+                "steps": 999949,
+                "file_path": "results\\Gen2_A3\\simpleshooter\\simpleshooter-999949.onnx",
+                "reward": 0.2792793016981434,
+                "creation_time": 1683026294.9644456,
+                "auxillary_file_paths": [
+                    "results\\Gen2_A3\\simpleshooter\\simpleshooter-999949.pt"
+                ]
+            },
+            {
+                "steps": 1246200,
+                "file_path": "results\\Gen2_A3\\simpleshooter\\simpleshooter-1246200.onnx",
+                "reward": 0.23356088250875473,
+                "creation_time": 1683028374.9796107,
+                "auxillary_file_paths": [
+                    "results\\Gen2_A3\\simpleshooter\\simpleshooter-1246200.pt"
+                ]
+            }
+        ],
+        "elo": 1211.065819697131,
+        "final_checkpoint": {
+            "steps": 1246200,
+            "file_path": "results\\Gen2_A3\\simpleshooter.onnx",
+            "reward": 0.23356088250875473,
+            "creation_time": 1683028374.9796107,
+            "auxillary_file_paths": [
+                "results\\Gen2_A3\\simpleshooter\\simpleshooter-1246200.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

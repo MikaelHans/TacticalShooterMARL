@@ -188,15 +188,18 @@ public class Character : Agent
             {
                 if(fovCheck(attacker.gameObject))
                 {
-                    attacker.AddReward(1f / teamsize);
+                    attacker.AddReward(0.6f / teamsize);
+                    AddReward(-0.6f / teamsize);
                 }
                 else
                 {
-                    attacker.AddReward(0.6f / teamsize);
+                    attacker.AddReward(1f / teamsize);
+                    AddReward(-1f / teamsize);
                 }
             }
             isAlive = 0;
             gameObject.SetActive(false);
+
             return attacker_reward;
             //EndEpisode();
         }

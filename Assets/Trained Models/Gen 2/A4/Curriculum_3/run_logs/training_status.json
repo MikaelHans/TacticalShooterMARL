@@ -1,0 +1,66 @@
+{
+    "simpleshooter": {
+        "checkpoints": [
+            {
+                "steps": 24999886,
+                "file_path": "results\\Gen2_A4\\simpleshooter\\simpleshooter-24999886.onnx",
+                "reward": -0.10900900331703392,
+                "creation_time": 1683168518.517855,
+                "auxillary_file_paths": [
+                    "results\\Gen2_A4\\simpleshooter\\simpleshooter-24999886.pt"
+                ]
+            },
+            {
+                "steps": 25499937,
+                "file_path": "results\\Gen2_A4\\simpleshooter\\simpleshooter-25499937.onnx",
+                "reward": -0.193629625638326,
+                "creation_time": 1683170397.4157603,
+                "auxillary_file_paths": [
+                    "results\\Gen2_A4\\simpleshooter\\simpleshooter-25499937.pt"
+                ]
+            },
+            {
+                "steps": 25999748,
+                "file_path": "results\\Gen2_A4\\simpleshooter\\simpleshooter-25999748.onnx",
+                "reward": -0.3333333304950169,
+                "creation_time": 1683172410.3641675,
+                "auxillary_file_paths": [
+                    "results\\Gen2_A4\\simpleshooter\\simpleshooter-25999748.pt"
+                ]
+            },
+            {
+                "steps": 26193197,
+                "file_path": "results\\Gen2_A4\\simpleshooter\\simpleshooter-26193197.onnx",
+                "reward": -0.023004688007730832,
+                "creation_time": 1683173143.512642,
+                "auxillary_file_paths": [
+                    "results\\Gen2_A4\\simpleshooter\\simpleshooter-26193197.pt"
+                ]
+            },
+            {
+                "steps": 26195255,
+                "file_path": "results\\Gen2_A4\\simpleshooter\\simpleshooter-26195255.onnx",
+                "reward": 0.10634921278272357,
+                "creation_time": 1683180894.3669522,
+                "auxillary_file_paths": [
+                    "results\\Gen2_A4\\simpleshooter\\simpleshooter-26195255.pt"
+                ]
+            }
+        ],
+        "elo": -23024.733105526855,
+        "final_checkpoint": {
+            "steps": 26195255,
+            "file_path": "results\\Gen2_A4\\simpleshooter.onnx",
+            "reward": 0.10634921278272357,
+            "creation_time": 1683180894.3669522,
+            "auxillary_file_paths": [
+                "results\\Gen2_A4\\simpleshooter\\simpleshooter-26195255.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

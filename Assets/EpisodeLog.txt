@@ -1,0 +1,81 @@
+Gen2_A3
+5/2/2023 6:52:55 PM
+total episodes: 24270
+Gen2_A3
+5/2/2023 10:21:20 PM
+total episodes: 5357
+Gen2_A4
+5/2/2023 10:26:02 PM
+total episodes: 24
+Gen2_A4
+5/2/2023 10:27:42 PM
+total episodes: 30
+Gen2_A4
+5/3/2023 12:10:30 AM
+total episodes: 29563
+Gen2_A4
+5/3/2023 7:30:31 AM
+total episodes: 30761
+Gen2_A4
+5/3/2023 11:36:05 AM
+total episodes: 11
+Gen2_A4
+5/3/2023 4:06:52 PM
+total episodes: 29566
+Gen2_A4
+5/3/2023 7:59:23 PM
+total episodes: 24933
+Gen2_A4
+5/4/2023 11:05:43 AM
+total episodes: 88311
+Gen2_A4
+5/4/2023 1:14:49 PM
+total episodes: 16
+Gen2_A4
+5/4/2023 3:28:43 PM
+total episodes: 1868
+Gen2_A4
+5/4/2023 4:02:46 PM
+total episodes: 10
+Gen2_A4
+5/4/2023 4:05:20 PM
+total episodes: 10
+Gen2_A4
+5/4/2023 7:40:47 PM
+total episodes: 1411
+Gen2_A4
+5/5/2023 12:10:15 AM
+total episodes: 1680
+Gen2_A4
+5/5/2023 12:15:29 AM
+total episodes: 1
+Gen2_A4
+5/5/2023 1:19:47 AM
+total episodes: 1
+Gen2_A4
+5/5/2023 1:20:48 AM
+total episodes: 0
+Gen2_A4
+5/5/2023 1:22:31 AM
+total episodes: 1
+Gen2_A4
+5/5/2023 1:30:09 AM
+total episodes: 1
+Gen2_A4
+5/5/2023 1:31:50 AM
+total episodes: 2
+Gen2_A4
+5/5/2023 1:46:03 AM
+total episodes: 11
+Gen2_A4
+5/5/2023 10:58:55 AM
+total episodes: 8113
+Gen2_A4
+5/5/2023 12:41:25 PM
+total episodes: 7
+Gen2_A4
+5/5/2023 2:30:31 PM
+total episodes: 1554
+Gen2_A4
+5/5/2023 6:49:00 PM
+total episodes: 2284

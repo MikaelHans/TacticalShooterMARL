@@ -506,6 +506,7 @@ MonoBehaviour:
   inBombSite: 0
   bombInRange: 0
   isAlive: 1
+  counter: 0
   movement: {fileID: 7123246475512474025}
   equipmentManager: {fileID: 7123246475512474026}
   allies: []
@@ -519,7 +520,6 @@ MonoBehaviour:
   bombRef: {fileID: 0}
   hardcodedInitPos: {x: 19.81726, y: -0.3, z: -4.603478}
   gameManager: {fileID: 0}
-  audioSensor: {fileID: 0}
 --- !u!114 &4639718647713722125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,7 +681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7123246475614387562
 Transform:
   m_ObjectHideFlags: 0
@@ -1456,7 +1456,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 448
   damage: 100
-  audioEmiter: {fileID: 0}
 --- !u!114 &2066366229383499094
 MonoBehaviour:
   m_ObjectHideFlags: 0

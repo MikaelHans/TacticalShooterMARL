@@ -79,3 +79,36 @@ total episodes: 1554
 Gen2_A4
 5/5/2023 6:49:00 PM
 total episodes: 2284
+Gen2_A4
+5/5/2023 11:04:14 PM
+total episodes: 15
+Gen2_A4
+5/6/2023 12:22:47 AM
+total episodes: 24357
+Gen2_A4
+5/6/2023 10:52:49 AM
+total episodes: 16817
+Gen2_A4
+5/6/2023 3:26:54 PM
+total episodes: 38768
+Gen2_A4
+5/7/2023 1:28:30 AM
+total episodes: 44142
+Gen2_A4
+5/7/2023 9:32:38 AM
+total episodes: 48545
+Gen2_A4
+5/7/2023 9:47:03 AM
+total episodes: 1277
+Gen2_A4
+5/7/2023 1:57:11 PM
+total episodes: 22
+Gen2_A4
+5/7/2023 1:59:05 PM
+total episodes: 12
+Gen2_A4
+5/7/2023 5:12:36 PM
+total episodes: 7815
+Gen2_A4
+5/7/2023 5:31:12 PM
+total episodes: 229

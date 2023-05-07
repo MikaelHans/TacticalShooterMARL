@@ -115,20 +115,20 @@ public class GameController : MonoBehaviour
         if (team == 1)//ctwin
         {
             counterTerroristTeam.AddGroupReward(1f);
-            terrorristTeam.AddGroupReward(-1f);
+            //terrorristTeam.AddGroupReward(-1f);
             //counterTerroristTeam.SetGroupReward(1f - timer / roundLength);
             //terrorristTeam.SetGroupReward(-1f + timer / roundLength);
         }
         else if (team == 0)//twin
         {
             terrorristTeam.AddGroupReward(1f);
-            counterTerroristTeam.AddGroupReward(-1f);
+            //counterTerroristTeam.AddGroupReward(-1f);
             //counterTerroristTeam.SetGroupReward(-1f + timer / roundLength);
         }
         else if (team == -1)//time limit exceeded
         {
-            terrorristTeam.SetGroupReward(1f - numberOfAgentsAlive(counterTerrorists) / ctTeamSize);
-            counterTerroristTeam.SetGroupReward(1f - numberOfAgentsAlive(terrorist) / tTeamSize);
+            //terrorristTeam.SetGroupReward(1f - numberOfAgentsAlive(counterTerrorists) / ctTeamSize);
+            //counterTerroristTeam.SetGroupReward(1f - numberOfAgentsAlive(terrorist) / tTeamSize);
 
             counterTerroristTeam.GroupEpisodeInterrupted();
             terrorristTeam.GroupEpisodeInterrupted();

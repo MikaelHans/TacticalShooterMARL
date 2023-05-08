@@ -9,8 +9,6 @@ public class EquipmentManager : RewardingObject
     public Transform shootSource;
     protected Character character;
 
-
-
     private void Start()
     {
         character = GetComponent<Character>();

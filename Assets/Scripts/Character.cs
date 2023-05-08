@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.MLAgents;
-using TMPro;
 using Unity.MLAgents.Actuators;
 using System.Linq;
 using Unity.MLAgents.Sensors;
@@ -125,6 +124,8 @@ public class Character : Agent
                 sensor.AddObservation(1);
             }
         }
+
+        sensor.AddObservation(movement.head.localRotation.eulerAngles.x);
         //for (int i = 0; i < audioSensor.sensorGridCount; i++)
         //{
         //    sensor.AddObservation(audioSensor.sensorData[i]);
@@ -153,14 +154,14 @@ public class Character : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        doAction(actions.DiscreteActions[0], actions.DiscreteActions[1], actions.DiscreteActions[2], actions.DiscreteActions[3]);
+        doAction(actions.DiscreteActions[0], actions.DiscreteActions[1], actions.DiscreteActions[2], actions.DiscreteActions[3]/*, actions.ContinuousActions[0], actions.ContinuousActions[1]*/);
         //AddReward(0.01f);
         //equipmentManager.processRewardPerTimestep();
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
-        movement.processMovement(actionsOut);
+        //movement.processMovement(actionsOut);
     }
 
     public EquipmentManager GetEquipmentManager()
@@ -209,7 +210,7 @@ public class Character : Agent
         StartCoroutine(getStunned(stunTime));
     }
 
-    public void doAction(int moveAction, int rotateAction, int fireAction, int moveType)
+    public void doAction(int moveAction, int rotateAction, int fireAction, int moveType/*, float rotateX, float rotateY*/)
     {
         switch(moveAction)
         {
@@ -239,13 +240,13 @@ public class Character : Agent
             case 2:
                 movement.rotateRight();
                 break;
-            //case 3:
-            //    movement.rotateDown();
-            //    //AddReward(0.05f);
-            //    break;
-            //case 4:
-            //    movement.rotateUP();
-            //    break;
+                //case 3:
+                //    movement.rotateDown();
+                //    //AddReward(0.05f);
+                //    break;
+                //case 4:
+                //    movement.rotateUP();
+                //    break;
         }
         switch (fireAction)
         {
@@ -264,15 +265,17 @@ public class Character : Agent
         }
         //Debug.Log(rotationX);
         //Debug.Log(rotationY);
-        //movement.continuousRotationX(rotationY);
-        //movement.continuousRotationY(rotationX);
+        //movement.continuousRotationX(rotateY);
+        //movement.continuousRotationY(rotateX);
     }
 
+    #region hide
     public void updateEnemyPositions(Vector3[] positions, int[]_enemyInSight)
     {
         enemyPositions = positions;
         enemyInSight = _enemyInSight;
     }
+    #endregion
 
     public void resetAgent()
     {

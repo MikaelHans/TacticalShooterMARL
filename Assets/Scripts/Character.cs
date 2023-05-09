@@ -154,7 +154,7 @@ public class Character : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        doAction(actions.DiscreteActions[0], actions.DiscreteActions[1], actions.DiscreteActions[2], actions.DiscreteActions[3]/*, actions.ContinuousActions[0], actions.ContinuousActions[1]*/);
+        doAction(actions.DiscreteActions[0], actions.DiscreteActions[1], actions.DiscreteActions[2]/*, actions.DiscreteActions[3]*/, actions.ContinuousActions[0], actions.ContinuousActions[1]);
         //AddReward(0.01f);
         //equipmentManager.processRewardPerTimestep();
     }
@@ -210,7 +210,7 @@ public class Character : Agent
         StartCoroutine(getStunned(stunTime));
     }
 
-    public void doAction(int moveAction, int rotateAction, int fireAction, int moveType/*, float rotateX, float rotateY*/)
+    public void doAction(int moveAction/*, int rotateAction*/, int fireAction, int moveType, float rotateX, float rotateY)
     {
         switch(moveAction)
         {
@@ -229,25 +229,25 @@ public class Character : Agent
                 movement.left();
                 break;
         }
-        switch (rotateAction)
-        {
-            case 0:
-                break;
-            case 1:
-                movement.rotateLeft();
-                //AddReward(0.05f);
-                break;
-            case 2:
-                movement.rotateRight();
-                break;
-                //case 3:
-                //    movement.rotateDown();
-                //    //AddReward(0.05f);
-                //    break;
-                //case 4:
-                //    movement.rotateUP();
-                //    break;
-        }
+        //switch (rotateAction)
+        //{
+        //    case 0:
+        //        break;
+        //    case 1:
+        //        movement.rotateLeft();
+        //        //AddReward(0.05f);
+        //        break;
+        //    case 2:
+        //        movement.rotateRight();
+        //        break;
+        //        //case 3:
+        //        //    movement.rotateDown();
+        //        //    //AddReward(0.05f);
+        //        //    break;
+        //        //case 4:
+        //        //    movement.rotateUP();
+        //        //    break;
+        //}
         switch (fireAction)
         {
             case 0:
@@ -265,8 +265,8 @@ public class Character : Agent
         }
         //Debug.Log(rotationX);
         //Debug.Log(rotationY);
-        //movement.continuousRotationX(rotateY);
-        //movement.continuousRotationY(rotateX);
+        movement.continuousRotationX(rotateY);
+        movement.continuousRotationY(rotateX);
     }
 
     #region hide

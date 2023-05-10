@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class TargetPractice : MonoBehaviour
 {
-    //public float speed = 2.0f;
-    //public float distance = 2.0f;
+    public float speed = 2.0f;
+    public float distance = 2.0f;
 
-    //private Vector3 startPosition;
+    private Vector3 startPosition;
 
-    //void Start()
-    //{
-    //    startPosition = transform.position;
-    //}
+    void Start()
+    {
+        startPosition = transform.position;
+        startPosition.x = startPosition.x - distance;
+    }
 
-    //void Update()
-    //{
-    //    float delta = Mathf.PingPong(Time.time * speed, distance);
-    //    transform.position = startPosition + Vector3.right * delta;
-    //}
+    void Update()
+    {
+        float delta = Mathf.PingPong(Time.time * speed, distance);
+        transform.position = startPosition + Vector3.right * delta;
+    }
 }

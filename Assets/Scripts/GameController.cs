@@ -49,56 +49,23 @@ public class GameController : MonoBehaviour
     private void FixedUpdate()
     {
         timer += Time.fixedDeltaTime;
-        counterTerroristTeam.AddGroupReward(0.05f);
-        terrorristTeam.AddGroupReward(0.05f);
         if (timer >= roundLength)
         {
             Debug.Log("Time Limit Exceeded");
             roundEnd(-1);
         }
-        if (checkIfTeamAllDead(counterTerrorists))
-        {
-            Debug.Log("T WIN");
-            roundEnd(0);
-            //resetRound();
-        }
-        else if (checkIfTeamAllDead(terrorist))
-        {
-            Debug.Log("CT WIN");
-            roundEnd(1);
-            //resetRound();
-        }
-        #region legacy codes, might be useful
-        //else
+        //if (checkIfTeamAllDead(counterTerrorists))
         //{
-        //    counterTerroristTeam.AddGroupReward(-0.4f);
-        //    terrorristTeam.AddGroupReward(-0.4f);
+        //    Debug.Log("T WIN");
+        //    roundEnd(0);
+        //    //resetRound();
         //}
-        ////check if bomb planted
-        //if(bombPlanted)
+        //else if (checkIfTeamAllDead(terrorist))
         //{
-        //    if (checkIfTeamAllDead(counterTerrorists))
-        //    {
-        //        Debug.Log("Terrorists Win");
-        //        roundEnd(1);
-        //        resetRound();
-        //    }
+        //    Debug.Log("CT WIN");
+        //    roundEnd(1);
+        //    //resetRound();
         //}
-        //else
-        //{
-        //    //check if team still has at least a member alive
-        //    if (checkIfTeamAllDead(counterTerrorists))
-        //    {
-        //        roundEnd(1);
-        //        resetRound();
-        //    }
-        //    else if (checkIfTeamAllDead(terrorist))
-        //    {
-        //        roundEnd(0);
-        //        resetRound();
-        //    }
-        //}
-        #endregion
     }
 
     //IEnumerator countdown()
@@ -130,8 +97,8 @@ public class GameController : MonoBehaviour
             //terrorristTeam.SetGroupReward(1f - numberOfAgentsAlive(counterTerrorists) / ctTeamSize);
             //counterTerroristTeam.SetGroupReward(1f - numberOfAgentsAlive(terrorist) / tTeamSize);
 
-            counterTerroristTeam.GroupEpisodeInterrupted();
-            terrorristTeam.GroupEpisodeInterrupted();
+            counterTerroristTeam.EndGroupEpisode();
+            terrorristTeam.EndGroupEpisode();
             
         }
         episodeCount++;

@@ -37,7 +37,19 @@ public class Weapon : Equipment
                 //if target die
                 return true;
             }
+            else if(hit.collider.transform.GetComponent<TargetPractice>())
+            {
+                character.AddReward(0.5f);
+            }
+            else
+            {
+                character.AddReward(-0.005f);
+            }
             return false;
+        }
+        else
+        {
+            character.AddReward(0.5f);
         }
         return false;
     }

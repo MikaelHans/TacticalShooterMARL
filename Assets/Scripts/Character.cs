@@ -21,7 +21,7 @@ public struct Observation
 
 public class Character : Agent
 {
-    public float hp, points, fov;
+    public float hp, points, fovAngle;
     public int ammoLeft, heLeft, stunLeft, team, index, inBombSite, bombInRange = 0, isAlive = 1, counter = 0;
     public Movement movement;
     public EquipmentManager equipmentManager;
@@ -301,7 +301,7 @@ public class Character : Agent
         direction.Normalize();
 
         float angle = Vector3.Angle(transform.forward, direction);
-        if (angle <= fov / 2f)
+        if (angle <= fovAngle / 2f)
         {
             //Debug.Log("Angle: " + angle.ToString() + " FOV: " + (fov / 2f).ToString());
             //Debug.Log("Player is within FOV!");

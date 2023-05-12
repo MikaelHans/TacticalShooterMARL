@@ -1,0 +1,18 @@
+skripsi:
+  Phase:
+    Aiming:
+      - tes1:
+          obs:
+            position: [x, y, z]
+            rotation: [x,y,z]
+            fov: [0,1]
+          act:
+            move: [x,y,z]
+            rotation: [x]
+          reward:
+            1:
+              condition: when in fov
+              value: 1f
+            2:
+              condition: when not in fov
+              value: -1f

@@ -37,14 +37,14 @@ public class Weapon : Equipment
                 //if target die
                 return true;
             }
-            else if(hit.collider.transform.GetComponent<TargetPractice>())
-            {
-                character.AddReward(0.5f);
-            }
-            else
-            {
-                character.AddReward(-0.005f);
-            }
+            //else if(hit.collider.transform.GetComponent<TargetPractice>())
+            //{
+            //    character.AddReward(0.5f);
+            //}
+            //else
+            //{
+            //    character.AddReward(-0.005f);
+            //}
             return false;
         }
         else
@@ -98,7 +98,13 @@ public class Weapon : Equipment
                 //Debug.Log(hitcharacter.name);
                 //if target die
                 rewardBuffer = hitcharacter.takeDamage(damage, character);
+                
                 //Debug.Log(rewardBuffer);
+            }
+            else if(hit.collider.transform.GetComponentInParent<TargetPractice>())
+            {
+                character.AddReward(1f);
+                character.gameManager.roundEnd(-1);
             }
             character.AddReward(-1f/(float)max_ammo);
             Transform hitTransform = hit.collider.transform;

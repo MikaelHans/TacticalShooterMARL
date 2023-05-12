@@ -29,7 +29,8 @@ public class RandomAgent : Character
 
     public FieldOfView fov;
     NavMeshAgent navmesh;
-    public Transform waypoint;
+    public Transform currentWaypoint;
+    public Transform[] waypoints;
 
     protected override void Awake()
     {
@@ -40,7 +41,7 @@ public class RandomAgent : Character
     protected override void Start()
     {
         base.Start();        
-        waypoint = enemies[index].GetComponent<Transform>();
+        currentWaypoint = enemies[index].GetComponent<Transform>();
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -56,8 +57,8 @@ public class RandomAgent : Character
     // Update is called once per frame
     void Update()
     {
-        navmesh.destination = waypoint.position;
-
+        navmesh.destination = currentWaypoint.position;
+        
         /*
            check aim if there is enemy, shoot
          */

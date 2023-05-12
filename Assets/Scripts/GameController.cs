@@ -54,18 +54,18 @@ public class GameController : MonoBehaviour
             Debug.Log("Time Limit Exceeded");
             roundEnd(-1);
         }
-        //if (checkIfTeamAllDead(counterTerrorists))
-        //{
-        //    Debug.Log("T WIN");
-        //    roundEnd(0);
-        //    //resetRound();
-        //}
-        //else if (checkIfTeamAllDead(terrorist))
-        //{
-        //    Debug.Log("CT WIN");
-        //    roundEnd(1);
-        //    //resetRound();
-        //}
+        if (checkIfTeamAllDead(counterTerrorists))
+        {
+            Debug.Log("T WIN");
+            roundEnd(0);
+            //resetRound();
+        }
+        else if (checkIfTeamAllDead(terrorist))
+        {
+            Debug.Log("CT WIN");
+            roundEnd(1);
+            //resetRound();
+        }
     }
 
     //IEnumerator countdown()

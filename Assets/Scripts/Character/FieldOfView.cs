@@ -60,8 +60,7 @@ public class FieldOfView : RewardingObject
         int[] enemyInSight= new int[character.enemyPositions.Length];
         foreach (Collider collider in rangeChecks)
         {
-            Character colliderCharacter = collider.GetComponent<Character>();
-            
+            Character colliderCharacter = collider.GetComponent<Character>();  
 
             if (colliderCharacter != null)
             {

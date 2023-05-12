@@ -50,17 +50,17 @@ public class FieldOfView : RewardingObject
         }
     }
 
-    private void FieldOfViewCheck()
+    public Character[] FieldOfViewCheck()
     {
         int enemyTeam;
-        
+        List<Character> enemylist = new List<Character>();
         enemyTeam = character.team == 1 ? 0 : 1;
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
-        Vector3[] enemyPositions = new Vector3[character.enemyPositions.Length];
-        int[] enemyInSight= new int[character.enemyPositions.Length];
+        //Vector3[] enemyPositions = new Vector3[character.enemyPositions.Length];
+        //int[] enemyInSight = new int[character.enemyPositions.Length];
         foreach (Collider collider in rangeChecks)
         {
-            Character colliderCharacter = collider.GetComponent<Character>();  
+            Character colliderCharacter = collider.GetComponent<Character>();
 
             if (colliderCharacter != null)
             {
@@ -73,12 +73,12 @@ public class FieldOfView : RewardingObject
                         float distanceToTarget = Vector3.Distance(transform.position, target.position);
                         if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
                         {
-                            var rotation = Quaternion.LookRotation(target.position - transform.position);
-                            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * character.movement.rotationSpeed);  
+                            enemylist.Add(colliderCharacter);
                         }
                     }
-                }                            
+                }
             }
-        }         
+        }
+        return enemylist.ToArray();
     }
 }

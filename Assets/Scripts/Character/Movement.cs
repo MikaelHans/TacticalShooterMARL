@@ -12,14 +12,13 @@ public class Movement : MonoBehaviour
     float moveSpeed, xRotation = 0;
     public Transform head;
     CharacterController characterController;
-    AudioEmiter audioEmiter;
     // Start is called before the first frame update
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         SetMoveSpeedToRun();     
         Cursor.lockState= CursorLockMode.Locked;
-        audioEmiter = GetComponent<AudioEmiter>();
+        //audioEmiter = GetComponent<AudioEmiter>();
         isRunning = true;
     }
 

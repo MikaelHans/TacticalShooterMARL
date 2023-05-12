@@ -26,11 +26,17 @@ public class RandomAgent : Character
      *
      */
     public int behaviourType;
-
+    [SerializeField]
+    int waypointIndex = 0;
     public FieldOfView fov;
     NavMeshAgent navmesh;
-    public Transform currentWaypoint;
+    public Vector3 currentWaypoint;
     public Transform[] waypoints;
+    public List<Vector3> waypointStaticLocations = new List<Vector3>();
+    bool enemiesSighted = false;
+    public float distanceThreshold;
+    [SerializeField]
+    Character target;
 
     protected override void Awake()
     {
@@ -41,7 +47,13 @@ public class RandomAgent : Character
     protected override void Start()
     {
         base.Start();        
-        currentWaypoint = enemies[index].GetComponent<Transform>();
+        //currentWaypoint = enemies[index].GetComponent<Transform>();
+        foreach (Transform waypoint in waypoints)
+        {
+            waypointStaticLocations.Add(waypoint.position);
+        }
+
+        currentWaypoint = waypointStaticLocations[waypointIndex];
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -57,14 +69,47 @@ public class RandomAgent : Character
     // Update is called once per frame
     void Update()
     {
-        navmesh.destination = currentWaypoint.position;
-        
+        navmesh.destination = currentWaypoint;
+        if(Vector3.Distance(transform.position, currentWaypoint) <= distanceThreshold)
+        {
+            int tmp = waypointIndex + 1 >= waypoints.Length ? waypointIndex : waypointIndex+1;
+            waypointIndex = tmp;
+            currentWaypoint = waypointStaticLocations[waypointIndex];
+        }
         /*
            check aim if there is enemy, shoot
          */
+        Character[] enemiesInRange = fov.FieldOfViewCheck();
+        if (enemiesInRange.Length > 0)
+        {
+            navmesh.isStopped = true;
+            target = enemiesInRange[0];
+            enemiesSighted = true;
+        }
+
+        if(enemiesSighted)
+        {
+            var rotation = Quaternion.LookRotation(target.transform.position - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * movement.rotationSpeed);
+
+            Vector3 enemyPos = target.transform.localPosition;
+            Vector3 curPos = transform.localPosition;
+
+            enemyPos.y = 0;
+            curPos.y = 0;
+
+            //Vector3 targetDir = curPos - enemyPos;
+            //Vector3 forward = target.transform.forward;
+        }
+
         if (equipmentManager.check())
         {
             equipmentManager.fire();
+            if(target.hp <= 0)
+            {
+                enemiesSighted = false;
+                navmesh.isStopped = false;
+            }
         }
     }
 }

@@ -48,8 +48,8 @@ MonoBehaviour:
   - t
   - ct
   - Arena
-  m_RaysPerDirection: 16
-  m_MaxRayDegrees: 60
+  m_RaysPerDirection: 7
+  m_MaxRayDegrees: 45
   m_SphereCastRadius: 0.7
   m_RayLength: 60
   m_RayLayerMask:
@@ -108,8 +108,8 @@ MonoBehaviour:
   - t
   - ct
   - Arena
-  m_RaysPerDirection: 16
-  m_MaxRayDegrees: 60
+  m_RaysPerDirection: 7
+  m_MaxRayDegrees: 45
   m_SphereCastRadius: 0.7
   m_RayLength: 60
   m_RayLayerMask:
@@ -143,14 +143,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3057566312233636483}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.008, y: 0, z: 0.621}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6940162682048586123}
   - {fileID: 3977107509194389323}
   - {fileID: 4974781331786643855}
-  m_Father: {fileID: 7123246475512474031}
+  m_Father: {fileID: 7123246475065497835}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3650774063105608950
@@ -589,6 +589,7 @@ Transform:
   m_Children:
   - {fileID: 7123246475614387562}
   - {fileID: 7123246476078540371}
+  - {fileID: 4620619733095513250}
   m_Father: {fileID: 7123246475512474031}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -608,6 +609,7 @@ GameObject:
   - component: {fileID: 7123246475512474027}
   - component: {fileID: 7123246475512474026}
   - component: {fileID: 7123246475512474025}
+  - component: {fileID: 6696071693495081904}
   m_Layer: 7
   m_Name: Agent
   m_TagString: ct
@@ -628,7 +630,6 @@ Transform:
   m_Children:
   - {fileID: 7123246475065497835}
   - {fileID: 7123246474632012101}
-  - {fileID: 4620619733095513250}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -650,7 +651,7 @@ MonoBehaviour:
   MaxStep: 0
   hp: 100
   points: 0
-  fov: 0
+  fovAngle: 0
   ammoLeft: 0
   heLeft: 0
   stunLeft: 0
@@ -666,13 +667,14 @@ MonoBehaviour:
   enemies: []
   enemyPositions: []
   enemyInSight: 
-  vision: {fileID: 0}
+  vision: {fileID: 6696071693495081904}
   shootSource: {fileID: 7123246475709317953}
   throwSource: {fileID: 7123246474378630497}
   bombSource: {fileID: 2022877861061436646}
   bombRef: {fileID: 0}
   hardcodedInitPos: {x: 19.81726, y: -0.3, z: -4.603478}
   gameManager: {fileID: 0}
+  head: {fileID: 7123246475065497835}
 --- !u!114 &4639718647713722125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -686,12 +688,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 11
+    VectorObservationSize: 9
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 1
-      BranchSizes: 050000000200000002000000
-    VectorActionSize: 
+      m_NumContinuousActions: 0
+      BranchSizes: 05000000050000000200000002000000
+    VectorActionSize: 05000000050000000200000002000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
@@ -781,13 +783,36 @@ MonoBehaviour:
   runSpeed: 5
   walkSpeed: 1.5
   rotationSpeed: 1
-  minPitch: -80
-  maxPitch: 80
+  minPitch: -60
+  maxPitch: 60
   mouseSensitivity: 15
   isRunning: 0
   moveSpeed: 0
   xRotation: 0
   head: {fileID: 7123246475065497835}
+--- !u!114 &6696071693495081904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7123246475512474035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3757803d06ffc484caa1d0ef941c109e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 30
+  angle: 90
+  playerRef: {fileID: 0}
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 128
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 64
+  canSeePlayer: 0
+  stunned: 0
 --- !u!1 &7123246475614387567
 GameObject:
   m_ObjectHideFlags: 0
@@ -2208,8 +2233,8 @@ MonoBehaviour:
   - t
   - ct
   - Arena
-  m_RaysPerDirection: 16
-  m_MaxRayDegrees: 60
+  m_RaysPerDirection: 8
+  m_MaxRayDegrees: 45
   m_SphereCastRadius: 0.7
   m_RayLength: 60
   m_RayLayerMask:

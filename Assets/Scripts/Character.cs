@@ -35,6 +35,7 @@ public class Character : Agent
     public Queue<int> actions= new Queue<int>();
     public Vector3 hardcodedInitPos;
     public GameController gameManager;
+    public Transform head;
     //public AudioSensor audioSensor;
     
 
@@ -85,8 +86,8 @@ public class Character : Agent
         //Character[] agents = gameManager.GetComponentsInChildren<Character>();
         //counter++;
         sensor.AddObservation(transform.localPosition);
-        Vector3 normalizedRotation = Utilities.MinMaxNormalization(transform.localRotation.eulerAngles, new Vector3(-1, -1, -1), new Vector3(1, 1, 1));
-        sensor.AddObservation(normalizedRotation);
+        //Vector3 normalizedRotation = Utilities.MinMaxNormalization(transform.localRotation.eulerAngles, new Vector3(-1, -1, -1), new Vector3(1, 1, 1));
+        //sensor.AddObservation(normalizedRotation);
         if (equipmentManager.check())
         {
             Character targetAgent = equipmentManager.getCurrentlyEquiped().getAim().GetComponent<Character>();
@@ -124,8 +125,32 @@ public class Character : Agent
                 sensor.AddObservation(1);
             }
         }
+        float rotationX = movement.head.localRotation.eulerAngles.x;
+        float rotationY = transform.localRotation.eulerAngles.y;
 
-        sensor.AddObservation(movement.head.localRotation.eulerAngles.x);
+        sensor.AddObservation(rotationX);
+        sensor.AddObservation(rotationY);
+
+        Character[] enemiesInVision = vision.FieldOfViewCheck();
+        float yRotateAngle = 0;
+        if(enemiesInVision.Length > 0)
+        {
+            Character closestEnemy = enemiesInVision[0];
+            Vector3 enemyPos = new Vector3(closestEnemy.transform.position.x, closestEnemy.transform.position.y);
+            Vector3 characterPos = new Vector3(transform.position.x, transform.position.y);
+            Vector3 targetDirection = (enemyPos - characterPos);            
+            yRotateAngle = Vector3.SignedAngle(targetDirection, head.forward, Vector3.right);
+            sensor.AddObservation(yRotateAngle);
+            //Debug.Log($"Agent: {gameObject.name}; Angle: {yRotateAngle}");
+        }
+        else
+        {
+            sensor.AddObservation(yRotateAngle);
+        }
+        
+
+        
+
         //for (int i = 0; i < audioSensor.sensorGridCount; i++)
         //{
         //    sensor.AddObservation(audioSensor.sensorData[i]);
@@ -154,7 +179,7 @@ public class Character : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        doAction(actions.DiscreteActions[0], actions.DiscreteActions[1], actions.DiscreteActions[2]/*, actions.DiscreteActions[3]*/, actions.ContinuousActions[0]/*, actions.ContinuousActions[1]*/);
+        doAction(actions.DiscreteActions[0], actions.DiscreteActions[1], actions.DiscreteActions[2], actions.DiscreteActions[3]/*, actions.ContinuousActions[0], actions.ContinuousActions[1]*/);
         //AddReward(0.01f);
         //equipmentManager.processRewardPerTimestep();
     }
@@ -210,7 +235,7 @@ public class Character : Agent
         StartCoroutine(getStunned(stunTime));
     }
 
-    public void doAction(int moveAction/*, int rotateAction*/, int fireAction, int moveType, float rotateX/*, float rotateY*/)
+    public void doAction(int moveAction, int rotateAction, int fireAction, int moveType)
     {
         switch(moveAction)
         {
@@ -229,25 +254,25 @@ public class Character : Agent
                 movement.left();
                 break;
         }
-        //switch (rotateAction)
-        //{
-        //    case 0:
-        //        break;
-        //    case 1:
-        //        movement.rotateLeft();
-        //        //AddReward(0.05f);
-        //        break;
-        //    case 2:
-        //        movement.rotateRight();
-        //        break;
-        //        //case 3:
-        //        //    movement.rotateDown();
-        //        //    //AddReward(0.05f);
-        //        //    break;
-        //        //case 4:
-        //        //    movement.rotateUP();
-        //        //    break;
-        //}
+        switch (rotateAction)
+        {
+            case 0:
+                break;
+            case 1:
+                movement.rotateLeft();
+                //AddReward(0.05f);
+                break;
+            case 2:
+                movement.rotateRight();
+                break;
+            case 3:
+                movement.rotateDown();
+                //AddReward(0.05f);
+                break;
+            case 4:
+                movement.rotateUP();
+                break;
+        }
         switch (fireAction)
         {
             case 0:
@@ -266,7 +291,7 @@ public class Character : Agent
         //Debug.Log(rotationX);
         //Debug.Log(rotationY);
         //movement.continuousRotationX(rotateY);
-        movement.continuousRotationY(rotateX);
+        //movement.continuousRotationY(rotateX);
     }
 
     #region hide

@@ -49,7 +49,7 @@ public class Weapon : Equipment
         }
         else
         {
-            character.AddReward(0.5f);
+            //character.AddReward(0.5f);
         }
         return false;
     }

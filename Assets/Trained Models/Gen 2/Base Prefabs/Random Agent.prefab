@@ -440,7 +440,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2946421098244899378}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.02, y: 0, z: -8.91}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2946421098752052690}
@@ -492,9 +492,13 @@ MonoBehaviour:
   hardcodedInitPos: {x: 0, y: 0, z: 0}
   gameManager: {fileID: 0}
   behaviourType: 0
+  waypointIndex: 0
   fov: {fileID: 0}
-  currentWaypoint: {fileID: 0}
+  currentWaypoint: {x: 0, y: 0, z: 0}
   waypoints: []
+  waypointStaticLocations: []
+  distanceThreshold: 0
+  target: {fileID: 0}
 --- !u!114 &746057165660783756
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2898,7 +2898,7 @@ MonoBehaviour:
   counterTerrorists: []
   terrorist: []
   ctTeamSize: 2
-  tTeamSize: 1
+  tTeamSize: 2
   maxStep: 7500
   episodeCount: 0
   ctSpawn: {fileID: 7466008626330432018}
@@ -4194,26 +4194,6 @@ PrefabInstance:
       propertyPath: m_MaxRayDegrees
       value: 45
       objectReference: {fileID: 0}
-    - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
-      propertyPath: m_BrainParameters.VectorActionSize.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
-      propertyPath: m_BrainParameters.VectorActionSize.Array.data[0]
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
-      propertyPath: m_BrainParameters.VectorActionSize.Array.data[1]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
-      propertyPath: m_BrainParameters.VectorActionSize.Array.data[2]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
-      propertyPath: m_BrainParameters.m_ActionSpec.m_NumContinuousActions
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5457558494372696706, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
       propertyPath: m_SensorName
       value: ctRayPerceptionSensorDown
@@ -4370,26 +4350,6 @@ PrefabInstance:
     - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
       propertyPath: TeamId
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
-      propertyPath: m_BrainParameters.VectorActionSize.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
-      propertyPath: m_BrainParameters.VectorActionSize.Array.data[0]
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
-      propertyPath: m_BrainParameters.VectorActionSize.Array.data[1]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
-      propertyPath: m_BrainParameters.VectorActionSize.Array.data[2]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
-      propertyPath: m_BrainParameters.m_ActionSpec.m_NumContinuousActions
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5457558494372696706, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
       propertyPath: m_SensorName
@@ -4568,26 +4528,6 @@ PrefabInstance:
       propertyPath: m_ObservationStacks
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
-      propertyPath: m_BrainParameters.VectorActionSize.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
-      propertyPath: m_BrainParameters.VectorActionSize.Array.data[0]
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
-      propertyPath: m_BrainParameters.VectorActionSize.Array.data[1]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
-      propertyPath: m_BrainParameters.VectorActionSize.Array.data[2]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
-      propertyPath: m_BrainParameters.m_ActionSpec.m_NumContinuousActions
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5457558494372696706, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
       propertyPath: m_SensorName
       value: ctRayPerceptionSensorDown
@@ -4748,26 +4688,6 @@ PrefabInstance:
     - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
       propertyPath: TeamId
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
-      propertyPath: m_BrainParameters.VectorActionSize.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
-      propertyPath: m_BrainParameters.VectorActionSize.Array.data[0]
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
-      propertyPath: m_BrainParameters.VectorActionSize.Array.data[1]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
-      propertyPath: m_BrainParameters.VectorActionSize.Array.data[2]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639718647713722125, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
-      propertyPath: m_BrainParameters.m_ActionSpec.m_NumContinuousActions
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5457558494372696706, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
       propertyPath: m_SensorName

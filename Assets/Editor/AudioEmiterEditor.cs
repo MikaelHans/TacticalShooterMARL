@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.Experimental.TerrainAPI;
-using log4net.Util;
+
 
 [CustomEditor(typeof(AudioEmiter))]
 

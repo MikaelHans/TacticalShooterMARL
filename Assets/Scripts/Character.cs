@@ -131,22 +131,22 @@ public class Character : Agent
         sensor.AddObservation(rotationX);
         sensor.AddObservation(rotationY);
 
-        Character[] enemiesInVision = vision.FieldOfViewCheck();
-        float yRotateAngle = 0;
-        if(enemiesInVision.Length > 0)
-        {
-            Character closestEnemy = enemiesInVision[0];
-            Vector3 enemyPos = new Vector3(closestEnemy.transform.position.x, closestEnemy.transform.position.y);
-            Vector3 characterPos = new Vector3(transform.position.x, transform.position.y);
-            Vector3 targetDirection = (enemyPos - characterPos);            
-            yRotateAngle = Vector3.SignedAngle(targetDirection, head.forward, Vector3.right);
-            sensor.AddObservation(yRotateAngle);
-            //Debug.Log($"Agent: {gameObject.name}; Angle: {yRotateAngle}");
-        }
-        else
-        {
-            sensor.AddObservation(yRotateAngle);
-        }
+        //Character[] enemiesInVision = vision.FieldOfViewCheck();
+        //float yRotateAngle = 0;
+        //if(enemiesInVision.Length > 0)
+        //{
+        //    Character closestEnemy = enemiesInVision[0];
+        //    Vector3 enemyPos = new Vector3(closestEnemy.transform.position.x, closestEnemy.transform.position.y);
+        //    Vector3 characterPos = new Vector3(transform.position.x, transform.position.y);
+        //    Vector3 targetDirection = (enemyPos - characterPos);            
+        //    yRotateAngle = Vector3.SignedAngle(targetDirection, head.forward, Vector3.right);
+        //    sensor.AddObservation(yRotateAngle);
+        //    //Debug.Log($"Agent: {gameObject.name}; Angle: {yRotateAngle}");
+        //}
+        //else
+        //{
+        //    sensor.AddObservation(yRotateAngle);
+        //}
         
 
         

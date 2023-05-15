@@ -85,9 +85,15 @@ public class Character : Agent
     {
         //Character[] agents = gameManager.GetComponentsInChildren<Character>();
         //counter++;
-        sensor.AddObservation(transform.localPosition);
-        //Vector3 normalizedRotation = Utilities.MinMaxNormalization(transform.localRotation.eulerAngles, new Vector3(-1, -1, -1), new Vector3(1, 1, 1));
-        //sensor.AddObservation(normalizedRotation);
+        sensor.AddObservation(transform.localPosition);//3
+        foreach (Character ally in allies)
+        {
+            sensor.AddObservation(ally.transform.localPosition);//3
+            sensor.AddObservation(ally.isAlive);//1
+        }
+        Vector3 normalizedRotation = Utilities.MinMaxNormalization(transform.localRotation.eulerAngles, new Vector3(-1, -1, -1), new Vector3(1, 1, 1));//3
+        sensor.AddObservation(normalizedRotation);
+        //1
         if (equipmentManager.check())
         {
             Character targetAgent = equipmentManager.getCurrentlyEquiped().getAim().GetComponent<Character>();
@@ -104,7 +110,7 @@ public class Character : Agent
         {
             sensor.AddObservation(-1);
         }
-
+        //1
         if (equipmentManager.isReloading())
         {
             sensor.AddObservation(-1);
@@ -113,67 +119,6 @@ public class Character : Agent
         {
             sensor.AddObservation(1);
         }
-
-        foreach (Character enemy in enemies)
-        {
-            if(enemy.fovCheck(gameObject))
-            {
-                sensor.AddObservation(-1);
-            }
-            else
-            {
-                sensor.AddObservation(1);
-            }
-        }
-        float rotationX = movement.head.localRotation.eulerAngles.x;
-        float rotationY = transform.localRotation.eulerAngles.y;
-
-        sensor.AddObservation(rotationX);
-        sensor.AddObservation(rotationY);
-
-        Character[] enemiesInVision = vision.FieldOfViewCheck();
-        float yRotateAngle = 0;
-        if(enemiesInVision.Length > 0)
-        {
-            Character closestEnemy = enemiesInVision[0];
-            Vector3 enemyPos = new Vector3(closestEnemy.transform.position.x, closestEnemy.transform.position.y);
-            Vector3 characterPos = new Vector3(transform.position.x, transform.position.y);
-            Vector3 targetDirection = (enemyPos - characterPos);            
-            yRotateAngle = Vector3.SignedAngle(targetDirection, head.forward, Vector3.right);
-            sensor.AddObservation(yRotateAngle);
-            //Debug.Log($"Agent: {gameObject.name}; Angle: {yRotateAngle}");
-        }
-        else
-        {
-            sensor.AddObservation(yRotateAngle);
-        }
-        
-
-        
-
-        //for (int i = 0; i < audioSensor.sensorGridCount; i++)
-        //{
-        //    sensor.AddObservation(audioSensor.sensorData[i]);
-        //}
-
-        //for (int i = 0; i < allies.Count; i++)
-        //{
-        //    sensor.AddObservation(allies[i].transform.position);
-        //}
-
-        //for (int i = 0; i < allies.Count; i++)
-        //{
-        //    sensor.AddObservation(allies[i].isAlive);
-        //}
-
-        //audioSensor.resetSensorData();
-        ////foreach (Character agent in agents)
-        ////{
-        ////    if (agent.team != team)
-        ////    {
-        ////        sensor.AddObservation(agent.transform.localPosition - transform.localPosition);
-        ////    }
-        ////}
     }
 
 
@@ -265,13 +210,6 @@ public class Character : Agent
             case 2:
                 movement.rotateRight();
                 break;
-            case 3:
-                movement.rotateDown();
-                //AddReward(0.05f);
-                break;
-            case 4:
-                movement.rotateUP();
-                break;
         }
         switch (fireAction)
         {
@@ -288,10 +226,6 @@ public class Character : Agent
                 movement.SetMoveSpeedToWalk();
                 break;
         }
-        //Debug.Log(rotationX);
-        //Debug.Log(rotationY);
-        //movement.continuousRotationX(rotateY);
-        //movement.continuousRotationY(rotateX);
     }
 
     #region hide

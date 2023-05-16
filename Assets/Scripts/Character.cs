@@ -88,11 +88,14 @@ public class Character : Agent
         sensor.AddObservation(transform.localPosition);//3
         foreach (Character ally in allies)
         {
-            sensor.AddObservation(ally.transform.localPosition);//3
+            Vector3 allyPos = ally.transform.localPosition;
+            Debug.Log(allyPos);
+            sensor.AddObservation(allyPos);//3
             sensor.AddObservation(ally.isAlive);//1
         }
         Vector3 normalizedRotation = Utilities.MinMaxNormalization(transform.localRotation.eulerAngles, new Vector3(-1, -1, -1), new Vector3(1, 1, 1));//3
         sensor.AddObservation(normalizedRotation);
+
         //1
         if (equipmentManager.check())
         {

@@ -1,0 +1,57 @@
+{
+    "simpleshooter": {
+        "checkpoints": [
+            {
+                "steps": 499898,
+                "file_path": "results\\Gen_6\\simpleshooter\\simpleshooter-499898.onnx",
+                "reward": 2.280994157127121,
+                "creation_time": 1684223138.7047436,
+                "auxillary_file_paths": [
+                    "results\\Gen_6\\simpleshooter\\simpleshooter-499898.pt"
+                ]
+            },
+            {
+                "steps": 999976,
+                "file_path": "results\\Gen_6\\simpleshooter\\simpleshooter-999976.onnx",
+                "reward": 0.3018018056613368,
+                "creation_time": 1684225008.1320562,
+                "auxillary_file_paths": [
+                    "results\\Gen_6\\simpleshooter\\simpleshooter-999976.pt"
+                ]
+            },
+            {
+                "steps": 1499964,
+                "file_path": "results\\Gen_6\\simpleshooter\\simpleshooter-1499964.onnx",
+                "reward": 0.6194079042608408,
+                "creation_time": 1684227252.4110868,
+                "auxillary_file_paths": [
+                    "results\\Gen_6\\simpleshooter\\simpleshooter-1499964.pt"
+                ]
+            },
+            {
+                "steps": 1506079,
+                "file_path": "results\\Gen_6\\simpleshooter\\simpleshooter-1506079.onnx",
+                "reward": 0.41150737656931397,
+                "creation_time": 1684227292.1407366,
+                "auxillary_file_paths": [
+                    "results\\Gen_6\\simpleshooter\\simpleshooter-1506079.pt"
+                ]
+            }
+        ],
+        "elo": 1214.4357278403545,
+        "final_checkpoint": {
+            "steps": 1506079,
+            "file_path": "results\\Gen_6\\simpleshooter.onnx",
+            "reward": 0.41150737656931397,
+            "creation_time": 1684227292.1407366,
+            "auxillary_file_paths": [
+                "results\\Gen_6\\simpleshooter\\simpleshooter-1506079.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

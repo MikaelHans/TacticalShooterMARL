@@ -1,0 +1,9 @@
+fuzzy
+dl
+datmin
+nlp
+cv
+
+android
+progame
+desgame

@@ -1,0 +1,66 @@
+{
+    "simpleshooter": {
+        "checkpoints": [
+            {
+                "steps": 1506079,
+                "file_path": "results\\Gen_6\\simpleshooter\\simpleshooter-1506079.onnx",
+                "reward": 0.41150737656931397,
+                "creation_time": 1684227292.1407366,
+                "auxillary_file_paths": [
+                    "results\\Gen_6\\simpleshooter\\simpleshooter-1506079.pt"
+                ]
+            },
+            {
+                "steps": 1999904,
+                "file_path": "results\\Gen_6\\simpleshooter\\simpleshooter-1999904.onnx",
+                "reward": 0.07777777645323011,
+                "creation_time": 1684229195.8014066,
+                "auxillary_file_paths": [
+                    "results\\Gen_6\\simpleshooter\\simpleshooter-1999904.pt"
+                ]
+            },
+            {
+                "steps": 2499584,
+                "file_path": "results\\Gen_6\\simpleshooter\\simpleshooter-2499584.onnx",
+                "reward": null,
+                "creation_time": 1684230717.7859356,
+                "auxillary_file_paths": [
+                    "results\\Gen_6\\simpleshooter\\simpleshooter-2499584.pt"
+                ]
+            },
+            {
+                "steps": 2999814,
+                "file_path": "results\\Gen_6\\simpleshooter\\simpleshooter-2999814.onnx",
+                "reward": 0.21666666865348816,
+                "creation_time": 1684232537.5291584,
+                "auxillary_file_paths": [
+                    "results\\Gen_6\\simpleshooter\\simpleshooter-2999814.pt"
+                ]
+            },
+            {
+                "steps": 3192837,
+                "file_path": "results\\Gen_6\\simpleshooter\\simpleshooter-3192837.onnx",
+                "reward": 0.27878788994117215,
+                "creation_time": 1684233316.9559484,
+                "auxillary_file_paths": [
+                    "results\\Gen_6\\simpleshooter\\simpleshooter-3192837.pt"
+                ]
+            }
+        ],
+        "elo": 1214.4357278403545,
+        "final_checkpoint": {
+            "steps": 3192837,
+            "file_path": "results\\Gen_6\\simpleshooter.onnx",
+            "reward": 0.27878788994117215,
+            "creation_time": 1684233316.9559484,
+            "auxillary_file_paths": [
+                "results\\Gen_6\\simpleshooter\\simpleshooter-3192837.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

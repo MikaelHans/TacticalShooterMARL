@@ -84,12 +84,12 @@ public class Character : Agent
     public override void CollectObservations(VectorSensor sensor)
     {
         //Character[] agents = gameManager.GetComponentsInChildren<Character>();
-        //counter++;
+        counter++;
         sensor.AddObservation(transform.localPosition);//3
         foreach (Character ally in allies)
         {
             Vector3 allyPos = ally.transform.localPosition;
-            Debug.Log(allyPos);
+            //Debug.Log(allyPos);
             sensor.AddObservation(allyPos);//3
             sensor.AddObservation(ally.isAlive);//1
         }

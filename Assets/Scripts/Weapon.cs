@@ -9,9 +9,6 @@ public class Weapon : Equipment
     public LayerMask layerMask;
     public int damage;
 
-
-
-
     protected  void Start()
     {
         instantiateSource = GetComponentInParent<Character>().shootSource;
@@ -35,7 +32,13 @@ public class Weapon : Equipment
             {
                 //Debug.Log(hitcharacter.name);
                 //if target die
+                //character.AddReward(1f);
+                //Debug.DrawLine(transform.position, hit.transform.position, Color.magenta, 0.5f);
                 return true;
+            }
+            else
+            {
+                //character.AddReward(-1f);
             }
             //else if(hit.collider.transform.GetComponent<TargetPractice>())
             //{

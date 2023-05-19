@@ -671,6 +671,7 @@ MonoBehaviour:
   shootSource: {fileID: 7123246475709317953}
   throwSource: {fileID: 7123246474378630497}
   bombSource: {fileID: 2022877861061436646}
+  target: {fileID: 0}
   bombRef: {fileID: 0}
   hardcodedInitPos: {x: 19.81726, y: -0.3, z: -4.603478}
   gameManager: {fileID: 0}
@@ -688,12 +689,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 12
+    VectorObservationSize: 10
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
-      BranchSizes: 05000000030000000200000002000000
-    VectorActionSize: 05000000030000000200000002000000
+      BranchSizes: 050000000300000002000000
+    VectorActionSize: 050000000300000002000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1

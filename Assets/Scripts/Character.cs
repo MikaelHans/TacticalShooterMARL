@@ -8,6 +8,8 @@ using System.Linq;
 using Unity.MLAgents.Sensors;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
+using UnityEngine.Video;
+using Unity.Burst.CompilerServices;
 
 [Serializable]
 public struct Observation
@@ -30,7 +32,7 @@ public class Character : Agent
     public int[] enemyInSight;
     List<Vector3> allyPositions;
     public FieldOfView vision;
-    public Transform shootSource, throwSource, bombSource;
+    public Transform shootSource, throwSource, bombSource, target;
     public Bomb bombRef;
     public Queue<int> actions= new Queue<int>();
     public Vector3 hardcodedInitPos;
@@ -86,50 +88,40 @@ public class Character : Agent
         //Character[] agents = gameManager.GetComponentsInChildren<Character>();
         counter++;
         sensor.AddObservation(transform.localPosition);//3
-        foreach (Character ally in allies)
-        {
-            Vector3 allyPos = ally.transform.localPosition;
-            //Debug.Log(allyPos);
-            sensor.AddObservation(allyPos);//3
-            sensor.AddObservation(ally.isAlive);//1
-        }
         Vector3 normalizedRotation = Utilities.MinMaxNormalization(transform.localRotation.eulerAngles, new Vector3(-1, -1, -1), new Vector3(1, 1, 1));//3
         sensor.AddObservation(normalizedRotation);
-
-        //1
-        if (equipmentManager.check())
-        {
-            Character targetAgent = equipmentManager.getCurrentlyEquiped().getAim().GetComponent<Character>();
-            if(targetAgent.fovCheck(gameObject))
-            {
-                sensor.AddObservation(0);
-            }
-            else
-            {
-                sensor.AddObservation(1);
-            }            
-        }
-        else
-        {
-            sensor.AddObservation(-1);
-        }
-        //1
-        if (equipmentManager.isReloading())
-        {
-            sensor.AddObservation(-1);
-        }
-        else
+        //foreach (Character enemy in enemies)
+        //{
+        //    Vector3 enemyPos = enemy.transform.localPosition;
+        //    sensor.AddObservation(enemyPos);
+        //}
+        if(equipmentManager.check())
         {
             sensor.AddObservation(1);
+        }
+        else
+        {
+            sensor.AddObservation(-1);
         }
     }
 
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        doAction(actions.DiscreteActions[0], actions.DiscreteActions[1], actions.DiscreteActions[2], actions.DiscreteActions[3]/*, actions.ContinuousActions[0], actions.ContinuousActions[1]*/);
+        doAction(actions.DiscreteActions[0], actions.DiscreteActions[1], actions.DiscreteActions[2]/*, actions.DiscreteActions[3]*//*, actions.ContinuousActions[0], actions.ContinuousActions[1]*/);
         //AddReward(0.01f);
         //equipmentManager.processRewardPerTimestep();
+        //GameObject[] enemies = vision.FieldOfViewCheck();
+
+        //if (enemies.Length > 0)
+        //{
+        //    SetReward(1f);
+        //}
+        //else
+        //{
+        //    SetReward(-1f);
+        //}
+        //equipmentManager.check();
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -183,7 +175,7 @@ public class Character : Agent
         StartCoroutine(getStunned(stunTime));
     }
 
-    public void doAction(int moveAction, int rotateAction, int fireAction, int moveType)
+    public void doAction(int moveAction, int rotateAction, int fireAction)
     {
         switch(moveAction)
         {
@@ -220,15 +212,15 @@ public class Character : Agent
                 equipmentManager.fire();
                 break;
         }
-        switch (moveType)
-        {
-            case 0:
-                movement.SetMoveSpeedToRun();
-                break;
-            case 1:
-                movement.SetMoveSpeedToWalk();
-                break;
-        }
+        //switch (moveType)
+        //{
+        //    case 0:
+        //        movement.SetMoveSpeedToRun();
+        //        break;
+        //    case 1:
+        //        movement.SetMoveSpeedToWalk();
+        //        break;
+        //}
     }
 
     #region hide

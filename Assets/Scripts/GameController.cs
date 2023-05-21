@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     public SpawnSystem ctSpawn, tSpawn;
     public bool bombPlanted = false;
     public float timer, roundLength;
+    public int[] killcounts= new int[2];
 
     private SimpleMultiAgentGroup counterTerroristTeam, terrorristTeam;
 
@@ -39,6 +40,8 @@ public class GameController : MonoBehaviour
         {
             terrorristTeam.RegisterAgent(c);
         }
+        killcounts[0] = 0;
+        killcounts[1] = 1;
         //Debug.Log(counterTerroristTeam.GetRegisteredAgents().Count);
         //Debug.Log(terrorristTeam.GetRegisteredAgents().Count);
         //Debug.Log("SUCCESS INIT");
@@ -96,6 +99,8 @@ public class GameController : MonoBehaviour
         {
             //terrorristTeam.SetGroupReward(1f - numberOfAgentsAlive(counterTerrorists) / ctTeamSize);
             //counterTerroristTeam.SetGroupReward(1f - numberOfAgentsAlive(terrorist) / tTeamSize);
+            terrorristTeam.AddGroupReward(-0.15f);
+            counterTerroristTeam.AddGroupReward(-0.15f);
 
             counterTerroristTeam.EndGroupEpisode();
             terrorristTeam.EndGroupEpisode();
@@ -108,17 +113,15 @@ public class GameController : MonoBehaviour
     public void resetRound()
     {
         Debug.Log("Round Done");
-
-        //terrorristTeam.AddGroupReward(-5f);
-        //counterTerroristTeam.AddGroupReward(-5f);
-
         //add reward for killing enemy
-        //terrorristTeam.AddGroupReward(1f - numberOfAgentsAlive(counterTerrorists) / ctTeamSize);
-        //counterTerroristTeam.AddGroupReward(1f - numberOfAgentsAlive(terrorist) / tTeamSize);
-
+        terrorristTeam.AddGroupReward(1f - (ctTeamSize - killcounts[0]) / ctTeamSize);
+        counterTerroristTeam.AddGroupReward(1f - (tTeamSize - killcounts[1]) / tTeamSize);
 
         counterTerroristTeam.EndGroupEpisode();
         terrorristTeam.EndGroupEpisode();
+
+        killcounts[0] = 0;
+        killcounts[1] = 0;
 
         ctSpawn.spawnTeam(ctTeamSize);
         tSpawn.spawnTeam(tTeamSize);

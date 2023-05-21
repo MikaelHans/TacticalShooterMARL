@@ -162,12 +162,13 @@ public class Character : Agent
             {
                 if(fovCheck(attacker.gameObject))
                 {
-                    attacker.AddReward(0.6f / teamsize);
+                    attacker.AddReward(0.5f / teamsize);
                 }
                 else
                 {
                     attacker.AddReward(1f / teamsize);
                 }
+                gameManager.killcounts[team] += 1;
             }
             isAlive = 0;
             gameObject.SetActive(false);

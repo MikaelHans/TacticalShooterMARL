@@ -39,16 +39,15 @@ public class GameController : MonoBehaviour
         {
             terrorristTeam.RegisterAgent(c);
         }
-        //Debug.Log(counterTerroristTeam.GetRegisteredAgents().Count);
-        //Debug.Log(terrorristTeam.GetRegisteredAgents().Count);
+        Debug.Log(counterTerroristTeam.GetRegisteredAgents().Count);
+        Debug.Log(terrorristTeam.GetRegisteredAgents().Count);
         //Debug.Log("SUCCESS INIT");
         //terrorist[0].GetEquipmentManager().equipBomb();
     }
 
-
-    private void FixedUpdate()
+    private void Update()
     {
-        timer += Time.fixedDeltaTime;
+        timer += Time.deltaTime;
         if (timer >= roundLength)
         {
             Debug.Log("Time Limit Exceeded");
@@ -66,6 +65,11 @@ public class GameController : MonoBehaviour
             roundEnd(1);
             //resetRound();
         }
+    }
+
+    private void FixedUpdate()
+    {
+        
     }
 
     //IEnumerator countdown()

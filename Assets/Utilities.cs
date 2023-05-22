@@ -17,7 +17,7 @@ public class Utilities
         return normalizedVector;
     }
 
-    public static double MinMaxNormalization(double value, double minValue, double maxValue)
+    public static float MinMaxNormalization(float value, float minValue, float maxValue)
     {
         // Check for division by zero
         if (minValue == maxValue)
@@ -26,7 +26,7 @@ public class Utilities
         }
 
         // Perform Min-Max normalization
-        double normalizedValue = (value - minValue) / (maxValue - minValue);
+        float normalizedValue = (value - minValue) / (maxValue - minValue);
         return normalizedValue;
     }
 }

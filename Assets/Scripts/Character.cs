@@ -122,12 +122,18 @@ public class Character : Agent
         {
             sensor.AddObservation(1);
         }
+
+        foreach (Character enemy in enemies)
+        {
+            Vector3 tmp = enemy.transform.localPosition;
+            sensor.AddObservation(tmp);
+        }
     }
 
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        doAction(actions.DiscreteActions[0], actions.DiscreteActions[1], actions.DiscreteActions[2], actions.DiscreteActions[3]/*, actions.ContinuousActions[0], actions.ContinuousActions[1]*/);
+        doAction(actions.DiscreteActions[0], actions.DiscreteActions[1], actions.DiscreteActions[2]/*, actions.DiscreteActions[3]*//*, actions.ContinuousActions[0], actions.ContinuousActions[1]*/);
         //AddReward(0.01f);
         //equipmentManager.processRewardPerTimestep();
     }
@@ -184,11 +190,12 @@ public class Character : Agent
         StartCoroutine(getStunned(stunTime));
     }
 
-    public void doAction(int moveAction, int rotateAction, int fireAction, int moveType)
+    public void doAction(int moveAction, int rotateAction, int fireAction/*, int moveType*/)
     {
         switch(moveAction)
         {
             case 0:
+                movement.forward();
                 break;
             case 1:
                 movement.forward();
@@ -206,6 +213,7 @@ public class Character : Agent
         switch (rotateAction)
         {
             case 0:
+                movement.rotateUP();
                 break;
             case 1:
                 movement.rotateLeft();
@@ -221,15 +229,15 @@ public class Character : Agent
                 equipmentManager.fire();
                 break;
         }
-        switch (moveType)
-        {
-            case 0:
-                movement.SetMoveSpeedToRun();
-                break;
-            case 1:
-                movement.SetMoveSpeedToWalk();
-                break;
-        }
+        //switch (moveType)
+        //{
+        //    case 0:
+        //        movement.SetMoveSpeedToRun();
+        //        break;
+        //    case 1:
+        //        movement.SetMoveSpeedToWalk();
+        //        break;
+        //}
     }
 
     #region hide

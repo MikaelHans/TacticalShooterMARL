@@ -1870,6 +1870,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Curriculum (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7466008625179492852, guid: 64886fb1bf7e96e4293fe0907a19c7ef, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7466008625179492853, guid: 64886fb1bf7e96e4293fe0907a19c7ef, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2589,6 +2593,10 @@ PrefabInstance:
     - target: {fileID: 7466008625179492852, guid: 64886fb1bf7e96e4293fe0907a19c7ef, type: 3}
       propertyPath: m_Name
       value: Curriculum (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466008625179492852, guid: 64886fb1bf7e96e4293fe0907a19c7ef, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7466008625179492853, guid: 64886fb1bf7e96e4293fe0907a19c7ef, type: 3}
       propertyPath: m_RootOrder

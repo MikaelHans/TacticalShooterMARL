@@ -86,7 +86,8 @@ public class Weapon : Equipment
     void fire()
     {
         RaycastHit hit;
-        if (Physics.Raycast(instantiateSource.transform.position, instantiateSource.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+        Debug.DrawRay(instantiateSource.transform.position, instantiateSource.transform.forward * 60, Color.red);
+        if (Physics.Raycast(instantiateSource.transform.position, instantiateSource.transform.forward, out hit, Mathf.Infinity, layerMask))
         {
             //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
             //Debug.Log(hit.collider.transform.GetComponentInParent<Character>());

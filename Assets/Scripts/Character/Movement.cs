@@ -143,35 +143,50 @@ public class Movement : MonoBehaviour
 
     public void clampRotationPitch()
     {
-        Vector3 rotation = head.rotation.eulerAngles;
+        Vector3 rotation = head.localRotation.eulerAngles;
 
         // Clamp the pitch angle
-        float clampedPitch = Mathf.Clamp(rotation.x, maxPitch, minPitch);
-
+        float clampedPitch = 0f;
+        if(rotation.x < 360 - maxPitch)
+        {
+            //Debug.LogAssertion(rotation.x);
+            //Debug.LogAssertion(maxPitch);
+            clampedPitch = 360 - maxPitch;
+        }
+        else if(rotation.x < minPitch)
+        {
+            clampedPitch = minPitch;
+        }
+        else
+        {
+            clampedPitch = rotation.x;
+        }
+        Debug.Log(clampedPitch);
         // Apply the clamped pitch angle back to the rotation
         rotation.x = clampedPitch;
 
         // Apply the updated rotation to the game object
-        head.transform.eulerAngles = rotation;
+        head.transform.rotation = Quaternion.Euler(rotation.x, 0,0); 
     }
 
     public void rotateUP()
     {
-        float x = head.eulerAngles.x;
-        x += -rotationSpeed;
-        Vector3 temp = head.rotation.eulerAngles;
-        temp.x = x;
-        head.eulerAngles =temp;
+        //float x = head.localRotation.eulerAngles.x;
+        //x += -rotationSpeed;
+        //Vector3 temp = head.localRotation.eulerAngles;
+        //temp.x = x;
+        //head.localRotation = Quaternion.Euler(temp.x, temp.y, temp.z);
+        head.Rotate(-rotationSpeed,0,0);
         clampRotationPitch();
     }
 
     public void rotateDown()
     {
-        float x = head.eulerAngles.x;
+        float x = head.localRotation.eulerAngles.x;
         x += rotationSpeed;
-        Vector3 temp = head.rotation.eulerAngles;
+        Vector3 temp = head.localRotation.eulerAngles;
         temp.x = x;
-        head.eulerAngles = temp;
+        head.localRotation = Quaternion.Euler(temp.x, temp.y, temp.z);
         clampRotationPitch();
     }
 

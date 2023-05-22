@@ -137,6 +137,7 @@ public class Character : Agent
     public override void OnActionReceived(ActionBuffers actions)
     {
         doAction(actions.DiscreteActions[0], actions.DiscreteActions[1], actions.DiscreteActions[2]/*, actions.DiscreteActions[3]*//*, actions.ContinuousActions[0], actions.ContinuousActions[1]*/);
+        //Debug.Log(actions.DiscreteActions[1]);
         //AddReward(0.01f);
         //equipmentManager.processRewardPerTimestep();
     }
@@ -216,7 +217,7 @@ public class Character : Agent
         switch (rotateAction)
         {
             case 0:
-                movement.rotateUP();
+                //movement.rotateUP();
                 break;
             case 1:
                 movement.rotateLeft();

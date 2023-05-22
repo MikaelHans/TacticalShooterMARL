@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour
             terrorristTeam.RegisterAgent(c);
         }
         killcounts[0] = 0;
-        killcounts[1] = 1;
+        killcounts[1] = 0;
         //Debug.Log(counterTerroristTeam.GetRegisteredAgents().Count);
         //Debug.Log(terrorristTeam.GetRegisteredAgents().Count);
         //Debug.Log("SUCCESS INIT");
@@ -100,7 +100,7 @@ public class GameController : MonoBehaviour
             //terrorristTeam.SetGroupReward(1f - numberOfAgentsAlive(counterTerrorists) / ctTeamSize);
             //counterTerroristTeam.SetGroupReward(1f - numberOfAgentsAlive(terrorist) / tTeamSize);
             terrorristTeam.AddGroupReward(-0.15f);
-            counterTerroristTeam.AddGroupReward(-0.15f);
+            //counterTerroristTeam.AddGroupReward(-0.15f);
 
             counterTerroristTeam.EndGroupEpisode();
             terrorristTeam.EndGroupEpisode();

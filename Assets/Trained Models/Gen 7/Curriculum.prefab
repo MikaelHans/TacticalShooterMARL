@@ -9860,7 +9860,7 @@ MonoBehaviour:
   tSpawn: {fileID: 7466008625617392846}
   bombPlanted: 0
   timer: 0
-  roundLength: 90
+  roundLength: 270
   killcounts: 0000000000000000
 --- !u!1 &7466008625379735062
 GameObject:

@@ -93,9 +93,11 @@ public class Character : Agent
             sensor.AddObservation(allyPos);//3
             sensor.AddObservation(ally.isAlive);//1
         }
-        Vector3 normalizedRotation = Utilities.MinMaxNormalization(transform.localRotation.eulerAngles, new Vector3(-1, -1, -1), new Vector3(1, 1, 1));//3
-        sensor.AddObservation(normalizedRotation);
-
+        //Vector3 normalizedRotation = Utilities.MinMaxNormalization(transform.localRotation.eulerAngles, new Vector3(-1, -1, -1), new Vector3(1, 1, 1));//3
+        float rotationY = Utilities.MinMaxNormalization(transform.localRotation.eulerAngles.y,-180, 180);
+        float rotationX = Utilities.MinMaxNormalization(head.transform.localRotation.eulerAngles.x, movement.minPitch, movement.maxPitch);
+        sensor.AddObservation(rotationY);
+        sensor.AddObservation(rotationX);
         //1
         if (equipmentManager.check())
         {
@@ -127,7 +129,7 @@ public class Character : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        doAction(actions.DiscreteActions[0], actions.DiscreteActions[1], actions.DiscreteActions[2], actions.DiscreteActions[3]/*, actions.ContinuousActions[0], actions.ContinuousActions[1]*/);
+        doAction(actions.DiscreteActions[0], actions.DiscreteActions[1], actions.DiscreteActions[2]/*, actions.DiscreteActions[3]*//*, actions.ContinuousActions[0], actions.ContinuousActions[1]*/);
         //AddReward(0.01f);
         //equipmentManager.processRewardPerTimestep();
     }
@@ -184,7 +186,7 @@ public class Character : Agent
         StartCoroutine(getStunned(stunTime));
     }
 
-    public void doAction(int moveAction, int rotateAction, int fireAction, int moveType)
+    public void doAction(int moveAction, int rotateAction, int fireAction/*, int moveType*/)
     {
         switch(moveAction)
         {
@@ -228,15 +230,15 @@ public class Character : Agent
                 equipmentManager.fire();
                 break;
         }
-        switch (moveType)
-        {
-            case 0:
-                movement.SetMoveSpeedToRun();
-                break;
-            case 1:
-                movement.SetMoveSpeedToWalk();
-                break;
-        }
+        //switch (moveType)
+        //{
+        //    case 0:
+        //        movement.SetMoveSpeedToRun();
+        //        break;
+        //    case 1:
+        //        movement.SetMoveSpeedToWalk();
+        //        break;
+        //}
     }
 
     #region hide

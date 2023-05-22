@@ -9852,8 +9852,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   counterTerrorists: []
   terrorist: []
-  ctTeamSize: 2
-  tTeamSize: 2
+  ctTeamSize: 4
+  tTeamSize: 4
   maxStep: 7500
   episodeCount: 0
   ctSpawn: {fileID: 7466008626330432018}

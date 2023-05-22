@@ -21,7 +21,7 @@ public struct Observation
 
 public class Character : Agent
 {
-    public float hp, points, fovAngle;
+    public float hp, points, fovAngle, waitTime;
     public int ammoLeft, heLeft, stunLeft, team, index, inBombSite, bombInRange = 0, isAlive = 1, counter = 0;
     public Movement movement;
     public EquipmentManager equipmentManager;
@@ -89,7 +89,7 @@ public class Character : Agent
         foreach (Character ally in allies)
         {
             Vector3 allyPos = ally.transform.localPosition;
-            Debug.Log(allyPos);
+            //Debug.Log(allyPos);
             sensor.AddObservation(allyPos);//3
             sensor.AddObservation(ally.isAlive);//1
         }
@@ -189,6 +189,7 @@ public class Character : Agent
         switch(moveAction)
         {
             case 0:
+                movement.forward();
                 break;
             case 1:
                 movement.forward();
@@ -206,13 +207,19 @@ public class Character : Agent
         switch (rotateAction)
         {
             case 0:
+                movement.rotateUP();
                 break;
             case 1:
                 movement.rotateLeft();
-                //AddReward(0.05f);
                 break;
             case 2:
                 movement.rotateRight();
+                break;
+            case 3:
+                movement.rotateUP();
+                break;
+            case 4:
+                movement.rotateDown();
                 break;
         }
         switch (fireAction)

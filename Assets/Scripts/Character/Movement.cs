@@ -97,20 +97,6 @@ public class Movement : MonoBehaviour
         isRunning = false;
     }
 
-    public void clampRotationPitch()
-    {
-        Vector3 rotation = transform.rotation.eulerAngles;
-
-        // Clamp the pitch angle
-        float clampedPitch = Mathf.Clamp(rotation.x, minPitch, maxPitch);
-
-        // Apply the clamped pitch angle back to the rotation
-        rotation.x = clampedPitch;
-
-        // Apply the updated rotation to the game object
-        transform.rotation = Quaternion.Euler(rotation);
-    }
-
     public void forward()
     {
         characterController.Move(transform.forward * Time.deltaTime * moveSpeed);
@@ -138,13 +124,7 @@ public class Movement : MonoBehaviour
         characterController.Move((-transform.right) * Time.deltaTime * moveSpeed);
         //if (isRunning)
         //    audioEmiter.EmitSound();
-    }
-
-    public void rotateUP()
-    {
-        head.eulerAngles = head.eulerAngles + new Vector3(-rotationSpeed, 0,0);
-        clampRotationPitch();
-    }
+    }    
 
     public void continuousRotationX(float rotation)
     {
@@ -161,9 +141,37 @@ public class Movement : MonoBehaviour
         //clampRotationPitch();
     }
 
+    public void clampRotationPitch()
+    {
+        Vector3 rotation = head.rotation.eulerAngles;
+
+        // Clamp the pitch angle
+        float clampedPitch = Mathf.Clamp(rotation.x, maxPitch, minPitch);
+
+        // Apply the clamped pitch angle back to the rotation
+        rotation.x = clampedPitch;
+
+        // Apply the updated rotation to the game object
+        head.transform.eulerAngles = rotation;
+    }
+
+    public void rotateUP()
+    {
+        float x = head.eulerAngles.x;
+        x += -rotationSpeed;
+        Vector3 temp = head.rotation.eulerAngles;
+        temp.x = x;
+        head.eulerAngles =temp;
+        clampRotationPitch();
+    }
+
     public void rotateDown()
     {
-        head.eulerAngles = head.eulerAngles + new Vector3(rotationSpeed, 0, 0);
+        float x = head.eulerAngles.x;
+        x += rotationSpeed;
+        Vector3 temp = head.rotation.eulerAngles;
+        temp.x = x;
+        head.eulerAngles = temp;
         clampRotationPitch();
     }
 

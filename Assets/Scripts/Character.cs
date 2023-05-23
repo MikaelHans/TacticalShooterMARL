@@ -95,11 +95,11 @@ public class Character : Agent
             sensor.AddObservation(allyPos);//3
             sensor.AddObservation(ally.isAlive);//1
         }
-        //Vector3 normalizedRotation = Utilities.MinMaxNormalization(transform.localRotation.eulerAngles, new Vector3(-1, -1, -1), new Vector3(1, 1, 1));//3
-        float rotationY = Utilities.MinMaxNormalization(transform.localRotation.eulerAngles.y,-180, 180);
-        float rotationX = Utilities.MinMaxNormalization(head.transform.localRotation.eulerAngles.x, movement.minPitch, movement.maxPitch);
-        sensor.AddObservation(transform.localRotation.eulerAngles.y);
-        sensor.AddObservation(head.transform.localRotation.eulerAngles.x);
+        Vector3 normalizedRotation = Utilities.MinMaxNormalization(transform.localRotation.eulerAngles, new Vector3(-1, -1, -1), new Vector3(1, 1, 1));//3
+        //float rotationY = Utilities.MinMaxNormalization(transform.localRotation.eulerAngles.y, -180, 180);
+        //float rotationX = Utilities.MinMaxNormalization(head.transform.localRotation.eulerAngles.x, movement.minPitch, movement.maxPitch);
+        sensor.AddObservation(normalizedRotation);
+        //sensor.AddObservation(head.transform.localRotation.eulerAngles.x);
         //1
         if (equipmentManager.check())
         {
@@ -127,12 +127,12 @@ public class Character : Agent
             sensor.AddObservation(1);
         }
 
-        foreach (Character enemy in enemies)
-        {
-            Vector3 tmp = enemy.transform.localPosition;
-            //Debug.Log(allyPos);
-            sensor.AddObservation(tmp);//3
-        }
+        //foreach (Character enemy in enemies)
+        //{
+        //    Vector3 tmp = enemy.transform.localPosition;
+        //    //Debug.Log(allyPos);
+        //    sensor.AddObservation(tmp);//3
+        //}
     }
 
 

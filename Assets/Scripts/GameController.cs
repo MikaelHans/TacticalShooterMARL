@@ -85,14 +85,14 @@ public class GameController : MonoBehaviour
         if (team == 1)//ctwin
         {
             counterTerroristTeam.AddGroupReward(1f);
-            //terrorristTeam.AddGroupReward(-1f);
+            terrorristTeam.AddGroupReward(-0.1f);
             //counterTerroristTeam.SetGroupReward(1f - timer / roundLength);
             //terrorristTeam.SetGroupReward(-1f + timer / roundLength);
         }
         else if (team == 0)//twin
         {
             terrorristTeam.AddGroupReward(1f);
-            //counterTerroristTeam.AddGroupReward(-1f);
+            counterTerroristTeam.AddGroupReward(-0.1f);
             //counterTerroristTeam.SetGroupReward(-1f + timer / roundLength);
         }
         else if (team == -1)//time limit exceeded

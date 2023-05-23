@@ -127,12 +127,12 @@ public class Character : Agent
             sensor.AddObservation(1);
         }
 
-        //foreach (Character enemy in enemies)
-        //{
-        //    Vector3 tmp = enemy.transform.localPosition;
-        //    //Debug.Log(allyPos);
-        //    sensor.AddObservation(tmp);//3
-        //}
+        foreach (Character enemy in enemies)
+        {
+            Vector3 tmp = enemy.transform.localPosition;
+            //Debug.Log(allyPos);
+            sensor.AddObservation(tmp);//3
+        }
     }
 
 

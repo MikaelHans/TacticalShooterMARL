@@ -166,7 +166,7 @@ public class Movement : MonoBehaviour
         rotation.x = clampedPitch;
 
         // Apply the updated rotation to the game object
-        head.transform.rotation = Quaternion.Euler(rotation.x, 0,0); 
+        head.transform.localRotation = Quaternion.Euler(rotation.x, 0,0); 
     }
 
     public void rotateUP()

@@ -4867,7 +4867,7 @@ Transform:
   m_GameObject: {fileID: 3388917969819044371}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -1.23, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_LocalScale: {x: 4, y: 8, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2287761497511064142}
@@ -9255,7 +9255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 3071934060956734733, guid: 5b8149f4783ce4b47b908b355069f430, type: 3}
   agent: {fileID: 5565644885860883808}
-  spawn_offset: 0
+  spawn_offset: 8
   rotation_offset: 0
   randomizeSpawn: 1
 --- !u!1 &7466008624268690819
@@ -9356,7 +9356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 3071934060956734733, guid: 5b8149f4783ce4b47b908b355069f430, type: 3}
   agent: {fileID: 5819130892520288811}
-  spawn_offset: 0
+  spawn_offset: 8
   rotation_offset: 0
   randomizeSpawn: 1
 --- !u!1 &7466008624386628810
@@ -9483,7 +9483,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466008624408759084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: 0, z: -1.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9505,7 +9505,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466008624408759084}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -9554,7 +9554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 3071934060956734733, guid: 5b8149f4783ce4b47b908b355069f430, type: 3}
   agent: {fileID: 4548404640764887009}
-  spawn_offset: 0
+  spawn_offset: 8
   rotation_offset: 0
   randomizeSpawn: 1
 --- !u!1 &7466008624477644803
@@ -9655,7 +9655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 3071934060956734733, guid: 5b8149f4783ce4b47b908b355069f430, type: 3}
   agent: {fileID: 7692266622901984296}
-  spawn_offset: 0
+  spawn_offset: 8
   rotation_offset: 0
   randomizeSpawn: 1
 --- !u!1 &7466008624678247535
@@ -9728,7 +9728,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466008625101209188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: -0}
+  m_LocalPosition: {x: -1, y: 0, z: -1.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9750,7 +9750,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466008625101209188}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -9799,7 +9799,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 3071934060956734733, guid: 5b8149f4783ce4b47b908b355069f430, type: 3}
   agent: {fileID: 6338842614911288453}
-  spawn_offset: 0
+  spawn_offset: 8
   rotation_offset: 0
   randomizeSpawn: 1
 --- !u!1 &7466008625179492852
@@ -9989,7 +9989,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466008625617392844}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -19, y: 0, z: 0}
+  m_LocalPosition: {x: -8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10118,7 +10118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 3071934060956734733, guid: 5b8149f4783ce4b47b908b355069f430, type: 3}
   agent: {fileID: 8991195122180384025}
-  spawn_offset: 0
+  spawn_offset: 8
   rotation_offset: 0
   randomizeSpawn: 1
 --- !u!1 &7466008625702635440
@@ -10245,7 +10245,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466008625907093880}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: 0}
+  m_LocalPosition: {x: -3, y: 0, z: -1.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10267,7 +10267,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466008625907093880}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -10316,7 +10316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 3071934060956734733, guid: 5b8149f4783ce4b47b908b355069f430, type: 3}
   agent: {fileID: 3352269381096208275}
-  spawn_offset: 0
+  spawn_offset: 8
   rotation_offset: 0
   randomizeSpawn: 1
 --- !u!1 &7466008626098439473
@@ -10489,7 +10489,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466008626284735585}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 0, z: 0}
+  m_LocalPosition: {x: 3, y: 0, z: -1.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10511,7 +10511,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466008626284735585}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -10560,7 +10560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 3071934060956734733, guid: 5b8149f4783ce4b47b908b355069f430, type: 3}
   agent: {fileID: 8053603100501172612}
-  spawn_offset: 0
+  spawn_offset: 8
   rotation_offset: 0
   randomizeSpawn: 1
 --- !u!1 &7466008626330432017
@@ -10588,7 +10588,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466008626330432017}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 19, y: 0, z: 0}
+  m_LocalPosition: {x: 8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

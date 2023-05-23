@@ -851,6 +851,7 @@ MonoBehaviour:
   hardcodedInitPos: {x: 19.81726, y: -0.3, z: -4.603478}
   gameManager: {fileID: 0}
   head: {fileID: 7123246475065497835}
+  model: {fileID: 0}
 --- !u!114 &4639718647713722125
 MonoBehaviour:
   m_ObjectHideFlags: 0

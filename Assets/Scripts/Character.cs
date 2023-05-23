@@ -8,6 +8,7 @@ using System.Linq;
 using Unity.MLAgents.Sensors;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
+using Unity.Barracuda;
 
 [Serializable]
 public struct Observation
@@ -36,6 +37,7 @@ public class Character : Agent
     public Vector3 hardcodedInitPos;
     public GameController gameManager;
     public Transform head;
+    public NNModel model;
     //public AudioSensor audioSensor;
     
 
@@ -96,8 +98,8 @@ public class Character : Agent
         //Vector3 normalizedRotation = Utilities.MinMaxNormalization(transform.localRotation.eulerAngles, new Vector3(-1, -1, -1), new Vector3(1, 1, 1));//3
         float rotationY = Utilities.MinMaxNormalization(transform.localRotation.eulerAngles.y,-180, 180);
         float rotationX = Utilities.MinMaxNormalization(head.transform.localRotation.eulerAngles.x, movement.minPitch, movement.maxPitch);
-        sensor.AddObservation(rotationY);
-        sensor.AddObservation(rotationX);
+        sensor.AddObservation(transform.localRotation.eulerAngles.y);
+        sensor.AddObservation(head.transform.localRotation.eulerAngles.x);
         //1
         if (equipmentManager.check())
         {

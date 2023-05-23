@@ -99,8 +99,8 @@ public class GameController : MonoBehaviour
         {
             //terrorristTeam.SetGroupReward(1f - numberOfAgentsAlive(counterTerrorists) / ctTeamSize);
             //counterTerroristTeam.SetGroupReward(1f - numberOfAgentsAlive(terrorist) / tTeamSize);
-            terrorristTeam.AddGroupReward(-0.15f);
-            //counterTerroristTeam.AddGroupReward(-0.15f);
+            terrorristTeam.AddGroupReward(-0.1f);
+            counterTerroristTeam.AddGroupReward(-0.1f);
 
             counterTerroristTeam.EndGroupEpisode();
             terrorristTeam.EndGroupEpisode();

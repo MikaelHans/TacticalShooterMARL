@@ -8962,7 +8962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 3071934060956734733, guid: 5b8149f4783ce4b47b908b355069f430, type: 3}
   agent: {fileID: 5565644885860883808}
-  spawn_offset: 5
+  spawn_offset: 0
   rotation_offset: 0
   randomizeSpawn: 1
 --- !u!1 &7466008624268690819
@@ -9063,7 +9063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 3071934060956734733, guid: 5b8149f4783ce4b47b908b355069f430, type: 3}
   agent: {fileID: 5819130892520288811}
-  spawn_offset: 5
+  spawn_offset: 0
   rotation_offset: 0
   randomizeSpawn: 1
 --- !u!1 &7466008624386628810
@@ -9261,7 +9261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 3071934060956734733, guid: 5b8149f4783ce4b47b908b355069f430, type: 3}
   agent: {fileID: 4548404640764887009}
-  spawn_offset: 5
+  spawn_offset: 0
   rotation_offset: 0
   randomizeSpawn: 1
 --- !u!1 &7466008624477644803
@@ -9506,7 +9506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 3071934060956734733, guid: 5b8149f4783ce4b47b908b355069f430, type: 3}
   agent: {fileID: 6338842614911288453}
-  spawn_offset: 5
+  spawn_offset: 0
   rotation_offset: 0
   randomizeSpawn: 1
 --- !u!1 &7466008625179492852
@@ -9825,7 +9825,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 3071934060956734733, guid: 5b8149f4783ce4b47b908b355069f430, type: 3}
   agent: {fileID: 8991195122180384025}
-  spawn_offset: 5
+  spawn_offset: 0
   rotation_offset: 0
   randomizeSpawn: 1
 --- !u!1 &7466008625702635440
@@ -10023,7 +10023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 3071934060956734733, guid: 5b8149f4783ce4b47b908b355069f430, type: 3}
   agent: {fileID: 3352269381096208275}
-  spawn_offset: 5
+  spawn_offset: 0
   rotation_offset: 0
   randomizeSpawn: 1
 --- !u!1 &7466008626098439473

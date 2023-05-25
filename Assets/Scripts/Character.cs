@@ -27,7 +27,7 @@ public class Character : Agent
     public Movement movement;
     public EquipmentManager equipmentManager;
     public List<Character> allies, enemies;
-    public Vector3[] enemyPositions;
+    //public Vector3[] enemyPositions;
     public int[] enemyInSight;
     List<Vector3> allyPositions;
     public FieldOfView vision;
@@ -37,13 +37,15 @@ public class Character : Agent
     public Vector3 hardcodedInitPos;
     public GameController gameManager;
     public Transform head;
-    public NNModel model;
+    TeamObservation teamObservations;
     //public AudioSensor audioSensor;
     
 
     protected virtual void Awake()
     {
         //audioSensor = GetComponent<AudioSensor>();
+        teamObservations = GetComponentInParent<TeamObservation>();
+
         gameManager = GetComponentInParent<GameController>();
         int enemyCount = 0;
         Character[] allAgents = gameManager.GetComponentsInChildren<Character>();
@@ -57,7 +59,7 @@ public class Character : Agent
             }
         }
         //Debug.Log(enemyCount);
-        enemyPositions = new Vector3[enemyCount];
+        //enemyPositions = new Vector3[enemyCount];
         enemyInSight = new int[enemyCount];
 
         allyPositions = new List<Vector3>();
@@ -127,6 +129,25 @@ public class Character : Agent
             sensor.AddObservation(1);
         }
 
+        Character[] enemyInFov = vision.FieldOfViewCheck();
+        foreach (Character enemy in enemyInFov)
+        {
+            teamObservations.enemyPositions[enemy.index][0] = enemy.transform.localPosition.x;
+            teamObservations.enemyPositions[enemy.index][1] = enemy.transform.localPosition.y;
+            teamObservations.enemyPositions[enemy.index][2] = enemy.transform.localPosition.z;
+            teamObservations.enemyPositions[enemy.index][3] = 1;
+        }
+
+        foreach (float[] enemy in teamObservations.enemyPositions)
+        {
+            //Vector3 tmp = enemy;
+            ////Debug.Log(allyPos);
+            //sensor.AddObservation(tmp);//3
+            sensor.AddObservation(enemy[0]);
+            sensor.AddObservation(enemy[1]);
+            sensor.AddObservation(enemy[2]);
+            sensor.AddObservation(enemy[3]);
+        }
     }
 
 
@@ -246,11 +267,11 @@ public class Character : Agent
     }
 
     #region hide
-    public void updateEnemyPositions(Vector3[] positions, int[]_enemyInSight)
-    {
-        enemyPositions = positions;
-        enemyInSight = _enemyInSight;
-    }
+    //public void updateEnemyPositions(Vector3[] positions, int[]_enemyInSight)
+    //{
+    //    enemyPositions = positions;
+    //    enemyInSight = _enemyInSight;
+    //}
     #endregion
 
     public void resetAgent()

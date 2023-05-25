@@ -6,7 +6,7 @@ public class Spawn : MonoBehaviour
 {
     public Character characterPrefab, agent;
     public float spawn_offset, rotation_offset;
-    public bool randomizeSpawn;
+    public bool randomizeSpawn, spawnX;
     //private void Awake()
     //{
     //    agent = GetComponentInChildren<Character>();
@@ -23,6 +23,10 @@ public class Spawn : MonoBehaviour
         {
             Vector3 spawnPos = transform.position;
             spawnPos.z = Random.Range(spawnPos.z - spawn_offset, spawnPos.z + spawn_offset);
+            if(spawnX)
+            {
+                spawnPos.x = Random.Range(spawnPos.x - spawn_offset, spawnPos.x + spawn_offset);
+            }
             agent.transform.position = spawnPos;
             agent.transform.rotation = transform.rotation;
             agent.resetAgent();

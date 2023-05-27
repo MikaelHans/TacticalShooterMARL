@@ -10,18 +10,19 @@ public class HEGrenade : Grenade
         base.explode();
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
-
+        Debug.Log(colliders.Length);    
         foreach (Collider collider in colliders)
         {
             //add damage
-            Character character = collider.GetComponent<Character>();
+            //Debug.Log($"{collider.name}");
+            Character character = collider.GetComponentInParent<Character>();
             if (character != null)
             {
                 float dist, actualDamage; 
                 dist = Vector3.Distance(transform.position, character.transform.position);
                 actualDamage = (radius - dist) / radius;
 
-                character.takeDamage(damage * actualDamage, character);
+                character.takeDamage(100, thrower);
             }                
         }
         //Destroy(gameObject);

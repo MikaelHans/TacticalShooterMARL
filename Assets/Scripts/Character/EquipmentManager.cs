@@ -62,6 +62,11 @@ public class EquipmentManager : RewardingObject
         equipments[currentlyEquipped].use();
     }
 
+    public int getAmmoLeft()
+    {
+        return equipments[currentlyEquipped].ammo;
+    }
+
     public bool check()
     {
         return equipments[currentlyEquipped].checkAim();

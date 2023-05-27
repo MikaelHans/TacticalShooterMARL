@@ -21,7 +21,8 @@ public class Throwables : Equipment
         {
             GameObject newgrenade = Instantiate(grenadePrefab);
             newgrenade.transform.position = instantiateSource.position;
-            newgrenade.GetComponent<Rigidbody>().AddForce(newgrenade.transform.forward * throwForce);
+            newgrenade.GetComponent<Rigidbody>().AddForce(character.transform.forward * throwForce);
+            newgrenade.GetComponent<Grenade>().thrower = character;
             return true;
         }
         return false;

@@ -8,6 +8,7 @@ public class Grenade : MonoBehaviour
     public float delay;
     public bool active, exploded;
     public ParticleSystem particleSystem;
+    public Character thrower;
 
     private void Start()
     {

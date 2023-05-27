@@ -6,9 +6,7 @@ using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using System.Linq;
 using Unity.MLAgents.Sensors;
-using UnityEngine.AI;
-using UnityEngine.UIElements;
-using Unity.Barracuda;
+
 
 [Serializable]
 public struct Observation
@@ -83,7 +81,6 @@ public class Character : Agent
         {
             GetComponentInChildren<Camera>(true).gameObject.SetActive(true);
         }
-
     }
 
     public override void OnEpisodeBegin()
@@ -105,22 +102,29 @@ public class Character : Agent
             sensor.AddObservation(ally.isAlive);//1
         }
         Vector3 normalizedRotation = Utilities.MinMaxNormalization(transform.localRotation.eulerAngles, new Vector3(-1, -1, -1), new Vector3(1, 1, 1));//3
-        //float rotationY = Utilities.MinMaxNormalization(transform.localRotation.eulerAngles.y, -180, 180);
-        //float rotationX = Utilities.MinMaxNormalization(head.transform.localRotation.eulerAngles.x, movement.minPitch, movement.maxPitch);
         sensor.AddObservation(normalizedRotation);
-        //sensor.AddObservation(head.transform.localRotation.eulerAngles.x);
+        //normalizedRotation = Utilities.MinMaxNormalization(head.transform.localRotation.eulerAngles, new Vector3(-1, -1, -1), new Vector3(1, 1, 1));//3
+        //sensor.AddObservation(normalizedRotation);
+
         //1
         if (equipmentManager.check())
         {
-            Character targetAgent = equipmentManager.getCurrentlyEquiped().getAim().GetComponent<Character>();
-            if(targetAgent.fovCheck(gameObject))
+            if(equipmentManager.currentlyEquipped == 0)
             {
-                sensor.AddObservation(0);
+                Character targetAgent = equipmentManager.getCurrentlyEquiped().getAim().GetComponent<Character>();
+                if (targetAgent.fovCheck(gameObject))
+                {
+                    sensor.AddObservation(0);
+                }
+                else
+                {
+                    sensor.AddObservation(1);
+                }
             }
             else
             {
-                sensor.AddObservation(1);
-            }            
+                sensor.AddObservation(0);
+            }        
         }
         else
         {
@@ -155,12 +159,15 @@ public class Character : Agent
             sensor.AddObservation(enemy[2]);
             sensor.AddObservation(enemy[3]);
         }
+        sensor.AddObservation(equipmentManager.currentlyEquipped);
+        sensor.AddObservation(equipmentManager.getCurrentlyEquiped());
+        //sensor.AddObservation(0);
     }
 
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        doAction(actions.DiscreteActions[0], actions.DiscreteActions[1], actions.DiscreteActions[2]/*, actions.DiscreteActions[3]*//*, actions.ContinuousActions[0], actions.ContinuousActions[1]*/);
+        doAction(actions.DiscreteActions[0], actions.DiscreteActions[1], actions.DiscreteActions[2], actions.DiscreteActions[3]/*, actions.ContinuousActions[0], actions.ContinuousActions[1]*/);
         //Debug.Log(actions.DiscreteActions[1]);
         //AddReward(0.01f);
         //equipmentManager.processRewardPerTimestep();
@@ -218,12 +225,12 @@ public class Character : Agent
         StartCoroutine(getStunned(stunTime));
     }
 
-    public void doAction(int moveAction, int rotateAction, int fireAction/*, int moveType*/)
+    public void doAction(int moveAction, int rotateAction, int fireAction, int equipment)
     {
         switch(moveAction)
         {
             case 0:
-                movement.forward();
+                //movement.forward();
                 break;
             case 1:
                 movement.forward();
@@ -259,14 +266,13 @@ public class Character : Agent
         switch (fireAction)
         {
             case 0:
-                if(!inference)
-                {
-                    equipmentManager.fire();
-                }
-
                 //equipmentManager.fire();
                 break;
+            case 1:
+                equipmentManager.fire();
+                break;
         }
+        equipmentManager.swapTo(equipment);
         //switch (moveType)
         //{
         //    case 0:

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.MLAgents.Actuators;
+using Unity.MLAgents.Policies;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -12,9 +13,11 @@ public class Movement : MonoBehaviour
     float moveSpeed, xRotation = 0;
     public Transform head;
     CharacterController characterController;
+    Character character;
     // Start is called before the first frame update
     void Start()
     {
+        character = GetComponent<Character>();
         characterController = GetComponent<CharacterController>();
         SetMoveSpeedToRun();     
         Cursor.lockState= CursorLockMode.Locked;
@@ -22,67 +25,49 @@ public class Movement : MonoBehaviour
         isRunning = true;
     }
 
-    public void processMovement(ActionBuffers actionsOut)
+    private void FixedUpdate()
     {
-        ActionSegment<int> discreteActions = actionsOut.DiscreteActions;
-        ActionSegment<float> continuousActions = actionsOut.ContinuousActions;
+        if (character.inference)
+        {
+            processMovement();
+        }
+    }
+
+    public void processMovement()
+    {
+        //ActionSegment<int> discreteActions = actionsOut.DiscreteActions;
+        //ActionSegment<float> continuousActions = actionsOut.ContinuousActions;
         //discreteActions[0] = Input.GetKeyDown(KeyCode.Alpha2);
         if (Input.GetKey(KeyCode.W))
         {
-            discreteActions[0] = 1;
+            forward();
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            discreteActions[0] = 2;
+            backward();
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            discreteActions[0] = 3;
+            right();
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            discreteActions[0] = 4;
+            left();
         }
-        else
-        {
-            discreteActions[0] = 0;
-        }
+        //else
+        //{
+        //    discreteActions[0] = 0;
+        //}
         //fire weapon
         if(Input.GetMouseButtonDown(0))
         {
-            Debug.Log("test");
-            discreteActions[2] = 0;
-        }
-        else
-        {
-            discreteActions[2] = 1;
-        }
-        //move and walk
-        if(Input.GetKey(KeyCode.LeftShift))
-        {
-            discreteActions[3] = 1;
-        }
-        else
-        {
-            discreteActions[3] = 0;
+            character.equipmentManager.fire();
         }
 
-        if (Input.GetAxis("Mouse X") * mouseSensitivity < 0)
-        {
-            discreteActions[1] = 2;
-        }
-        else if (Input.GetAxis("Mouse X") * mouseSensitivity > 0)
-        {
-            discreteActions[1] = 1;
-        }
-        else
-        {
-            discreteActions[1] = 0;
-        }
         //continuousActions[1] = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         //continuousActions[1] = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-        //continuousRotationX(Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime);
-        //continuousRotationY(Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime);
+        continuousRotationX(Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime);
+        continuousRotationY(Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime);
     }
 
     public void SetMoveSpeedToRun()

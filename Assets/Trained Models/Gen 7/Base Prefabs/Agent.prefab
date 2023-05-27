@@ -640,7 +640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8403584252622485752
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1335,7 +1335,7 @@ MonoBehaviour:
   hardcodedInitPos: {x: 19.81726, y: -0.3, z: -4.603478}
   gameManager: {fileID: 0}
   head: {fileID: 7123246475065497835}
-  teamObservations: {fileID: 0}
+  inference: 0
 --- !u!114 &4639718647713722125
 MonoBehaviour:
   m_ObjectHideFlags: 0

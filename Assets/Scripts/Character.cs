@@ -37,7 +37,10 @@ public class Character : Agent
     public Vector3 hardcodedInitPos;
     public GameController gameManager;
     public Transform head;
+    public bool inference;
     public TeamObservation teamObservations;
+    public Camera mainCamera;
+    
     //public AudioSensor audioSensor;
     
 
@@ -76,6 +79,10 @@ public class Character : Agent
 
     protected virtual void Start()
     {
+        if (inference)
+        {
+            GetComponentInChildren<Camera>(true).gameObject.SetActive(true);
+        }
 
     }
 
@@ -216,7 +223,6 @@ public class Character : Agent
         switch(moveAction)
         {
             case 0:
-                movement.forward();
                 break;
             case 1:
                 movement.forward();
@@ -252,7 +258,12 @@ public class Character : Agent
         switch (fireAction)
         {
             case 0:
-                equipmentManager.fire();
+                if(!inference)
+                {
+                    equipmentManager.fire();
+                }
+
+                //equipmentManager.fire();
                 break;
         }
         //switch (moveType)

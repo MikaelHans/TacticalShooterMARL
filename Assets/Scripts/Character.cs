@@ -37,14 +37,14 @@ public class Character : Agent
     public Vector3 hardcodedInitPos;
     public GameController gameManager;
     public Transform head;
-    TeamObservation teamObservations;
+    public TeamObservation teamObservations;
     //public AudioSensor audioSensor;
     
 
     protected virtual void Awake()
     {
         //audioSensor = GetComponent<AudioSensor>();
-        teamObservations = GetComponentInParent<TeamObservation>();
+        // teamObservations = GetComponentInParent<TeamObservation>();
 
         gameManager = GetComponentInParent<GameController>();
         int enemyCount = 0;

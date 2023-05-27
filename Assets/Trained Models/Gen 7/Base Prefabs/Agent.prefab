@@ -1326,7 +1326,6 @@ MonoBehaviour:
   equipmentManager: {fileID: 7123246475512474026}
   allies: []
   enemies: []
-  enemyPositions: []
   enemyInSight: 
   vision: {fileID: 6696071693495081904}
   shootSource: {fileID: 7123246475709317953}
@@ -1336,7 +1335,7 @@ MonoBehaviour:
   hardcodedInitPos: {x: 19.81726, y: -0.3, z: -4.603478}
   gameManager: {fileID: 0}
   head: {fileID: 7123246475065497835}
-  model: {fileID: 0}
+  teamObservations: {fileID: 0}
 --- !u!114 &4639718647713722125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1350,7 +1349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 25
+    VectorObservationSize: 28
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
@@ -1359,7 +1358,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: bfef708acc931394598d287ffcce9378, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: simpleshooter

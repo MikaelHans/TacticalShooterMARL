@@ -25,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4153676691877144792, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
       propertyPath: m_SensorName
-      value: ctRayPerceptionSensorUp2
+      value: ctRayPerceptionSensorSurround
       objectReference: {fileID: 0}
     - target: {fileID: 4513467320570760454, guid: 5758557cd0e4e0c4e8aa3d4f828de884, type: 3}
       propertyPath: rayHitColor.b

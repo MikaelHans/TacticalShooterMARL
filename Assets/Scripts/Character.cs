@@ -223,6 +223,7 @@ public class Character : Agent
         switch(moveAction)
         {
             case 0:
+                movement.forward();
                 break;
             case 1:
                 movement.forward();

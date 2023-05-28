@@ -45,6 +45,7 @@ public class RandomAgent : Character
     Strategy[] strategies;
     [SerializeField]
     Strategy currentStrategy;
+    public float[] aim = new float[3];
 
     protected override void Awake()
     {
@@ -127,7 +128,7 @@ public class RandomAgent : Character
         if(enemiesSighted)
         {
             var rotation = Quaternion.LookRotation(target.transform.position - transform.position);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * movement.rotationSpeed);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * (movement.rotationSpeed * aim[gameManager.difficulty]));
 
             Vector3 enemyPos = target.transform.localPosition;
             Vector3 curPos = transform.localPosition;

@@ -507,13 +507,18 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   behaviourType: 0
   waypointIndex: 0
+  strategyIndex: 0
   fov: {fileID: 0}
   currentWaypoint: {x: 0, y: 0, z: 0}
-  waypointStaticLocations: []
-  waypointStaticRotations: []
   distanceThreshold: 1
   target: {fileID: 0}
   waypointWaitTime: 0
+  strategies: []
+  currentStrategy: {fileID: 0}
+  aim:
+  - 0.2
+  - 0.5
+  - 0.8
 --- !u!114 &746057165660783756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2120,6 +2125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c27f9ed14086a44b8c06bf6115275b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypoints: []
+  waypointStaticLocations: []
+  waypointStaticRotations: []
 --- !u!1001 &5013464912286781600
 PrefabInstance:
   m_ObjectHideFlags: 0

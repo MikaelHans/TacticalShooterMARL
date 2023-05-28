@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     public bool bombPlanted = false;
     public float timer, roundLength;
     public int[] killcounts= new int[2];
+    public int difficulty = 0;
 
     private SimpleMultiAgentGroup counterTerroristTeam, terrorristTeam;
 

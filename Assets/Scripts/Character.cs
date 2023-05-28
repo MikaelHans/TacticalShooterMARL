@@ -296,7 +296,7 @@ public class Character : Agent
     //}
     #endregion
 
-    public void resetAgent()
+    public virtual void resetAgent()
     {
         hp = 100;
         equipmentManager.equipments[0].resetEquipment();

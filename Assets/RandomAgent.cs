@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
@@ -27,33 +28,40 @@ public class RandomAgent : Character
      */
     public int behaviourType;
     [SerializeField]
-    int waypointIndex = 0;
+    int waypointIndex = 0, strategyIndex;
     public FieldOfView fov;
     NavMeshAgent navmesh;
     public Vector3 currentWaypoint;
-    public Transform[] waypoints;
-    public List<Vector3> waypointStaticLocations = new List<Vector3>();
+    //public GameObject waypointParent;
+    //Waypoint[] waypoints;
+    //public List<Vector3> waypointStaticLocations = new List<Vector3>();
+    //public List<Quaternion> waypointStaticRotations= new List<Quaternion>();
     bool enemiesSighted = false;
     public float distanceThreshold;
     [SerializeField]
     Character target;
+    public float waypointWaitTime;
+    [SerializeField]
+    Strategy[] strategies;
+    [SerializeField]
+    Strategy currentStrategy;
 
     protected override void Awake()
     {
         base.Awake();
         navmesh = GetComponent<NavMeshAgent>();
+        //currentWaypoint = enemies[index].GetComponent<Transform>();
+        strategies = GetComponentsInChildren<Strategy>();
     }
+
+    
 
     protected override void Start()
     {
         base.Start();        
-        //currentWaypoint = enemies[index].GetComponent<Transform>();
-        foreach (Transform waypoint in waypoints)
-        {
-            waypointStaticLocations.Add(waypoint.position);
-        }
-
-        currentWaypoint = waypointStaticLocations[waypointIndex];
+        int strategy = 0;
+        currentStrategy.waypoints = strategies[strategy].waypoints;
+        currentWaypoint = currentStrategy.waypointStaticLocations[waypointIndex];
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -69,13 +77,34 @@ public class RandomAgent : Character
     // Update is called once per frame
     void Update()
     {
-        navmesh.destination = currentWaypoint;
-        if(Vector3.Distance(transform.position, currentWaypoint) <= distanceThreshold)
+        if(waypointWaitTime > 0)
         {
-            int tmp = waypointIndex + 1 >= waypoints.Length ? waypointIndex : waypointIndex+1;
-            waypointIndex = tmp;
-            currentWaypoint = waypointStaticLocations[waypointIndex];
+            navmesh.isStopped = true;
+            waypointWaitTime -= Time.deltaTime;
+            //var rotation = Quaternion.LookRotation(waypointStaticRotations[waypointIndex].transform.position - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, currentStrategy.waypointStaticRotations[waypointIndex-1], Time.deltaTime * movement.rotationSpeed);
         }
+        else
+        {
+            navmesh.isStopped = false;
+            navmesh.destination = currentWaypoint;
+            if (Vector3.Distance(transform.position, currentWaypoint) <= distanceThreshold)
+            {
+                //int tmp = waypointIndex + 1 >= waypoints.Length ? waypointIndex : waypointIndex+1;
+                waypointWaitTime = currentStrategy.waypoints[waypointIndex].waypointWaitTime;
+                
+                if(waypointIndex < currentStrategy.waypoints.Length-1)
+                {
+                    waypointIndex++;
+                    currentWaypoint = currentStrategy.waypointStaticLocations[waypointIndex];
+                }
+                else
+                {
+                    waypointIndex = 0;
+                }
+            }
+        }
+        
         /*
            check aim if there is enemy, shoot
          */
@@ -84,7 +113,15 @@ public class RandomAgent : Character
         {
             navmesh.isStopped = true;
             target = enemiesInRange[0];
-            enemiesSighted = true;
+            if (equipmentManager.check())
+            {
+                enemiesSighted = false;
+            }
+            else
+            {
+                enemiesSighted = true;
+            }
+            
         }
 
         if(enemiesSighted)
@@ -112,4 +149,30 @@ public class RandomAgent : Character
             }
         }
     }
+
+    void initStrategy()
+    {
+        if(index == 0 )
+        {
+            strategyIndex = UnityEngine.Random.Range(0, strategies.Length - 1);
+            currentStrategy = strategies[strategyIndex];
+
+            foreach(RandomAgent agent in gameManager.GetComponentsInChildren<RandomAgent>())
+            {
+                agent.strategyIndex = strategyIndex;
+                agent.currentStrategy= agent.strategies[strategyIndex];
+            }
+        }
+        
+    }
+
+    public override void resetAgent()
+    {
+        base.resetAgent();
+        waypointIndex = 0;
+        waypointWaitTime= 0;
+        initStrategy();
+        currentWaypoint = currentStrategy.waypointStaticLocations[waypointIndex];
+    }
+
 }

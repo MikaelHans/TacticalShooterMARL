@@ -8,6 +8,7 @@ public class TeamObservation : MonoBehaviour
    
     public float decay;
     int teamSize;
+    public int strategy;
 
     private void Awake()
     {

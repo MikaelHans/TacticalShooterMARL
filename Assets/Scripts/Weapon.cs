@@ -10,13 +10,16 @@ public class Weapon : Equipment
     public int damage;
 
 
-
-
-    protected  void Start()
+    private void Awake()
     {
         instantiateSource = GetComponentInParent<Character>().shootSource;
-        //audioEmiter = GetComponent<AudioEmiter>();
     }
+
+    //protected  void Start()
+    //{
+        
+    //    //audioEmiter = GetComponent<AudioEmiter>();
+    //}
 
     protected override void FixedUpdate()
     {

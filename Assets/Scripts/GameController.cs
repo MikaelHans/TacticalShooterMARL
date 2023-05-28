@@ -6,7 +6,7 @@ using Unity.MLAgents;
 public class GameController : MonoBehaviour
 {
     public Character[] counterTerrorists, terrorist;
-    public int ctTeamSize, tTeamSize, maxStep, episodeCount;
+    public int ctTeamSize, tTeamSize, maxStep, episodeCount, tWin = 0, ctWin = 0, round = 15;
     public SpawnSystem ctSpawn, tSpawn;
     public bool bombPlanted = false;
     public float timer, roundLength;
@@ -42,6 +42,7 @@ public class GameController : MonoBehaviour
         }
         killcounts[0] = 0;
         killcounts[1] = 0;
+
         //Debug.Log(counterTerroristTeam.GetRegisteredAgents().Count);
         //Debug.Log(terrorristTeam.GetRegisteredAgents().Count);
         //Debug.Log("SUCCESS INIT");
@@ -61,6 +62,7 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("T WIN");
             roundEnd(0);
+
             //resetRound();
         }
         else if (checkIfTeamAllDead(terrorist))
@@ -86,6 +88,7 @@ public class GameController : MonoBehaviour
         {
             counterTerroristTeam.AddGroupReward(1f);
             terrorristTeam.AddGroupReward(-0.1f);
+            ctWin += 1;
             //counterTerroristTeam.SetGroupReward(1f - timer / roundLength);
             //terrorristTeam.SetGroupReward(-1f + timer / roundLength);
         }
@@ -93,6 +96,7 @@ public class GameController : MonoBehaviour
         {
             terrorristTeam.AddGroupReward(1f);
             counterTerroristTeam.AddGroupReward(-0.1f);
+            tWin += 1;
             //counterTerroristTeam.SetGroupReward(-1f + timer / roundLength);
         }
         else if (team == -1)//time limit exceeded

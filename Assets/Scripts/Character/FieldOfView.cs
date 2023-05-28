@@ -18,11 +18,15 @@ public class FieldOfView : RewardingObject
 
     public bool canSeePlayer, stunned;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        character = gameObject.GetComponent<Character>();
+    }
     void Start()
     {
         playerRef = gameObject;
         StartCoroutine(FOVRoutine());
-        character= gameObject.GetComponent<Character>();
+        
     }
 
     // Update is called once per frame

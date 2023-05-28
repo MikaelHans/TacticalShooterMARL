@@ -21,6 +21,7 @@ public class Spawn : MonoBehaviour
     {
         if (randomizeSpawn)
         {
+            agent.gameObject.SetActive(false);
             Vector3 spawnPos = transform.position;
             spawnPos.z = Random.Range(spawnPos.z - spawn_offset, spawnPos.z + spawn_offset);
             if(spawnX)
@@ -47,7 +48,10 @@ public class Spawn : MonoBehaviour
             agent.resetAgent();
             agent.team = _team;
             //agent.GetEquipmentManager().equipments[3] = null;
-            agent.GetComponentInChildren<AudioListener>().enabled = false;
+            if (agent.GetComponentInChildren<AudioListener>())
+            {
+                agent.GetComponentInChildren<AudioListener>().enabled = false;
+            }
         }
         //Debug.Log("Timestep: " + agent.counter.ToString());
         //agent.counter = 0;

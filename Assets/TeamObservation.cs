@@ -9,7 +9,7 @@ public class TeamObservation : MonoBehaviour
     public float decay;
     int teamSize;
 
-    private void Start()
+    private void Awake()
     {
         teamSize = GetComponentInParent<GameController>().ctTeamSize;
         enemyPositions = new float[teamSize][];

@@ -206,6 +206,16 @@ public class Character : Agent
             }
             isAlive = 0;
             gameObject.SetActive(false);
+            if(inference)
+            {
+                foreach (Character ally in allies)
+                {
+                    if(ally.isAlive == 1)
+                    {
+                        mainCamera.gameObject.SetActive(true);
+                    }
+                }
+            }
 
             return attacker_reward;
             //EndEpisode();

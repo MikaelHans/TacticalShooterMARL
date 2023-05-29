@@ -160,7 +160,10 @@ public class Character : Agent
             sensor.AddObservation(enemy[3]);
         }
         sensor.AddObservation(equipmentManager.currentlyEquipped);
-        sensor.AddObservation(equipmentManager.getCurrentlyEquiped());
+        foreach (Equipment equipment in equipmentManager.equipments)
+        {
+            sensor.AddObservation(equipment.ammo);
+        }
         //sensor.AddObservation(0);
     }
 
@@ -274,6 +277,10 @@ public class Character : Agent
                 break;
         }
         equipmentManager.swapTo(equipment);
+        if (equipmentManager.equipments[equipment].ammo <= 0)
+        {
+            AddReward(0.2f);
+        }
         //switch (moveType)
         //{
         //    case 0:

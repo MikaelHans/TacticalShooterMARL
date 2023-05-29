@@ -63,7 +63,7 @@ public class Equipment : MonoBehaviour
         {          
             if(ammo <= 0)
             {
-                //character.AddReward(-0.5f);
+                //character.AddReward(-0.3f);
             }
             return false;
         }

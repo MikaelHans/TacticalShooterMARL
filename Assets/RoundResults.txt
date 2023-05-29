@@ -1,0 +1,90 @@
+Match: 
+T Inference vs CT Bot Hard
+5/29/2023 4:35:45 AM
+TWin/Kill: 2/0
+CTWin/Kill: 10/0
+Match: 
+Ct Inference vs T Bot Hard
+5/29/2023 4:37:25 AM
+TWin/Kill: 11/0
+CTWin/Kill: 0/0
+Match: 
+T Inference vs CT Bot Easy
+5/29/2023 4:37:38 AM
+TWin/Kill: 9/0
+CTWin/Kill: 3/0
+Match: 
+Ct Inference vs T Bot Easy
+5/29/2023 4:39:07 AM
+TWin/Kill: 1/0
+CTWin/Kill: 11/0
+Match: 
+T Inference vs CT Bot Medium
+5/29/2023 4:39:10 AM
+TWin/Kill: 5/0
+CTWin/Kill: 5/0
+Match: 
+Ct Inference vs T Bot Medium
+5/29/2023 4:40:36 AM
+TWin/Kill: 8/0
+CTWin/Kill: 1/0
+Match: 
+T Inference vs CT Bot Hard
+5/29/2023 4:40:48 AM
+TWin/Kill: 3/0
+CTWin/Kill: 24/0
+Match: 
+T Inference vs CT Bot Hard
+5/29/2023 4:44:20 AM
+TWin/Kill: 3/0
+CTWin/Kill: 40/0
+Match: 
+Ct Inference vs T Bot Hard
+5/29/2023 4:44:23 AM
+TWin/Kill: 26/0
+CTWin/Kill: 0/0
+Match: 
+Ct Inference vs T Bot Easy
+5/29/2023 4:49:15 AM
+TWin/Kill: 3/0
+CTWin/Kill: 25/0
+Match: 
+T Inference vs CT Bot Medium
+5/29/2023 4:49:37 AM
+TWin/Kill: 6/0
+CTWin/Kill: 17/0
+Match: 
+Ct Inference vs T Bot Medium
+5/29/2023 4:50:06 AM
+TWin/Kill: 17/0
+CTWin/Kill: 7/0
+Match: 
+T Inference vs CT Bot Hard
+5/29/2023 4:50:26 AM
+TWin/Kill: 3/0
+CTWin/Kill: 54/0
+Match: 
+T Inference vs CT Bot Easy
+5/29/2023 4:50:37 AM
+TWin/Kill: 20/0
+CTWin/Kill: 5/0
+Match: 
+Ct Inference vs T Bot Hard
+5/29/2023 4:54:09 AM
+TWin/Kill: 38/0
+CTWin/Kill: 2/0
+Match: 
+T Inference vs CT Bot Hard
+5/29/2023 4:55:28 AM
+TWin/Kill: 8/0
+CTWin/Kill: 64/0
+Match: 
+T Inference vs CT Bot Medium
+5/29/2023 4:56:32 AM
+TWin/Kill: 9/0
+CTWin/Kill: 29/0
+Match: 
+Ct Inference vs T Bot Hard
+5/29/2023 4:58:30 AM
+TWin/Kill: 54/0
+CTWin/Kill: 2/0

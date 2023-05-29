@@ -23,7 +23,7 @@ public struct Observation
 public class Character : Agent
 {
     public float hp, points, fovAngle, waitTime;
-    public int ammoLeft, heLeft, stunLeft, team, index, inBombSite, bombInRange = 0, isAlive = 1, counter = 0;
+    public int ammoLeft, heLeft, stunLeft, team, index, inBombSite, bombInRange = 0, isAlive = 1, counter = 0, kill=0, death=0;
     public Movement movement;
     public EquipmentManager equipmentManager;
     public List<Character> allies, enemies;
@@ -203,6 +203,8 @@ public class Character : Agent
                     attacker.AddReward(1f / teamsize);
                 }
                 gameManager.killcounts[team] += 1;
+                attacker.kill++;
+                death++;
             }
             isAlive = 0;
             gameObject.SetActive(false);

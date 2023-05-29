@@ -2,16 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.MLAgents;
+using System.IO.Abstractions;
+using System.IO;
+using System;
+using System.Linq;
 
 public class GameController : MonoBehaviour
 {
     public Character[] counterTerrorists, terrorist;
-    public int ctTeamSize, tTeamSize, maxStep, episodeCount, tWin = 0, ctWin = 0, round = 15;
+    public int ctTeamSize, tTeamSize, maxStep, episodeCount, tWin = 0, ctWin = 0, round = 15, currentRound, match, ctTotalKill, tTotalKill;
     public SpawnSystem ctSpawn, tSpawn;
     public bool bombPlanted = false;
     public float timer, roundLength;
     public int[] killcounts= new int[2];
     public int difficulty = 0;
+    public string inference_id;
+    public bool inference;
 
     private SimpleMultiAgentGroup counterTerroristTeam, terrorristTeam;
 
@@ -22,6 +28,8 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        currentRound = 1;
+        match = 1;
         counterTerroristTeam = new SimpleMultiAgentGroup();
         terrorristTeam = new SimpleMultiAgentGroup();
         //Debug.Log("CT_TEAM_ID: " + counterTerroristTeam.GetId());
@@ -124,7 +132,8 @@ public class GameController : MonoBehaviour
 
         counterTerroristTeam.EndGroupEpisode();
         terrorristTeam.EndGroupEpisode();
-
+        tTotalKill += killcounts[0];
+        ctTotalKill += killcounts[1];
         killcounts[0] = 0;
         killcounts[1] = 0;
 
@@ -132,6 +141,34 @@ public class GameController : MonoBehaviour
         tSpawn.spawnTeam(tTeamSize);
 
         timer = 0;
+        currentRound++;
+        if(currentRound > round && inference)
+        {
+            currentRound = 0;
+            string fileName = $"{gameObject.name}.txt";
+            string filePath = Path.Combine(Application.dataPath, fileName); // get the file path
+
+            string textToWrite = $"Match: {match}\n{gameObject.name}\n{DateTime.Now}\nTWin: {tWin}\nCTWin: {ctWin}\n";
+            foreach (Character t in counterTerrorists)
+            {
+                textToWrite += $"<CT>{t.gameObject.name}\nK/D: {t.kill}/{t.death}\nKDS: {(float)(t.kill / t.death)}\n";
+                t.kill = 0;
+                t.death = 0;
+            }
+            foreach (Character t in terrorist)
+            {
+                textToWrite += $"<T>{t.gameObject.name}\nK/D: {t.kill}/{t.death}\nKDS: {(float)(t.kill / t.death)}\n";
+                t.kill = 0;
+                t.death = 0;
+            }
+
+            tWin = 0;
+            ctWin = 0;
+            // write the text to the file
+            File.AppendAllText(filePath, textToWrite + "\n\n");
+            Debug.Log($"Text written to file at path: {filePath}");
+            match++;
+        }
     }
 
     public bool checkIfTeamAllDead(Character[] team)

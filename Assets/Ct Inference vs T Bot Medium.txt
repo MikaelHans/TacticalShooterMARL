@@ -1,0 +1,875 @@
+Match: 1
+Ct Inference vs T Bot Medium
+5/29/2023 5:31:22 AM
+TWin: 8
+CTWin: 4
+<CT>ct1
+K/D: 5/11
+KDS: 0
+<CT>ct2
+K/D: 6/10
+KDS: 0
+<CT>ct3
+K/D: 5/11
+KDS: 0
+<T>Random Agent
+K/D: 14/5
+KDS: 2
+<T>Random Agent (1)
+K/D: 6/6
+KDS: 1
+<T>Random Agent (2)
+K/D: 12/5
+KDS: 2
+
+
+Match: 2
+Ct Inference vs T Bot Medium
+5/29/2023 5:42:56 AM
+TWin: 15
+CTWin: 10
+<CT>ct1
+K/D: 5/10
+KDS: 0
+<CT>ct2
+K/D: 6/12
+KDS: 0
+<CT>ct3
+K/D: 19/11
+KDS: 1
+<T>Random Agent
+K/D: 2/13
+KDS: 0
+<T>Random Agent (1)
+K/D: 19/9
+KDS: 2
+<T>Random Agent (2)
+K/D: 12/8
+KDS: 1
+
+
+Match: 3
+Ct Inference vs T Bot Medium
+5/29/2023 5:51:12 AM
+TWin: 26
+CTWin: 14
+<CT>ct1
+K/D: 7/12
+KDS: 0
+<CT>ct2
+K/D: 13/14
+KDS: 0
+<CT>ct3
+K/D: 2/15
+KDS: 0
+<T>Random Agent
+K/D: 9/8
+KDS: 1
+<T>Random Agent (1)
+K/D: 25/6
+KDS: 4
+<T>Random Agent (2)
+K/D: 7/8
+KDS: 0
+
+
+Match: 4
+Ct Inference vs T Bot Medium
+5/29/2023 6:00:07 AM
+TWin: 38
+CTWin: 18
+<CT>ct1
+K/D: 10/13
+KDS: 0
+<CT>ct2
+K/D: 6/15
+KDS: 0
+<CT>ct3
+K/D: 7/14
+KDS: 0
+<T>Random Agent
+K/D: 7/12
+KDS: 0
+<T>Random Agent (1)
+K/D: 23/5
+KDS: 4
+<T>Random Agent (2)
+K/D: 12/6
+KDS: 2
+
+
+Match: 5
+Ct Inference vs T Bot Medium
+5/29/2023 6:07:02 AM
+TWin: 50
+CTWin: 21
+<CT>ct1
+K/D: 7/13
+KDS: 0
+<CT>ct2
+K/D: 7/12
+KDS: 0
+<CT>ct3
+K/D: 5/14
+KDS: 0
+<T>Random Agent
+K/D: 10/9
+KDS: 1
+<T>Random Agent (1)
+K/D: 22/4
+KDS: 5
+<T>Random Agent (2)
+K/D: 7/6
+KDS: 1
+
+
+Match: 6
+Ct Inference vs T Bot Medium
+5/29/2023 6:15:31 AM
+TWin: 61
+CTWin: 25
+<CT>ct1
+K/D: 11/14
+KDS: 0
+<CT>ct2
+K/D: 7/12
+KDS: 0
+<CT>ct3
+K/D: 4/14
+KDS: 0
+<T>Random Agent
+K/D: 16/8
+KDS: 2
+<T>Random Agent (1)
+K/D: 17/7
+KDS: 2
+<T>Random Agent (2)
+K/D: 7/7
+KDS: 1
+
+
+Match: 7
+Ct Inference vs T Bot Medium
+5/29/2023 6:26:17 AM
+TWin: 69
+CTWin: 32
+<CT>ct1
+K/D: 8/10
+KDS: 0
+<CT>ct2
+K/D: 10/10
+KDS: 1
+<CT>ct3
+K/D: 13/13
+KDS: 1
+<T>Random Agent
+K/D: 10/11
+KDS: 0
+<T>Random Agent (1)
+K/D: 10/11
+KDS: 0
+<T>Random Agent (2)
+K/D: 13/9
+KDS: 1
+
+
+Match: 8
+Ct Inference vs T Bot Medium
+5/29/2023 6:34:29 AM
+TWin: 80
+CTWin: 36
+<CT>ct1
+K/D: 9/14
+KDS: 0
+<CT>ct2
+K/D: 7/13
+KDS: 0
+<CT>ct3
+K/D: 7/12
+KDS: 0
+<T>Random Agent
+K/D: 16/6
+KDS: 2
+<T>Random Agent (1)
+K/D: 12/9
+KDS: 1
+<T>Random Agent (2)
+K/D: 11/8
+KDS: 1
+
+
+Match: 9
+Ct Inference vs T Bot Medium
+5/29/2023 6:44:29 AM
+TWin: 89
+CTWin: 41
+<CT>ct1
+K/D: 8/11
+KDS: 0
+<CT>ct2
+K/D: 7/12
+KDS: 0
+<CT>ct3
+K/D: 10/10
+KDS: 1
+<T>Random Agent
+K/D: 7/10
+KDS: 0
+<T>Random Agent (1)
+K/D: 19/7
+KDS: 2
+<T>Random Agent (2)
+K/D: 7/8
+KDS: 0
+
+
+Match: 10
+Ct Inference vs T Bot Medium
+5/29/2023 6:53:06 AM
+TWin: 103
+CTWin: 42
+<CT>ct1
+K/D: 2/16
+KDS: 0
+<CT>ct2
+K/D: 11/14
+KDS: 0
+<CT>ct3
+K/D: 8/14
+KDS: 0
+<T>Random Agent
+K/D: 12/9
+KDS: 1
+<T>Random Agent (1)
+K/D: 16/6
+KDS: 2
+<T>Random Agent (2)
+K/D: 16/6
+KDS: 2
+
+
+Match: 11
+Ct Inference vs T Bot Medium
+5/29/2023 7:02:53 AM
+TWin: 110
+CTWin: 49
+<CT>ct1
+K/D: 11/13
+KDS: 0
+<CT>ct2
+K/D: 10/9
+KDS: 1
+<CT>ct3
+K/D: 7/11
+KDS: 0
+<T>Random Agent
+K/D: 13/11
+KDS: 1
+<T>Random Agent (1)
+K/D: 13/10
+KDS: 1
+<T>Random Agent (2)
+K/D: 7/7
+KDS: 1
+
+
+Match: 12
+Ct Inference vs T Bot Medium
+5/29/2023 7:13:24 AM
+TWin: 120
+CTWin: 52
+<CT>ct1
+K/D: 6/11
+KDS: 0
+<CT>ct2
+K/D: 6/13
+KDS: 0
+<CT>ct3
+K/D: 9/16
+KDS: 0
+<T>Random Agent
+K/D: 9/9
+KDS: 1
+<T>Random Agent (1)
+K/D: 19/5
+KDS: 3
+<T>Random Agent (2)
+K/D: 12/7
+KDS: 1
+
+
+Match: 13
+Ct Inference vs T Bot Medium
+5/29/2023 7:25:24 AM
+TWin: 128
+CTWin: 58
+<CT>ct1
+K/D: 8/11
+KDS: 0
+<CT>ct2
+K/D: 7/13
+KDS: 0
+<CT>ct3
+K/D: 16/11
+KDS: 1
+<T>Random Agent
+K/D: 11/12
+KDS: 0
+<T>Random Agent (1)
+K/D: 11/11
+KDS: 1
+<T>Random Agent (2)
+K/D: 13/8
+KDS: 1
+
+
+Match: 14
+Ct Inference vs T Bot Medium
+5/29/2023 7:35:41 AM
+TWin: 134
+CTWin: 65
+<CT>ct1
+K/D: 13/10
+KDS: 1
+<CT>ct2
+K/D: 6/12
+KDS: 0
+<CT>ct3
+K/D: 10/10
+KDS: 1
+<T>Random Agent
+K/D: 8/11
+KDS: 0
+<T>Random Agent (1)
+K/D: 12/9
+KDS: 1
+<T>Random Agent (2)
+K/D: 12/9
+KDS: 1
+
+
+Match: 15
+Ct Inference vs T Bot Medium
+5/29/2023 7:43:06 AM
+TWin: 148
+CTWin: 67
+<CT>ct1
+K/D: 3/14
+KDS: 0
+<CT>ct2
+K/D: 6/14
+KDS: 0
+<CT>ct3
+K/D: 10/14
+KDS: 0
+<T>Random Agent
+K/D: 12/9
+KDS: 1
+<T>Random Agent (1)
+K/D: 10/8
+KDS: 1
+<T>Random Agent (2)
+K/D: 20/2
+KDS: 10
+
+
+Match: 16
+Ct Inference vs T Bot Medium
+5/29/2023 7:50:30 AM
+TWin: 158
+CTWin: 73
+<CT>ct1
+K/D: 14/11
+KDS: 1
+<CT>ct2
+K/D: 4/13
+KDS: 0
+<CT>ct3
+K/D: 9/11
+KDS: 0
+<T>Random Agent
+K/D: 8/10
+KDS: 0
+<T>Random Agent (1)
+K/D: 15/9
+KDS: 1
+<T>Random Agent (2)
+K/D: 12/8
+KDS: 1
+
+
+Match: 17
+Ct Inference vs T Bot Medium
+5/29/2023 8:00:57 AM
+TWin: 169
+CTWin: 77
+<CT>ct1
+K/D: 7/13
+KDS: 0
+<CT>ct2
+K/D: 9/13
+KDS: 0
+<CT>ct3
+K/D: 10/14
+KDS: 0
+<T>Random Agent
+K/D: 9/10
+KDS: 0
+<T>Random Agent (1)
+K/D: 24/7
+KDS: 3
+<T>Random Agent (2)
+K/D: 7/9
+KDS: 0
+
+
+Match: 18
+Ct Inference vs T Bot Medium
+5/29/2023 8:10:27 AM
+TWin: 180
+CTWin: 81
+<CT>ct1
+K/D: 5/13
+KDS: 0
+<CT>ct2
+K/D: 11/12
+KDS: 0
+<CT>ct3
+K/D: 6/14
+KDS: 0
+<T>Random Agent
+K/D: 9/7
+KDS: 1
+<T>Random Agent (1)
+K/D: 20/6
+KDS: 3
+<T>Random Agent (2)
+K/D: 10/9
+KDS: 1
+
+
+Match: 19
+Ct Inference vs T Bot Medium
+5/29/2023 8:20:40 AM
+TWin: 186
+CTWin: 89
+<CT>ct1
+K/D: 10/10
+KDS: 1
+<CT>ct2
+K/D: 15/10
+KDS: 1
+<CT>ct3
+K/D: 11/12
+KDS: 0
+<T>Random Agent
+K/D: 5/13
+KDS: 0
+<T>Random Agent (1)
+K/D: 17/10
+KDS: 1
+<T>Random Agent (2)
+K/D: 10/13
+KDS: 0
+
+
+Match: 20
+Ct Inference vs T Bot Medium
+5/29/2023 8:31:06 AM
+TWin: 195
+CTWin: 93
+<CT>ct1
+K/D: 5/11
+KDS: 0
+<CT>ct2
+K/D: 9/13
+KDS: 0
+<CT>ct3
+K/D: 8/12
+KDS: 0
+<T>Random Agent
+K/D: 7/7
+KDS: 1
+<T>Random Agent (1)
+K/D: 10/8
+KDS: 1
+<T>Random Agent (2)
+K/D: 19/7
+KDS: 2
+
+
+Match: 21
+Ct Inference vs T Bot Medium
+5/29/2023 8:39:57 AM
+TWin: 201
+CTWin: 102
+<CT>ct1
+K/D: 20/9
+KDS: 2
+<CT>ct2
+K/D: 6/12
+KDS: 0
+<CT>ct3
+K/D: 8/12
+KDS: 0
+<T>Random Agent
+K/D: 10/11
+KDS: 0
+<T>Random Agent (1)
+K/D: 16/12
+KDS: 1
+<T>Random Agent (2)
+K/D: 7/11
+KDS: 0
+
+
+Match: 22
+Ct Inference vs T Bot Medium
+5/29/2023 8:50:44 AM
+TWin: 209
+CTWin: 109
+<CT>ct1
+K/D: 14/10
+KDS: 1
+<CT>ct2
+K/D: 11/11
+KDS: 1
+<CT>ct3
+K/D: 7/13
+KDS: 0
+<T>Random Agent
+K/D: 7/12
+KDS: 0
+<T>Random Agent (1)
+K/D: 13/11
+KDS: 1
+<T>Random Agent (2)
+K/D: 14/9
+KDS: 1
+
+
+Match: 23
+Ct Inference vs T Bot Medium
+5/29/2023 8:59:59 AM
+TWin: 219
+CTWin: 115
+<CT>ct1
+K/D: 7/13
+KDS: 0
+<CT>ct2
+K/D: 10/12
+KDS: 0
+<CT>ct3
+K/D: 11/11
+KDS: 1
+<T>Random Agent
+K/D: 5/11
+KDS: 0
+<T>Random Agent (1)
+K/D: 15/9
+KDS: 1
+<T>Random Agent (2)
+K/D: 16/8
+KDS: 2
+
+
+Match: 24
+Ct Inference vs T Bot Medium
+5/29/2023 9:07:02 AM
+TWin: 229
+CTWin: 120
+<CT>ct1
+K/D: 5/13
+KDS: 0
+<CT>ct2
+K/D: 8/12
+KDS: 0
+<CT>ct3
+K/D: 10/11
+KDS: 0
+<T>Random Agent
+K/D: 10/9
+KDS: 1
+<T>Random Agent (1)
+K/D: 21/7
+KDS: 3
+<T>Random Agent (2)
+K/D: 5/7
+KDS: 0
+
+
+Match: 25
+Ct Inference vs T Bot Medium
+5/29/2023 9:19:40 AM
+TWin: 237
+CTWin: 126
+<CT>ct1
+K/D: 8/15
+KDS: 0
+<CT>ct2
+K/D: 11/12
+KDS: 0
+<CT>ct3
+K/D: 11/13
+KDS: 0
+<T>Random Agent
+K/D: 9/11
+KDS: 0
+<T>Random Agent (1)
+K/D: 21/8
+KDS: 2
+<T>Random Agent (2)
+K/D: 10/11
+KDS: 0
+
+
+Match: 26
+Ct Inference vs T Bot Medium
+5/29/2023 9:29:55 AM
+TWin: 247
+CTWin: 128
+<CT>ct1
+K/D: 6/14
+KDS: 0
+<CT>ct2
+K/D: 6/13
+KDS: 0
+<CT>ct3
+K/D: 6/12
+KDS: 0
+<T>Random Agent
+K/D: 9/5
+KDS: 1
+<T>Random Agent (1)
+K/D: 16/6
+KDS: 2
+<T>Random Agent (2)
+K/D: 14/7
+KDS: 2
+
+
+Match: 27
+Ct Inference vs T Bot Medium
+5/29/2023 9:39:34 AM
+TWin: 255
+CTWin: 135
+<CT>ct1
+K/D: 13/10
+KDS: 1
+<CT>ct2
+K/D: 10/14
+KDS: 0
+<CT>ct3
+K/D: 8/14
+KDS: 0
+<T>Random Agent
+K/D: 15/10
+KDS: 1
+<T>Random Agent (1)
+K/D: 14/11
+KDS: 1
+<T>Random Agent (2)
+K/D: 9/10
+KDS: 0
+
+
+Match: 28
+Ct Inference vs T Bot Medium
+5/29/2023 9:51:30 AM
+TWin: 262
+CTWin: 141
+<CT>ct1
+K/D: 9/13
+KDS: 0
+<CT>ct2
+K/D: 10/12
+KDS: 0
+<CT>ct3
+K/D: 13/12
+KDS: 1
+<T>Random Agent
+K/D: 12/11
+KDS: 1
+<T>Random Agent (1)
+K/D: 19/8
+KDS: 2
+<T>Random Agent (2)
+K/D: 6/13
+KDS: 0
+
+
+Match: 29
+Ct Inference vs T Bot Medium
+5/29/2023 9:58:17 AM
+TWin: 271
+CTWin: 147
+<CT>ct1
+K/D: 16/10
+KDS: 1
+<CT>ct2
+K/D: 7/12
+KDS: 0
+<CT>ct3
+K/D: 6/14
+KDS: 0
+<T>Random Agent
+K/D: 5/14
+KDS: 0
+<T>Random Agent (1)
+K/D: 18/8
+KDS: 2
+<T>Random Agent (2)
+K/D: 13/7
+KDS: 1
+
+
+Match: 30
+Ct Inference vs T Bot Medium
+5/29/2023 10:05:58 AM
+TWin: 285
+CTWin: 149
+<CT>ct1
+K/D: 3/14
+KDS: 0
+<CT>ct2
+K/D: 6/14
+KDS: 0
+<CT>ct3
+K/D: 10/14
+KDS: 0
+<T>Random Agent
+K/D: 12/8
+KDS: 1
+<T>Random Agent (1)
+K/D: 13/7
+KDS: 1
+<T>Random Agent (2)
+K/D: 17/4
+KDS: 4
+
+
+Match: 31
+Ct Inference vs T Bot Medium
+5/29/2023 10:14:07 AM
+TWin: 297
+CTWin: 151
+<CT>ct1
+K/D: 9/13
+KDS: 0
+<CT>ct2
+K/D: 2/13
+KDS: 0
+<CT>ct3
+K/D: 4/13
+KDS: 0
+<T>Random Agent
+K/D: 10/5
+KDS: 2
+<T>Random Agent (1)
+K/D: 15/5
+KDS: 3
+<T>Random Agent (2)
+K/D: 14/5
+KDS: 2
+
+
+Match: 32
+Ct Inference vs T Bot Medium
+5/29/2023 10:22:15 AM
+TWin: 310
+CTWin: 154
+<CT>ct1
+K/D: 9/13
+KDS: 0
+<CT>ct2
+K/D: 8/13
+KDS: 0
+<CT>ct3
+K/D: 5/14
+KDS: 0
+<T>Random Agent
+K/D: 17/10
+KDS: 1
+<T>Random Agent (1)
+K/D: 13/7
+KDS: 1
+<T>Random Agent (2)
+K/D: 10/5
+KDS: 2
+
+
+Match: 33
+Ct Inference vs T Bot Medium
+5/29/2023 10:31:40 AM
+TWin: 321
+CTWin: 156
+<CT>ct1
+K/D: 5/15
+KDS: 0
+<CT>ct2
+K/D: 4/13
+KDS: 0
+<CT>ct3
+K/D: 10/14
+KDS: 0
+<T>Random Agent
+K/D: 10/8
+KDS: 1
+<T>Random Agent (1)
+K/D: 20/4
+KDS: 5
+<T>Random Agent (2)
+K/D: 12/7
+KDS: 1
+
+
+Match: 34
+Ct Inference vs T Bot Medium
+5/29/2023 10:39:31 AM
+TWin: 336
+CTWin: 157
+<CT>ct1
+K/D: 2/16
+KDS: 0
+<CT>ct2
+K/D: 4/15
+KDS: 0
+<CT>ct3
+K/D: 9/15
+KDS: 0
+<T>Random Agent
+K/D: 9/7
+KDS: 1
+<T>Random Agent (1)
+K/D: 16/5
+KDS: 3
+<T>Random Agent (2)
+K/D: 21/3
+KDS: 7
+
+
+Match: 35
+Ct Inference vs T Bot Medium
+5/29/2023 10:50:08 AM
+TWin: 345
+CTWin: 161
+<CT>ct1
+K/D: 7/11
+KDS: 0
+<CT>ct2
+K/D: 7/13
+KDS: 0
+<CT>ct3
+K/D: 11/13
+KDS: 0
+<T>Random Agent
+K/D: 12/8
+KDS: 1
+<T>Random Agent (1)
+K/D: 12/8
+KDS: 1
+<T>Random Agent (2)
+K/D: 13/9
+KDS: 1
+
+

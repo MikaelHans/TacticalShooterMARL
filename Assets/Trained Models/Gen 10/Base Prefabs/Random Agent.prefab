@@ -513,12 +513,17 @@ MonoBehaviour:
   distanceThreshold: 1
   target: {fileID: 0}
   waypointWaitTime: 0
+  delay: 0
   strategies: []
   currentStrategy: {fileID: 0}
   aim:
   - 0.2
   - 0.5
   - 0.8
+  shootDelay:
+  - 1.5
+  - 0.5
+  - 0
 --- !u!114 &746057165660783756
 MonoBehaviour:
   m_ObjectHideFlags: 0

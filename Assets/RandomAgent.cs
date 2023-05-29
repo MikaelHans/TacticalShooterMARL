@@ -40,12 +40,12 @@ public class RandomAgent : Character
     public float distanceThreshold;
     [SerializeField]
     Character target;
-    public float waypointWaitTime;
+    public float waypointWaitTime, delay;
     [SerializeField]
     Strategy[] strategies;
     [SerializeField]
     Strategy currentStrategy;
-    public float[] aim = new float[3];
+    public float[] aim, shootDelay = new float[3];
 
     protected override void Awake()
     {
@@ -63,6 +63,7 @@ public class RandomAgent : Character
         int strategy = 0;
         currentStrategy.waypoints = strategies[strategy].waypoints;
         currentWaypoint = currentStrategy.waypointStaticLocations[waypointIndex];
+        delay = shootDelay[gameManager.difficulty];
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -135,19 +136,27 @@ public class RandomAgent : Character
 
             enemyPos.y = 0;
             curPos.y = 0;
-
             //Vector3 targetDir = curPos - enemyPos;
             //Vector3 forward = target.transform.forward;
         }
 
         if (equipmentManager.check())
         {
-            equipmentManager.fire();
-            if(target.hp <= 0)
+            delay -= Time.deltaTime;            
+            if(delay < 0)
             {
-                enemiesSighted = false;
-                navmesh.isStopped = false;
-            }
+                equipmentManager.fire();
+                if (target.hp <= 0)
+                {
+                    enemiesSighted = false;
+                    navmesh.isStopped = false;
+                    delay = shootDelay[gameManager.difficulty];
+                }
+            }            
+        }
+        else
+        {
+            delay = shootDelay[gameManager.difficulty];
         }
     }
 

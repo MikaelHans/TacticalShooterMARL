@@ -236,6 +236,7 @@ public class Character : Agent
                 movement.forward();
                 break;
             case 2:
+                AddReward(0.05f);
                 movement.backward();
                 break;
             case 3:
@@ -273,10 +274,6 @@ public class Character : Agent
                 break;
         }
         equipmentManager.swapTo(equipment);
-        if(equipment == 0)
-        {
-            AddReward(0.01f);
-        }
         //switch (moveType)
         //{
         //    case 0:

@@ -210,13 +210,7 @@ public class Character : Agent
             gameObject.SetActive(false);
             if(inference)
             {
-                foreach (Character ally in allies)
-                {
-                    if(ally.isAlive == 1)
-                    {
-                        mainCamera.gameObject.SetActive(true);
-                    }
-                }
+                gameManager.spectatorCamera.gameObject.SetActive(true);
             }
 
             return attacker_reward;
@@ -235,7 +229,11 @@ public class Character : Agent
         switch(moveAction)
         {
             case 0:
-                movement.forward();
+                //movement.forward();
+                if(!inference)
+                {
+                    movement.forward();
+                }
                 break;
             case 1:
                 movement.forward();
@@ -271,7 +269,7 @@ public class Character : Agent
         switch (fireAction)
         {
             case 0:
-                if(!inference)
+                if(inference == false)
                 {
                     equipmentManager.fire();
                 }
@@ -304,7 +302,7 @@ public class Character : Agent
         equipmentManager.equipments[0].resetEquipment();
         points = 0;
         isAlive = 1;
-        gameObject.SetActive(true);
+        gameObject.SetActive(true); gameManager.spectatorCamera.gameObject.SetActive(false);
     }
 
     IEnumerator getStunned(float stunTime)

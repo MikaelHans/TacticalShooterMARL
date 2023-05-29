@@ -1322,6 +1322,8 @@ MonoBehaviour:
   bombInRange: 0
   isAlive: 1
   counter: 0
+  kill: 0
+  death: 0
   movement: {fileID: 7123246475512474025}
   equipmentManager: {fileID: 7123246475512474026}
   allies: []
@@ -1448,7 +1450,7 @@ MonoBehaviour:
   rotationSpeed: 1
   minPitch: -45
   maxPitch: 45
-  mouseSensitivity: 15
+  mouseSensitivity: 45
   isRunning: 0
   moveSpeed: 0
   xRotation: 0

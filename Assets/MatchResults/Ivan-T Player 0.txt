@@ -1,0 +1,25 @@
+Match: 1
+T Player 0
+5/29/2023 8:49:55 PM
+TWin: 1
+CTWin: 2
+<CT>ct1
+K/D: 1/3
+KDS: 0
+<CT>ct2
+K/D: 5/3
+KDS: 1
+<CT>ct3
+K/D: 2/3
+KDS: 0
+<T>t1
+K/D: 0/3
+KDS: 0
+<T>t2
+K/D: 7/3
+KDS: 2
+<T>t3
+K/D: 2/2
+KDS: 1
+
+

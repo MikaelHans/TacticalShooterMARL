@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.UI;
 
 public class Equipment : MonoBehaviour
 {
@@ -12,6 +14,15 @@ public class Equipment : MonoBehaviour
     public Transform instantiateSource;
     public float coolDown, rewardBuffer;
     public bool isCoolingDown;
+    public TextMeshProUGUI reloadUI;
+
+    private void Start()
+    {
+        if (character.inference)
+        {
+            reloadUI = GameObject.FindGameObjectWithTag("reloadUI").GetComponent<TextMeshProUGUI>();
+        }       
+    }
 
     public void setCharacter(Character _character)
     {
@@ -48,12 +59,24 @@ public class Equipment : MonoBehaviour
     {
         if (isCoolingDown)
         {
+            if (character.inference)
+            {
+                reloadUI.text = $"{coolDown}";
+            }
+            
             coolDown -= Time.deltaTime;
             if(coolDown< 0 )
             {
                 isCoolingDown= false;
-
             }
+        }
+        else
+        {
+            if (character.inference)
+            {
+                reloadUI.text = "Ready";
+            }
+            
         }
     }
 

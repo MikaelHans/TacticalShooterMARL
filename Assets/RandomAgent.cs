@@ -115,15 +115,15 @@ public class RandomAgent : Character
         {
             navmesh.isStopped = true;
             target = enemiesInRange[0];
-            if (equipmentManager.check())
-            {
-                enemiesSighted = false;
-            }
-            else
-            {
-                enemiesSighted = true;
-            }
-            
+            //if (equipmentManager.check())
+            //{
+            //    enemiesSighted = false;
+            //}
+            //else
+            //{
+            //    enemiesSighted = true;
+            //}
+            enemiesSighted = true;
         }
 
         if(enemiesSighted)

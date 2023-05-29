@@ -25,7 +25,7 @@ public class Movement : MonoBehaviour
         isRunning = true;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (character.inference)
         {
@@ -59,8 +59,9 @@ public class Movement : MonoBehaviour
         //    discreteActions[0] = 0;
         //}
         //fire weapon
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) || Input.GetKey(KeyCode.Q))
         {
+            Debug.Log("FIre");
             character.equipmentManager.fire();
         }
 

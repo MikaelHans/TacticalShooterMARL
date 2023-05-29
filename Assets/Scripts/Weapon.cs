@@ -112,7 +112,7 @@ public class Weapon : Equipment
             }
             character.AddReward(-1f/(float)max_ammo);
             Transform hitTransform = hit.collider.transform;
-            Debug.DrawLine(transform.position, hit.transform.position, Color.red, 0.5f);
+            Debug.DrawLine(instantiateSource.transform.position, instantiateSource.transform.forward * 60, Color.red, 0.5f);
         }
         //audioEmiter.EmitSound();
         character.AddReward(-1f / (float)max_ammo);

@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
     public int difficulty = 0;
     public string inference_id;
     public bool inference;
-
+    public Camera spectatorCamera;
     private SimpleMultiAgentGroup counterTerroristTeam, terrorristTeam;
 
     private void Awake()
@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+
         currentRound = 1;
         match = 1;
         counterTerroristTeam = new SimpleMultiAgentGroup();
@@ -119,6 +120,7 @@ public class GameController : MonoBehaviour
             terrorristTeam.EndGroupEpisode();
             
         }
+
         episodeCount++;
         resetRound();
     }
@@ -145,7 +147,7 @@ public class GameController : MonoBehaviour
         if(currentRound > round && inference)
         {
             currentRound = 0;
-            string fileName = $"{gameObject.name}.txt";
+            string fileName = $"MatchResults/{inference_id}-{gameObject.name}.txt";
             string filePath = Path.Combine(Application.dataPath, fileName); // get the file path
 
             string textToWrite = $"Match: {match}\n{gameObject.name}\n{DateTime.Now}\nTWin: {tWin}\nCTWin: {ctWin}\n";
@@ -168,6 +170,7 @@ public class GameController : MonoBehaviour
             File.AppendAllText(filePath, textToWrite + "\n\n");
             Debug.Log($"Text written to file at path: {filePath}");
             match++;
+            gameObject.SetActive(false);
         }
     }
 

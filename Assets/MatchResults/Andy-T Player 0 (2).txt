@@ -1,0 +1,50 @@
+Match: 1
+T Player 0 (2)
+5/29/2023 4:26:15 PM
+TWin: 2
+CTWin: 2
+<CT>ct1
+K/D: 5/3
+KDS: 1
+<CT>ct2
+K/D: 2/2
+KDS: 1
+<CT>ct3
+K/D: 2/3
+KDS: 0
+<T>t1
+K/D: 4/2
+KDS: 2
+<T>andy
+K/D: 1/4
+KDS: 0
+<T>t3
+K/D: 3/3
+KDS: 1
+
+
+Match: 1
+T Player 0 (2)
+5/29/2023 5:37:33 PM
+TWin: 0
+CTWin: 4
+<CT>ct1
+K/D: 2/3
+KDS: 0
+<CT>ct2
+K/D: 3/1
+KDS: 3
+<CT>ct3
+K/D: 7/1
+KDS: 7
+<T>t1
+K/D: 2/4
+KDS: 0
+<T>t2
+K/D: 1/4
+KDS: 0
+<T>t3
+K/D: 2/4
+KDS: 0
+
+

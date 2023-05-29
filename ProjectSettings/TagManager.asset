@@ -8,6 +8,8 @@ TagManager:
   - Target
   - ct
   - t
+  - spectator
+  - reloadUI
   layers:
   - Default
   - TransparentFX

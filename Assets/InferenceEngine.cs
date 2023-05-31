@@ -10,12 +10,14 @@ public class InferenceEngine : MonoBehaviour
     GameController inference;
     public string fileName = "RoundResults.txt"; // the name of the file to write to
     public string textToWrite, training_id;
+    public GameObject[] inferences;
+
 
     private void OnApplicationQuit()
     {
         string filePath = Path.Combine(Application.dataPath, fileName); // get the file path
 
-        textToWrite = $"{training_id}\n{DateTime.Now}\nTWin: {inference.tWin}\nCTWin: {inference.ctWin}";
+        //textToWrite = $"{training_id}\n{DateTime.Now}\nTWin: {inference.tWin}\nCTWin: {inference.ctWin}";
 
 
 

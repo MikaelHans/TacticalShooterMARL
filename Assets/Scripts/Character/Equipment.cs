@@ -20,7 +20,7 @@ public class Equipment : MonoBehaviour
     {
         if (character.inference)
         {
-            reloadUI = GameObject.FindGameObjectWithTag("reloadUI").GetComponent<TextMeshProUGUI>();
+            //reloadUI = GameObject.FindGameObjectWithTag("reloadUI").GetComponent<TextMeshProUGUI>();
         }       
     }
 

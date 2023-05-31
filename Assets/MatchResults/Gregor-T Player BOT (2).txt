@@ -1,0 +1,25 @@
+Match: 1
+T Player BOT (2)
+5/30/2023 6:58:26 PM
+TWin: 2
+CTWin: 2
+<CT>Random Agent CT
+K/D: 3/3
+KDS: 1
+<CT>Random Agent CT 1
+K/D: 3/3
+KDS: 1
+<CT>Random Agent CT 2
+K/D: 2/3
+KDS: 0
+<T>Random Agent
+K/D: 2/4
+KDS: 0
+<T>t2
+K/D: 6/2
+KDS: 3
+<T>Random Agent (2)
+K/D: 1/2
+KDS: 0
+
+

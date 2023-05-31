@@ -1,0 +1,25 @@
+Match: 1
+T Inference vs CT Bot Hard
+5/30/2023 3:28:09 AM
+TWin: 2
+CTWin: 6
+<CT>Random Agent
+K/D: 13/2
+KDS: 6
+<CT>Random Agent (1)
+K/D: 6/6
+KDS: 1
+<CT>Random Agent (2)
+K/D: 3/8
+KDS: 0
+<T>t1
+K/D: 4/8
+KDS: 0
+<T>t2
+K/D: 5/6
+KDS: 0
+<T>t3
+K/D: 7/8
+KDS: 0
+
+

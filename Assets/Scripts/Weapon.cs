@@ -102,7 +102,8 @@ public class Weapon : Equipment
                 //Debug.Log(hitcharacter.name);
                 //if target die
                 rewardBuffer = hitcharacter.takeDamage(damage, character);
-                
+                if(hitcharacter.inference)
+                    Debug.DrawLine(instantiateSource.transform.position, hitcharacter.transform.position, Color.magenta, 5.5f);
                 //Debug.Log(rewardBuffer);
             }
             else if(hit.collider.transform.GetComponentInParent<TargetPractice>())
@@ -112,7 +113,7 @@ public class Weapon : Equipment
             }
             character.AddReward(-1f/(float)max_ammo);
             Transform hitTransform = hit.collider.transform;
-            Debug.DrawLine(instantiateSource.transform.position, instantiateSource.transform.forward * 60, Color.red, 0.5f);
+            
         }
         //audioEmiter.EmitSound();
         character.AddReward(-1f / (float)max_ammo);

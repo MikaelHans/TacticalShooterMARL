@@ -6,6 +6,7 @@ using System.IO.Abstractions;
 using System.IO;
 using System;
 using System.Linq;
+using UnityEditor;
 
 public class GameController : MonoBehaviour
 {
@@ -153,12 +154,20 @@ public class GameController : MonoBehaviour
             string textToWrite = $"Match: {match}\n{gameObject.name}\n{DateTime.Now}\nTWin: {tWin}\nCTWin: {ctWin}\n";
             foreach (Character t in counterTerrorists)
             {
+                if (t.death <= 0)
+                {
+                    textToWrite += $"<T>{t.gameObject.name}\nK/D: {t.kill}/{t.death}\nKDS: {(float)(t.kill / 1)}\n";
+                }
                 textToWrite += $"<CT>{t.gameObject.name}\nK/D: {t.kill}/{t.death}\nKDS: {(float)(t.kill / t.death)}\n";
                 t.kill = 0;
                 t.death = 0;
             }
             foreach (Character t in terrorist)
             {
+                if(t.death <= 0)
+                {
+                    textToWrite += $"<T>{t.gameObject.name}\nK/D: {t.kill}/{t.death}\nKDS: {(float)(t.kill / 1)}\n";
+                }
                 textToWrite += $"<T>{t.gameObject.name}\nK/D: {t.kill}/{t.death}\nKDS: {(float)(t.kill / t.death)}\n";
                 t.kill = 0;
                 t.death = 0;
@@ -170,7 +179,10 @@ public class GameController : MonoBehaviour
             File.AppendAllText(filePath, textToWrite + "\n\n");
             Debug.Log($"Text written to file at path: {filePath}");
             match++;
+            Application.Quit();
+            EditorApplication.isPlaying = false;
             gameObject.SetActive(false);
+
         }
     }
 

@@ -1,0 +1,25 @@
+Match: 1
+Ct Inference vs T Bot Hard
+5/30/2023 3:27:44 AM
+TWin: 8
+CTWin: 0
+<CT>ct1
+K/D: 4/8
+KDS: 0
+<CT>ct2
+K/D: 0/9
+KDS: 0
+<CT>ct3
+K/D: 2/9
+KDS: 0
+<T>Random Agent
+K/D: 8/3
+KDS: 2
+<T>Random Agent (1)
+K/D: 9/2
+KDS: 4
+<T>Random Agent (2)
+K/D: 9/1
+KDS: 9
+
+

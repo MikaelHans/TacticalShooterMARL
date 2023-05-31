@@ -46,20 +46,20 @@ public class Equipment : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        if (isCoolingDown)
+        if (coolDown > 0)
         {
+            Debug.Log("IN6");
             coolDown -= Time.deltaTime;
             if(coolDown< 0 )
             {
                 isCoolingDown= false;
-
             }
         }
     }
 
     public virtual bool use()
     {        
-        if (ammo <= 0 || isCoolingDown)
+        if (ammo <= 0 || coolDown > 0)
         {          
             if(ammo <= 0)
             {

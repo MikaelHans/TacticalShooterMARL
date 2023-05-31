@@ -273,10 +273,10 @@ public class Character : Agent
                 break;
         }
         equipmentManager.swapTo(equipment);
-        if(equipment == 0)
-        {
-            AddReward(0.01f);
-        }
+        //if(equipment == 0)
+        //{
+        //    AddReward(0.01f);
+        //}
         //switch (moveType)
         //{
         //    case 0:

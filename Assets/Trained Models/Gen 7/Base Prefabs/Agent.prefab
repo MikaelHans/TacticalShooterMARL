@@ -1360,7 +1360,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: ae1db9a89c1bb114db01630e2c2644db, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: simpleshooter

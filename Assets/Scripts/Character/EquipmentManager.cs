@@ -32,8 +32,11 @@ public class EquipmentManager : RewardingObject
 
     public void swap(int current, int prev)
     {
-        equipments[prev].gameObject.SetActive(false);
-        equipments[current].gameObject.SetActive(true);
+        if(current != prev)
+        {
+            equipments[prev].gameObject.SetActive(false);
+            equipments[current].gameObject.SetActive(true);
+        }
     }
 
     public void swapUPDown(int i)

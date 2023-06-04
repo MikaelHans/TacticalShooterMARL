@@ -31,6 +31,9 @@ public class Movement : MonoBehaviour
         {
             processMovement();
         }
+        Vector3 temp = transform.localPosition;
+        temp.y = 0;
+        transform.localPosition = temp; 
     }
 
     public void processMovement()

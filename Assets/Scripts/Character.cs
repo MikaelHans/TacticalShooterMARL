@@ -252,6 +252,11 @@ public class Character : Agent
                 movement.left();
                 break;
         }
+
+        Vector3 temp = transform.localPosition;
+        temp.y = 0;
+        transform.localPosition = temp;
+
         switch (rotateAction)
         {
             case 0:

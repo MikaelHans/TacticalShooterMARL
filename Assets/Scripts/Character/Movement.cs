@@ -30,10 +30,7 @@ public class Movement : MonoBehaviour
         if (character.inference)
         {
             processMovement();
-        }
-        Vector3 temp = transform.localPosition;
-        temp.y = 0;
-        transform.localPosition = temp; 
+        }        
     }
 
     public void processMovement()

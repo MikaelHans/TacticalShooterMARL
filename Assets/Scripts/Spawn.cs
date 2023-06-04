@@ -6,7 +6,7 @@ public class Spawn : MonoBehaviour
 {
     public Character characterPrefab, agent;
     public float spawn_offset, rotation_offset;
-    public bool randomizeSpawn, spawnX;
+    public bool randomizeSpawn, spawnX, randomizeRotation;
     //private void Awake()
     //{
     //    agent = GetComponentInChildren<Character>();
@@ -28,15 +28,7 @@ public class Spawn : MonoBehaviour
                 spawnPos.x = Random.Range(spawnPos.x - spawn_offset, spawnPos.x + spawn_offset);
             }
             agent.transform.position = spawnPos;
-            agent.transform.rotation = transform.rotation;
-            agent.resetAgent();
-            agent.team = _team;
-            //agent.GetEquipmentManager().equipments[3] = null;
-            if(agent.GetComponentInChildren<AudioListener>())
-            {
-                agent.GetComponentInChildren<AudioListener>().enabled = false;
-            }
-            
+            agent.transform.rotation = transform.rotation;            
         }
         else
         {
@@ -44,9 +36,20 @@ public class Spawn : MonoBehaviour
             //spawnPos.x = Random.Range(spawnPos.x - spawn_offset, spawnPos.x + spawn_offset);
             agent.transform.position = spawnPos;
             agent.transform.rotation = transform.rotation;
-            agent.resetAgent();
-            agent.team = _team;
-            //agent.GetEquipmentManager().equipments[3] = null;
+        }
+        //randomize rotation
+        if (randomizeRotation)
+        {
+            Vector3 spawnRotation = transform.localRotation.eulerAngles;
+            spawnRotation.y = Random.Range(0, 360);
+            agent.transform.rotation = Quaternion.Euler(spawnRotation.x, spawnRotation.y, spawnRotation.z);
+        }
+
+        //reset agent
+        agent.resetAgent();
+        agent.team = _team;
+        if (agent.GetComponentInChildren<AudioListener>())
+        {
             agent.GetComponentInChildren<AudioListener>().enabled = false;
         }
         //Debug.Log("Timestep: " + agent.counter.ToString());

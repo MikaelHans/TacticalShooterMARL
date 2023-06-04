@@ -48,7 +48,7 @@ public class Equipment : MonoBehaviour
     {
         if (coolDown > 0)
         {
-            Debug.Log("IN6");
+            //Debug.Log("IN6");
             coolDown -= Time.deltaTime;
             if(coolDown< 0 )
             {

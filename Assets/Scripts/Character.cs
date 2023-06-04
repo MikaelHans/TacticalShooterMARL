@@ -103,6 +103,8 @@ public class Character : Agent
         }
         Vector3 normalizedRotation = Utilities.MinMaxNormalization(transform.localRotation.eulerAngles, new Vector3(-1, -1, -1), new Vector3(1, 1, 1));//3
         sensor.AddObservation(normalizedRotation);
+        normalizedRotation = Utilities.MinMaxNormalization(head.transform.localRotation.eulerAngles, new Vector3(-1, -1, -1), new Vector3(1, 1, 1));//3
+        sensor.AddObservation(normalizedRotation);
         //normalizedRotation = Utilities.MinMaxNormalization(head.transform.localRotation.eulerAngles, new Vector3(-1, -1, -1), new Vector3(1, 1, 1));//3
         //sensor.AddObservation(normalizedRotation);
 
@@ -160,7 +162,11 @@ public class Character : Agent
             sensor.AddObservation(enemy[3]);
         }
         sensor.AddObservation(equipmentManager.currentlyEquipped);
-        sensor.AddObservation(equipmentManager.getCurrentlyEquiped());
+        foreach (Equipment equipment in equipmentManager.equipments)
+        {            
+            sensor.AddObservation(equipment.ammo);
+        }
+        sensor.AddObservation(equipmentManager.getCurrentlyEquiped().ammo);
         //sensor.AddObservation(0);
     }
 
@@ -273,19 +279,11 @@ public class Character : Agent
                 break;
         }
         equipmentManager.swapTo(equipment);
-        //if(equipment == 0)
-        //{
-        //    AddReward(0.01f);
-        //}
-        //switch (moveType)
-        //{
-        //    case 0:
-        //        movement.SetMoveSpeedToRun();
-        //        break;
-        //    case 1:
-        //        movement.SetMoveSpeedToWalk();
-        //        break;
-        //}
+        if(equipmentManager.getCurrentlyEquiped().ammo <= 0)
+        {
+            AddReward(-0.4f);
+        }
+
     }
 
     #region hide

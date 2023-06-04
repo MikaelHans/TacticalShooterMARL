@@ -44,14 +44,10 @@ public class Character : Agent
 
     protected virtual void Awake()
     {
-        //audioSensor = GetComponent<AudioSensor>();
-        // teamObservations = GetComponentInParent<TeamObservation>();
-
         gameManager = GetComponentInParent<GameController>();
+
         int enemyCount = 0;
         Character[] allAgents = gameManager.GetComponentsInChildren<Character>();
-        //Debug.Log(allAgents.Length);
-        //Debug.Log(enemyPositions.Length);
         foreach (Character agent in allAgents)
         {
             if (agent.team != team && agent != this)
@@ -59,18 +55,23 @@ public class Character : Agent
                 enemies.Add(agent);
             }
         }
-        //Debug.Log(enemyCount);
-        //enemyPositions = new Vector3[enemyCount];
         enemyInSight = new int[enemyCount];
-
         allyPositions = new List<Vector3>();
-
         foreach (Character agent in allAgents)
         {
             if (agent.team == team && agent != this)
             {
                 allyPositions.Add(new Vector3());
                 allies.Add(agent);
+            }
+        }
+
+        TeamObservation[] AllTeamObservations = gameManager.GetComponentsInChildren<TeamObservation>();
+        foreach (TeamObservation observation in AllTeamObservations)
+        {
+            if(observation.team == team)
+            {
+                teamObservations = observation;
             }
         }
     }

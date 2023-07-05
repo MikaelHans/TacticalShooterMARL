@@ -986,6 +986,7 @@ MonoBehaviour:
   coolDown: 0
   rewardBuffer: 0
   isCoolingDown: 0
+  reloadUI: {fileID: 0}
   grenadePrefab: {fileID: 7491172884225296173, guid: d718fce874e4e184fbb3cf1750570af7, type: 3}
   throwForce: 550
 --- !u!1 &7123246474378630496
@@ -1324,6 +1325,8 @@ MonoBehaviour:
   counter: 0
   kill: 0
   death: 0
+  pathInterval: 100
+  curPath: 0
   movement: {fileID: 7123246475512474025}
   equipmentManager: {fileID: 7123246475512474026}
   allies: []
@@ -1340,6 +1343,7 @@ MonoBehaviour:
   inference: 0
   teamObservations: {fileID: 0}
   mainCamera: {fileID: 0}
+  agentPath: []
 --- !u!114 &4639718647713722125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1362,7 +1366,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 4be2530429b5f0b45a588bae38fdbbec, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 654ba28e7d806e94781e8a980b9a5a55, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: simpleshooter
@@ -2283,6 +2287,7 @@ MonoBehaviour:
   coolDown: 0
   rewardBuffer: 0
   isCoolingDown: 0
+  reloadUI: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 448
@@ -2590,6 +2595,7 @@ MonoBehaviour:
   coolDown: 0
   rewardBuffer: 0
   isCoolingDown: 0
+  reloadUI: {fileID: 0}
   grenadePrefab: {fileID: 4312704542776376308, guid: 08a6b41b2a4041540b2a2583989234a0, type: 3}
   throwForce: 550
 --- !u!1 &7124426588462507323
@@ -2712,6 +2718,7 @@ MonoBehaviour:
   coolDown: 0
   rewardBuffer: 0
   isCoolingDown: 0
+  reloadUI: {fileID: 0}
   bombPrefab: {fileID: 7149789763787160664, guid: db4ace4affd5c2f44b832e8c330b94dd, type: 3}
 --- !u!1 &7124440988127004334
 GameObject:

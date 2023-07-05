@@ -9,6 +9,9 @@ using Unity.MLAgents.Sensors;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
 using Unity.Barracuda;
+using System.IO;
+using System.Text.RegularExpressions;
+using System.IO.Abstractions;
 
 [Serializable]
 public struct Observation
@@ -23,7 +26,7 @@ public struct Observation
 public class Character : Agent
 {
     public float hp, points, fovAngle, waitTime;
-    public int ammoLeft, heLeft, stunLeft, team, index, inBombSite, bombInRange = 0, isAlive = 1, counter = 0, kill=0, death=0;
+    public int ammoLeft, heLeft, stunLeft, team, index, inBombSite, bombInRange = 0, isAlive = 1, counter = 0, kill=0, death=0, pathInterval=200, curPath = 0;
     public Movement movement;
     public EquipmentManager equipmentManager;
     public List<Character> allies, enemies;
@@ -40,6 +43,7 @@ public class Character : Agent
     public bool inference;
     public TeamObservation teamObservations;
     public Camera mainCamera;
+    public List<Vector3> agentPath = new List<Vector3>();
     
     //public AudioSensor audioSensor;
     
@@ -75,6 +79,11 @@ public class Character : Agent
                 allies.Add(agent);
             }
         }
+
+
+        string fileName = $"AgentPath-{gameObject.name}.txt";
+        string filePath = Path.Combine(Application.dataPath, fileName); // get the file path
+        File.WriteAllText(filePath, "" + "\n\n");
     }
 
     protected virtual void Start()
@@ -84,6 +93,16 @@ public class Character : Agent
             GetComponentInChildren<Camera>(true).gameObject.SetActive(true);
         }
 
+    }
+
+    private void FixedUpdate()
+    {
+        curPath++;
+        if(curPath == pathInterval)
+        {
+            agentPath.Add(transform.position);
+            curPath = 0;
+        }
     }
 
     public override void OnEpisodeBegin()
@@ -303,6 +322,19 @@ public class Character : Agent
         points = 0;
         isAlive = 1;
         gameObject.SetActive(true); gameManager.spectatorCamera.gameObject.SetActive(false);
+        curPath = 0;
+        
+        string fileName = $"AgentPath-{gameObject.name}.txt";
+
+        string jsonPathArray = Utilities.ToJson(agentPath.ToArray());
+        string filePath = Path.Combine(Application.dataPath, fileName); // get the file path
+
+        string textToWrite = $"";
+        // write the text to the file
+        File.AppendAllText(filePath, jsonPathArray + "\n\n");
+        Debug.Log(jsonPathArray);
+        Debug.Log($"Text written to file at path: {filePath}");
+        agentPath.Clear();
     }
 
     IEnumerator getStunned(float stunTime)

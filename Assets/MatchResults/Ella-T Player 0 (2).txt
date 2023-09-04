@@ -23,3 +23,28 @@ K/D: 6/2
 KDS: 3
 
 
+Match: 1
+T Player 0 (2)
+9/4/2023 7:13:22 PM
+TWin: 1
+CTWin: 3
+<CT>ct1
+K/D: 2/2
+KDS: 1
+<CT>ct2
+K/D: 6/1
+KDS: 6
+<CT>ct3
+K/D: 3/1
+KDS: 3
+<T>t1
+K/D: 1/4
+KDS: 0
+<T>t2
+K/D: 0/4
+KDS: 0
+<T>t3
+K/D: 3/3
+KDS: 1
+
+
